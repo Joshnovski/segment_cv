@@ -23,6 +23,9 @@
 
     <link href="/static/styles.css" rel="stylesheet" />
 
+    <!-- Adds style document for the current page -->
+    {% block head %}{% endblock %}
+
     <title>Segment CV: {% block title %}{% endblock %}</title>
   </head>
 
@@ -67,10 +70,10 @@
           {% else %}
           <ul class="navbar-nav ms-auto mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">Log In</a>
+              <a class="nav-link" href="/register">Sign up</a>
             </li>
           </ul>
           {% endif %}

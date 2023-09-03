@@ -1,3 +1,5 @@
+/* Common styles across all pages */
+
 /* Size for brand */
 nav .navbar-brand
 {
@@ -10,10 +12,19 @@ nav .navbar-brand .brand-style
 {
     color: #7A7A7A;
     font-family: Inter;
-    font-weight: 400;
+    font-weight: 500;
+    margin-left: 8px;
 }
 
-.logo-alignment{
-    /* change spacing from top */
+/* Adjusts the position of the brand logo */
+nav .logo-alignment
+{
     margin-top: -4px;
+}
+
+/* Adjust position of nav-link to be vertically centered in the nav bar */
+
+nav .nav-link
+{
+    margin-top: -10px;
 }
