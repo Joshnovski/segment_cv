@@ -1,0 +1,19 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: 26px;
+    font-family: Inter;
+}
+
+/* Colors for brand */
+nav .navbar-brand .brand-style
+{
+    color: #7A7A7A;
+    font-family: Inter;
+    font-weight: 400;
+}
+
+.logo-alignment{
+    /* change spacing from top */
+    margin-top: -4px;
+}
