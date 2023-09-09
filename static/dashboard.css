@@ -3,13 +3,14 @@
 /* Font for body */
 body 
 {
-    font-family: "Outfit";
+    font-family: "Inter";
 }
 
 /* Size for brand */
 nav .navbar-brand
 {
     font-size: 26px;
+    font-family: "Outfit";
 }
 
 /* Colors for brand */
