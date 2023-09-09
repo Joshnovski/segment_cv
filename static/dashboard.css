@@ -6,6 +6,11 @@ body
     font-family: "Inter";
 }
 
+nav {
+    width: 280px;
+    height: 100vh;
+}
+
 /* Size for brand */
 nav .navbar-brand
 {
@@ -18,19 +23,20 @@ nav .navbar-brand .brand-style
 {
     color: #7A7A7A;
     font-weight: 600;
-    margin-left: 8px;
+    padding-left: 10px;
     letter-spacing: 7px;
-}
-
-/* Adjusts the position of the brand logo */
-nav .logo-alignment
-{
-    margin-top: -6px;
 }
 
 /* Adjust position of nav-link to be vertically centered in the nav bar */
 
 nav .nav-link
 {
-    margin-top: -10px;
+    color: #7A7A7A;
+}
+
+/* Adjusts overal position of the brand and logo */
+nav .navbar-brand {
+    display: flex;                                                       
+    justify-content: center;                                             
+    align-items: center;
 }

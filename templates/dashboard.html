@@ -33,42 +33,25 @@
   </head>
 
   <body>
-    <nav class="bg-light navbar navbar-expand-md navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          <img src="../static/brand.PNG" width="35" height="30" class="logo-alignment" alt="">
-          <span class="brand-style">SEGMENT</span>
-        </a>
-        <button
-          aria-controls="navbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler"
-          data-bs-target="#navbar"
-          data-bs-toggle="collapse"
-          type="button"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar">
-          {% if session["user_id"] %}
-          <ul class="navbar-nav ms-auto mt-2">
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Log Out</a>
-            </li>
-          </ul>
-          {% else %}
-          <ul class="navbar-nav ms-auto mt-2">
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Sign up</a>
-            </li>
-          </ul>
-          {% endif %}
-        </div>
-      </div>
+    <nav class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+      <a class="navbar-brand" href="/">
+        <img src="../static/brand.PNG" width="35" height="30" class="logo-alignment" alt="">
+        <span class="brand-style">SEGMENT</span>
+      </a>
+      <ul class="nav nav-pills flex-column">
+        {% if session["user_id"] %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log Out</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Sign up</a>
+          </li>
+        {% endif %}
+      </ul>
     </nav>
 
     <main class="container-fluid py-5 text-center">
