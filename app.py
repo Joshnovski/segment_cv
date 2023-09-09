@@ -19,7 +19,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
+db = SQL("sqlite:///segment.db")
 
 
 @app.after_request
@@ -31,7 +31,7 @@ def after_request(response):
     return response
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def login():
     """Log user in"""
 
@@ -63,7 +63,7 @@ def login():
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
-        return redirect("/") ###########################################################################################################
+        return redirect("/dashboard")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -78,7 +78,7 @@ def logout():
     session.clear()
 
     # Redirect user to login form
-    return redirect("/login")
+    return redirect("/")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -127,13 +127,13 @@ def register():
             hashed_password,
         )
 
-        return redirect("/")
+        return redirect("/dashboard")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("register.html")
     
-@app.route("/")
+@app.route("/dashboard")
 def dashboard():
     """User accesses dashboard after logging in"""
 
