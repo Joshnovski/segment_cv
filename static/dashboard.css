@@ -36,6 +36,7 @@ nav .nav-link
 nav .nav-link:hover
 {
     color: #575757;
+    cursor: pointer;
 }
 
 /* Adjusts overal position of the brand and logo */
