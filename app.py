@@ -134,5 +134,9 @@ def register():
 def dashboard():
     """User accesses dashboard after logging in"""
 
+    # Ensure user is logged in else redirect to login page
+    if not session.get("user_id"):
+        return redirect("/")
+
     # Redirect user to home page
     return render_template("dashboard.html")
