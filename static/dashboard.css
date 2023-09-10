@@ -6,10 +6,20 @@ body
     font-family: "Inter";
 }
 
+/* nav sizing */
 nav {
     width: 280px;
     height: 100vh;
 }
+
+/* universal p tag styling */
+p {
+    margin: 0 !important;
+}
+
+/* universal a tag styling */
+
+
 
 /* Size for brand */
 nav .navbar-brand
@@ -27,21 +37,30 @@ nav .navbar-brand .brand-style
     letter-spacing: 7px;
 }
 
+/* dropdown items from nav headers */
+nav .nav-item
+{
+    font-size: 12px;
+    font-weight: 500;
+    color: #7A7A7A;
+}
+
+/* dropdown headers */
+nav .nav-link-title{
+    font-size: 18px;
+    font-weight: 600 !important;
+}
+
 /* Style properties of nav links*/
 nav .nav-link
 {
-    font-weight: 500;
     color: #7A7A7A;
+    cursor: pointer;
 }
 nav .nav-link:hover
 {
     color: #575757;
-    cursor: pointer;
 }
-
-/* Adjusts overal position of the brand and logo */
-nav .navbar-brand {
-    display: flex;                                                       
-    justify-content: center;                                             
-    align-items: center;
-}
+nav .nav-link:active, nav .nav-link:focus {
+    color: #575757 !important;   
+}  

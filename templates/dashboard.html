@@ -41,17 +41,53 @@
       <ul class="nav nav-pills flex-column">
         {% if session["user_id"] %}
           <li class="nav-item">
-            <a class="nav-link">Control Centere</a>
+            <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#control-collapse" aria-expanded="false"> Control Centere </button>
+            <div class="collapse" id="control-collapse">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <p class="nav-link">Scale to Pixel Ratio:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Bottom Crop Ratio:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Scale to Pixel Ratio:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Bottom Crop Ratio:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Scale to Pixel Ratio:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link border-bottom">Bottom Crop Ratio:</p>
+                </li>
+              </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Settings</a>
+            <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#settings-collapse" aria-expanded="false"> Settings </button>
+            <div class="collapse" id="settings-collapse">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <p class="nav-link border-bottom">Dark Mode:</p>
+                </li>
+              </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Account</a>
+            <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"> Account </button>
+            <div class="collapse" id="account-collapse">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                  <p class="nav-link">Profile</p>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link border-bottom" href="/logout">Log Out</a>
+                </li>
+              </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Log Out</a>
-          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link nav-link-title" href="/logout">Log Out</a>
+          </li> -->
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
