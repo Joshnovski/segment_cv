@@ -26,6 +26,7 @@ nav .navbar-brand
 {
     font-size: 26px;
     font-family: "Outfit";
+    justify-content: center;
 }
 
 /* Colors for brand */
@@ -33,14 +34,14 @@ nav .navbar-brand .brand-style
 {
     color: #7A7A7A;
     font-weight: 600;
-    padding-left: 10px;
+    padding-left: 15px;
     letter-spacing: 7px;
 }
 
 /* dropdown items from nav headers */
 nav .nav-item
 {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: #7A7A7A;
 }
@@ -64,3 +65,9 @@ nav .nav-link:hover
 nav .nav-link:active, nav .nav-link:focus {
     color: #575757 !important;   
 }  
+
+/* general nav icons styling */
+nav .nav-icons {
+    color: #7A7A7A;
+    padding-right: 10px;
+}
