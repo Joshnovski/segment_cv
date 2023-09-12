@@ -45,25 +45,49 @@
         {% if session["user_id"] %}
           <li class="nav-item">
             <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#control-collapse" aria-expanded="false"> <i class="nav-icons fas fa-sliders"></i> Control Center </button>
-            <div class="collapse" id="control-collapse">
-              <ul class="nav nav-pills flex-column border-bottom">
-                <li class="nav-item">
-                  <p class="nav-link">Scale to Pixel Ratio:</p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">Bottom Crop Ratio:</p>
+            <div class="collapse scrollable-list border-bottom" id="control-collapse">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item border-bottom border-top">
+                  <p class="nav-link nav-operate-icons-struct"><i class="nav-operate-icons fas fa-floppy-disk"></i><i class="nav-operate-icons fas fa-image"></i><i class="nav-operate-icons fas fa-rotate"></i><i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i></p>
                 </li>
                 <li class="nav-item">
                   <p class="nav-link">Scale to Pixel Ratio:</p>
                 </li>
                 <li class="nav-item">
-                  <p class="nav-link">Bottom Crop Ratio:</p>
+                  <p class="nav-link  border-bottom">Bottom Crop Ratio:</p>
                 </li>
                 <li class="nav-item">
-                  <p class="nav-link">Scale to Pixel Ratio:</p>
+                  <p class="nav-link">Show Size Histograms:</p>
                 </li>
                 <li class="nav-item">
-                  <p class="nav-link">Bottom Crop Ratio:</p>
+                  <p class="nav-link">Segmentation Images:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Histogram Bins:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link  border-bottom">Contour Thickness:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Invert Grayscale:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Histogram Equalisation:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Lower Contrast Threshold:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Upper Contrast Threshold:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Blur Kernel Size:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Distance Transform:</p>
+                </li>
+                <li class="nav-item">
+                  <p class="nav-link">Morphology Simplicity:</p>
                 </li>
               </ul>
           </li>
@@ -72,19 +96,19 @@
             <div class="collapse" id="settings-collapse">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                  <p class="nav-link border-bottom">Dark Mode:</p>
+                  <p class="nav-link border-bottom"><i class="nav-icons fas fa-circle-half-stroke"></i>Dark Mode:</p>
                 </li>
               </ul>
           </li>
           <li class="nav-item">
-            <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"> <i class="nav-icons fas fa-user"></i> Account </button>
+            <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"> <i class="nav-icons fas fa-house-user"   style="padding-right: 8px;"></i> Account </button>
             <div class="collapse" id="account-collapse">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                  <p class="nav-link">Profile</p>
+                  <p class="nav-link"><i class="nav-icons fas fa-user"></i>Profile</p>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link border-bottom" href="/logout">Log Out</a>
+                  <a class="nav-link border-bottom" href="/logout"><i class="nav-icons fas fa-door-open"  style="padding-right: 7px;"></i>Log Out</a>
                 </li>
               </ul>
           </li>

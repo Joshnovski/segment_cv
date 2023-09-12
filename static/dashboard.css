@@ -72,3 +72,22 @@ nav .nav-icons {
     color: #7A7A7A;
     padding-right: 10px;
 }
+nav .nav-operate-icons {
+    color: #7A7A7A;
+    padding-right: 30px;
+}
+nav .nav-operate-icons:hover {
+    color: #575757;
+}
+nav .nav-operate-icons-struct {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 25px;
+}
+
+
+nav .scrollable-list {
+    max-height: 80vh;
+    overflow-y: auto;
+} 
