@@ -27,6 +27,7 @@ nav .navbar-brand
     font-size: 26px;
     font-family: "Outfit";
     justify-content: center;
+    margin-right: 0px;
 }
 
 /* Colors for brand */
