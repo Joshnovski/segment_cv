@@ -8,7 +8,7 @@ body
 
 /* nav sizing */
 nav {
-    width: 280px;
+    width: 300px;
     height: 100vh;
 }
 
@@ -18,7 +18,6 @@ p {
 }
 
 /* universal a tag styling */
-
 
 
 /* Size for brand */
@@ -84,6 +83,27 @@ nav .nav-operate-icons-struct {
     flex-direction: row;
     justify-content: center;
     font-size: 25px;
+}
+
+/* Input parameter stylings */
+nav .parameter-input {
+    width: 60px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #7A7A7A;
+    border-radius: 0.25rem;
+    float: right;
+}
+
+nav .parameter-checkbox {
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #7A7A7A;
+    accent-color: #7A7A7A;
+    border-radius: 0.25rem;
+    float: right;
 }
 
 
