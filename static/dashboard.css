@@ -95,6 +95,7 @@ nav .parameter-input {
     border: 1px solid #7A7A7A;
     border-radius: 0.25rem;
     float: right;
+    margin-top: -2px;
 }
 
 nav .parameter-checkbox {
@@ -104,6 +105,9 @@ nav .parameter-checkbox {
     accent-color: #7A7A7A;
     border-radius: 0.25rem;
     float: right;
+    margin-right: 25px;
+    margin-top: 3px;
+    transform: scale(1.5);
 }
 
 
