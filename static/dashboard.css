@@ -8,7 +8,7 @@ body
 
 /* nav sizing */
 nav {
-    width: 300px;
+    width: 315px;
     height: 100vh;
 }
 
@@ -45,9 +45,14 @@ nav .nav-item
     font-weight: 500;
     color: #7A7A7A;
 }
+nav .item-shift
+{
+    margin-left: 40px !important;
+}
 
 /* dropdown headers */
-nav .nav-link-title{
+nav .nav-link-title
+{
     font-size: 18px;
     font-weight: 600 !important;
 }
@@ -62,23 +67,28 @@ nav .nav-link:hover
 {
     color: #575757;
 }
-nav .nav-link:active, nav .nav-link:focus {
+nav .nav-link:active, nav .nav-link:focus 
+{
     color: #575757 !important;   
 }  
 
 /* general nav icons styling */
-nav .nav-icons {
+nav .nav-icons 
+{
     color: #7A7A7A;
     padding-right: 10px;
 }
-nav .nav-operate-icons {
+nav .nav-operate-icons 
+{
     color: #7A7A7A;
     padding-right: 30px;
 }
-nav .nav-operate-icons:hover {
+nav .nav-operate-icons:hover 
+{
     color: #575757;
 }
-nav .nav-operate-icons-struct {
+nav .nav-operate-icons-struct 
+{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -86,7 +96,8 @@ nav .nav-operate-icons-struct {
 }
 
 /* Input parameter stylings */
-nav .parameter-input {
+nav .parameter-input 
+{
     width: 60px;
     font-size: 13px;
     font-weight: 400;
@@ -98,7 +109,8 @@ nav .parameter-input {
     margin-top: -2px;
 }
 
-nav .parameter-checkbox {
+nav .parameter-checkbox 
+{
     color: #212529;
     background-color: #fff;
     border: 1px solid #7A7A7A;
@@ -111,7 +123,9 @@ nav .parameter-checkbox {
 }
 
 
-nav .scrollable-list {
+nav .scrollable-list 
+{
     max-height: 80vh;
     overflow-y: auto;
+    scrollbar-width: thin;
 } 
