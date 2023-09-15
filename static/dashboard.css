@@ -99,7 +99,7 @@ nav .parameter-input
     font-weight: 400;
     color: #212529;
     background-color: #fff;
-    border: 1px solid #7A7A7A;
+    border: 1px solid #d4d4d4;
     border-radius: 0.25rem;
     float: right;
     margin-top: -2px;
@@ -107,9 +107,9 @@ nav .parameter-input
 
 nav .parameter-checkbox 
 {
-    color: #212529;
+    color: #7A7A7A;
     background-color: #fff;
-    border: 1px solid #7A7A7A;
+    border: 1px solid #d4d4d4;
     accent-color: #7A7A7A;
     border-radius: 0.25rem;
     float: right;
@@ -121,7 +121,7 @@ nav .parameter-checkbox
 
 nav .scrollable-list 
 {
-    max-height: 57vh;
+    max-height: 59vh;
     overflow-y: auto;
     scrollbar-width: thin;
 } 
