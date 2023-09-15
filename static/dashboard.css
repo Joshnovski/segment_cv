@@ -121,7 +121,7 @@ nav .parameter-checkbox
 
 nav .scrollable-list 
 {
-    max-height: 80vh;
+    max-height: 57vh;
     overflow-y: auto;
     scrollbar-width: thin;
 } 
