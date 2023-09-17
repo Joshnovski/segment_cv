@@ -4,6 +4,8 @@
 body 
 {
     font-family: "Inter";
+    display: flex;
+    flex-direction: row;
 }
 
 /* Base Nav Styling */
@@ -11,6 +13,13 @@ nav {
     width: 315px;
     height: 100vh;
     display: flex;
+}
+
+/* Base Main Styling */
+main
+{
+    flex-grow: 1;
+    background-color: #7A7A7A;
 }
 
 /* universal p tag styling */
