@@ -1,27 +1,26 @@
-/* Styles unique for dashboard */
-
-/* Font for body */
+                                                                            /*----- DASHBOARD STYLING ------ */
+                                                                                    /* Primary tags */
+/* Base Body Styling */
 body 
 {
     font-family: "Inter";
 }
 
-/* nav sizing */
+/* Base Nav Styling */
 nav {
     width: 315px;
     height: 100vh;
+    display: flex;
 }
 
 /* universal p tag styling */
 p {
     margin: 0 !important;
 }
-
-/* universal a tag styling */
-
+                                                                                    /* Class styling */
 
 /* Size for brand */
-nav .navbar-brand
+.navbar-brand
 {
     font-size: 26px;
     font-family: "Outfit";
@@ -29,110 +28,11 @@ nav .navbar-brand
     margin-right: 0px;
 }
 
-/* Colors for brand */
-nav .navbar-brand .brand-style
+/* Colors For Brand */
+.navbar-brand .brand-style
 {
     color: #7A7A7A;
     font-weight: 600;
     padding-left: 15px;
     letter-spacing: 7px;
 }
-
-/* dropdown items from nav headers */
-nav .nav-item
-{
-    font-size: 13px;
-    font-weight: 500;
-    color: #7A7A7A;
-}
-
-/* dropdown headers */
-nav .nav-link-title
-{
-    font-size: 18px;
-    font-weight: 600 !important;
-}
-
-/* Style properties of nav links*/
-nav .nav-link
-{
-    color: #7A7A7A;
-    cursor: pointer;
-}
-nav .nav-link:hover
-{
-    color: #575757;
-}
-nav .nav-link:active, nav .nav-link:focus 
-{
-    color: #575757 !important;   
-}
-
-/* general nav icons styling */
-nav .nav-icons 
-{
-    color: #7A7A7A;
-    padding-right: 10px;
-}
-nav .nav-operate-icons 
-{
-    color: #7A7A7A;
-    padding-right: 30px;
-}
-nav .nav-operate-icons:hover 
-{
-    color: #575757;
-}
-nav .nav-operate-icons-struct 
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 25px;
-}
-
-/* Input parameter stylings */
-nav .parameter-input 
-{
-    width: 60px;
-    font-size: 13px;
-    font-weight: 400;
-    color: #212529;
-    background-color: #fff;
-    border: 1px solid #d4d4d4;
-    border-radius: 0.25rem;
-    float: right;
-    margin-top: -2px;
-}
-
-/* Styles for checkboxes in Control Center */
-nav .parameter-checkbox 
-{
-    color: #7A7A7A;
-    background-color: #fff;
-    border: 1px solid #d4d4d4;
-    accent-color: #7A7A7A;
-    border-radius: 0.25rem;
-    float: right;
-    margin-right: 25px;
-    margin-top: 3px;
-    transform: scale(1.5);
-}
-
-/* Manages the style of the scroll list for Control Center */
-nav .scrollable-list 
-{
-    max-height: 59vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
-} 
-
-/* Control styling for contour color selector
-nav .contour-color-selector 
-{
-    width: 10px;
-    height: 10px;
-    background-color: red;
-    display: inline-block;
-    vertical-align: middle;
-} */

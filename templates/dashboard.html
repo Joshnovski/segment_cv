@@ -30,7 +30,10 @@
     <!-- https://favicon.io/emoji-favicons/money-bag/ -->
     <link href="/static/favicon.ico" rel="icon" />
 
+    <!-- Import style sheets -->
     <link href="/static/dashboard.css" rel="stylesheet" />
+    <link href="/static/grid.css" rel="stylesheet" />
+    <link href="/static/controller.css" rel="stylesheet" />
 
     <title>SEGMENT: Dashboard</title>
   </head>
@@ -41,230 +44,14 @@
         <img src="../static/brand.PNG" width="35" height="30" class="logo-alignment" alt="">
         <span class="brand-style">SEGMENT</span>
       </a>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <button class="nav-link nav-link-title" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#control-collapse" 
-          aria-expanded="false"> 
-          <i class="nav-icons fas fa-sliders"></i> 
-          Control Center
-         </button>
-          <div class="collapse border-bottom" id="control-collapse">
-            <ul class="nav nav-pills flex-column">
-              <li class="nav-item border-bottom border-top">
-                <p class="nav-link nav-operate-icons-struct">
-                  <i class="nav-operate-icons fas fa-floppy-disk"></i>
-                  <i class="nav-operate-icons fas fa-image"></i>
-                  <i class="nav-operate-icons fas fa-rotate"></i>
-                  <i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i></p>
-              </li>
-              <div class="scrollable-list">
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Scale to Pixel Ratio: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="scale-to-pixel-ratio" 
-                    name="scale-to-pixel-ratio" 
-                    type="number">
-                  </p>
-
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link  border-bottom">
-                    Bottom Crop Ratio: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="bottom-crop-ratio" 
-                    name="botton-crop-ratio" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Show Size Histograms: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-checkbox" 
-                    id="show-size-histogram" 
-                    name="show-size-histogram" 
-                    type="checkbox">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Segmentation Images: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-checkbox" 
-                    id="segmentation-images" 
-                    name="segmentation-images" 
-                    type="checkbox">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Histogram Bins: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="histogram-bins" 
-                    name="histogram-bins" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link border-bottom">
-                    Contour Thickness: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="contour-thickness" 
-                    name="contour-thickness" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Invert Grayscale: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-checkbox" 
-                    id="segmentation-images" 
-                    name="segmentation-images" 
-                    type="checkbox">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Histogram Equalisation: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-checkbox" 
-                    id="histogram-equalisation" 
-                    name="histogram-equalisation" 
-                    type="checkbox">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Lower Contrast Threshold: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="lower-contrast-threshold" 
-                    name="lower-contrast-threshold" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Upper Contrast Threshold: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="upper-contrast-threshold" 
-                    name="upper-contrast-threshold" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Blur Kernel Size: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="blur-kernel-size" 
-                    name="blur-kernel-size" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Distance Transform: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="distance-transform" 
-                    name="distance-transform" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link border-bottom">
-                    Morphology Simplicity: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="morphology-simplicity" 
-                    name="morphology-simplicity" 
-                    type="number">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Min Size:
-                    <!-- <div class="contour-color-selector"></div>  -->
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="min-size-diameter" 
-                    name="min-size-diameter" 
-                    type="number"
-                    placeholder="Diam">
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="min-size-area" 
-                    name="min-size-area" 
-                    type="number"
-                    placeholder="Area">
-                  </p>
-                </li>
-                <li class="nav-item">
-                  <p class="nav-link">
-                    Max Size: 
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="max-size-diameter" 
-                    name="max-size-diameter" 
-                    type="number"
-                    placeholder="Diam">
-                    <input autocomplete="off" 
-                    autofocus class="parameter-input" 
-                    id="max-size-area" 
-                    name="max-size-area" 
-                    type="number"
-                    placeholder="Area">
-                  </p>
-                </li>
-              </div>
-            </ul>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#settings-collapse" aria-expanded="false"> <i class="nav-icons fas fa-gear"></i> Settings </button>
-          <div class="collapse" id="settings-collapse">
-            <ul class="nav nav-pills flex-column">
-              <li class="nav-item">
-                <p class="nav-link border-bottom"><i class="nav-icons fas fa-circle-half-stroke"></i>Dark Mode:</p>
-              </li>
-            </ul>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"> <i class="nav-icons fas fa-house-user"   style="padding-right: 8px;"></i> Account </button>
-          <div class="collapse" id="account-collapse">
-            <ul class="nav nav-pills flex-column">
-              {% if session["user_id"] %}
-                <li class="nav-item">
-                  <p class="nav-link"><i class="nav-icons fas fa-user"></i>Profile</p>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link border-bottom" href="/logout"><i class="nav-icons fas fa-door-open"  style="padding-right: 7px;"></i>Log Out</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="/register">Sign up</a>
-                </li>
-              {% endif %}
-            </ul>
-        </li>
-
-      </ul>
+      {% include 'controller.html' %}
     </nav>
 
-    <!-- <main class=""></main>
+    <main>
+      {% include 'grid.html' %}
+    </main>
 
-    <footer class=""></footer> -->
+    <footer></footer>
+
   </body>
 </html>

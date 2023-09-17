@@ -1,0 +1,98 @@
+/* Dropdown Items From Nav Headers */
+.nav-item
+{
+    font-size: 13px;
+    font-weight: 500;
+    color: #7A7A7A;
+}
+
+/* Dropdown Headers */
+.nav-link-title
+{
+    font-size: 18px;
+    font-weight: 600 !important;
+}
+
+/* Style Properties of Nav Links*/
+.nav-link
+{
+    color: #7A7A7A;
+    cursor: pointer;
+}
+.nav-link:hover
+{
+    color: #575757;
+}
+.nav-link:active, .nav-link:focus 
+{
+    color: #575757 !important;   
+}
+
+/* General Nav Icons Styling */
+.nav-icons 
+{
+    color: #7A7A7A;
+    padding-right: 10px;
+}
+.nav-operate-icons 
+{
+    color: #7A7A7A;
+    padding-right: 30px;
+}
+.nav-operate-icons:hover 
+{
+    color: #575757;
+}
+.nav-operate-icons-struct 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 25px;
+}
+
+/* Input Parameter Stylings */
+.parameter-input 
+{
+    width: 60px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #212529;
+    background-color: #fff;
+    border: 1.7px solid #7A7A7A;
+    border-radius: 0.25rem;
+    float: right;
+    margin-top: -2px;
+}
+.parameter-input:hover 
+{
+    border-color: #575757;
+}
+/* Separator between sizing inputs */
+.separator 
+{
+    margin-left: 10px;
+}
+
+/* Styles for Checkboxes In Control Center */
+.default-checkbox 
+{
+    color: #7A7A7A;
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+    border-color: red;
+    accent-color: #7A7A7A;
+    border-radius: 0.25rem;
+    float: right;
+    margin-right: 25px;
+    margin-top: 3px;
+    transform: scale(1.5);
+}
+
+/* Manages The Style of The Scroll List for Control Center */
+.scrollable-list 
+{
+    max-height: 59vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+} 
