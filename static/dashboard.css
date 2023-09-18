@@ -22,15 +22,15 @@ nav {
 header
 {
 grid-column: 2;
-height: 100px;
-background-color: #d1d1d1;
+height: 70px;
+background-color: rgb(240, 240, 240);
 }
 
 /* Base Main Styling */
 main
 {
     grid-column: 2;
-    background-color: #7A7A7A;
+    background-color: #e6e6e6;
 }
 
 /* universal p tag styling */

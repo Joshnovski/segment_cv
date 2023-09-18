@@ -1,2 +1,65 @@
-/* core css properties for the grid design */
+/* Styling for main pertaining to the grid */
+main 
+{
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "c1 c1 c2 c3"
+    "c4 c4 c5 c6";
+    gap: 20px;
+}
+
+/* Core css properties for the grid design */
+.card 
+{
+    background-color: white;
+    border-radius: 10px;
+}
+/* Children grids on main */
+.card:nth-child(1)
+{
+    grid-area: c1;
+}
+.card:nth-child(2)
+{
+    grid-area: c2;
+}
+.card:nth-child(3)
+{
+    grid-area: c3;
+}
+.card:nth-child(4)
+{
+    grid-area: c4;
+}
+.card:nth-child(5)
+{
+    grid-area: c5;
+}
+.card:nth-child(6)
+{
+    grid-area: c6;
+}
+
+@media (max-width: 1225px) 
+{
+    .main 
+    {
+       grid-template-columns: 1fr 1fr; 
+       grid-template-rows: repeat(4, 200px);
+       grid-template-areas: 
+       "c2 c3"
+       "c5 c6"
+       "c1 c1"
+       "c4 c4" !important; 
+    }
+
+    .card
+    {
+        grid-area: initial !important;
+    }
+}
+
 
