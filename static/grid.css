@@ -11,11 +11,29 @@ main
     gap: 20px;
 }
 
+/* Base Header Styling */
+.card-header
+{
+border-radius: 0px !important;
+border-bottom: none;
+height: 20px;
+background-color: #7A7A7A;
+}
+
+/* Manages The Style of The Scroll List for Control Center */
+.scrollable-list-main 
+{
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+} 
+
 /* Core css properties for the grid design */
 .card 
 {
     background-color: white;
-    border-radius: 10px;
+    border: none;
+    border-radius: 0px;
 }
 /* Children grids on main */
 .card:nth-child(1)
@@ -45,20 +63,15 @@ main
 
 @media (max-width: 1225px) 
 {
-    .main 
+    main 
     {
        grid-template-columns: 1fr 1fr; 
        grid-template-rows: repeat(4, 200px);
        grid-template-areas: 
-       "c2 c3"
-       "c5 c6"
        "c1 c1"
-       "c4 c4" !important; 
-    }
-
-    .card
-    {
-        grid-area: initial !important;
+       "c4 c4"
+       "c2 c3"
+       "c5 c6"; 
     }
 }
 

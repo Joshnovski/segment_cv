@@ -90,7 +90,7 @@
 }
 
 /* Manages The Style of The Scroll List for Control Center */
-.scrollable-list 
+.scrollable-list-controller 
 {
     max-height: 59vh;
     overflow-y: auto;
