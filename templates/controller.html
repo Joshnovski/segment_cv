@@ -1,4 +1,5 @@
 <ul class="nav nav-pills flex-column">
+    <!-- Main Control Panel with parameters -->
     <li class="nav-item">
     <button class="nav-link nav-link-title" 
     data-bs-toggle="collapse" 
@@ -9,183 +10,17 @@
     </button>
     <div class="collapse border-bottom" id="control-collapse">
         <ul class="nav nav-pills flex-column">
+         <!-- Save, Image Upload, Reset Parameters and Run Icons -->
         <li class="nav-item border-bottom border-top">
-            <label class="nav-link nav-operate-icons-struct">
-            <i class="nav-operate-icons fas fa-floppy-disk"></i>
-            <i class="nav-operate-icons fas fa-image"></i>
-            <i class="nav-operate-icons fas fa-rotate"></i>
-            <i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i></label>
+            {% include 'controller_topbar.html' %}
         </li>
+        <!-- Input Parameters for control panel -->
         <div class="scrollable-list-controller">
-            <li class="nav-item">
-            <label class="nav-link">
-                Scale to Pixel Ratio: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="scale-to-pixel-ratio" 
-                name="scale-to-pixel-ratio" 
-                type="number">
-            </label>
-
-            </li>
-            <li class="nav-item">
-            <label class="nav-link  border-bottom">
-                Bottom Crop Ratio: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="bottom-crop-ratio" 
-                name="botton-crop-ratio" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Show Size Histograms: 
-                <input autocomplete="off" 
-                autofocus class="default-checkbox" 
-                id="show-size-histogram" 
-                name="show-size-histogram" 
-                type="checkbox">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Segmentation Images: 
-                <input autocomplete="off" 
-                autofocus class="default-checkbox" 
-                id="segmentation-images" 
-                name="segmentation-images" 
-                type="checkbox">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Histogram Bins: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="histogram-bins" 
-                name="histogram-bins" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link border-bottom">
-                Contour Thickness: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="contour-thickness" 
-                name="contour-thickness" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Invert Grayscale: 
-                <input autocomplete="off" 
-                autofocus class="default-checkbox" 
-                id="segmentation-images" 
-                name="segmentation-images" 
-                type="checkbox">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Histogram Equalisation: 
-                <input autocomplete="off" 
-                autofocus class="default-checkbox" 
-                id="histogram-equalisation" 
-                name="histogram-equalisation" 
-                type="checkbox">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Lower Contrast Threshold: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="lower-contrast-threshold" 
-                name="lower-contrast-threshold" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Upper Contrast Threshold: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="upper-contrast-threshold" 
-                name="upper-contrast-threshold" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Blur Kernel Size: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="blur-kernel-size" 
-                name="blur-kernel-size" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Distance Transform: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="distance-transform" 
-                name="distance-transform" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link border-bottom">
-                Morphology Simplicity: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="morphology-simplicity" 
-                name="morphology-simplicity" 
-                type="number">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Min Size:
-                <!-- <div class="contour-color-selector"></div>  -->
-                <input autocomplete="off" 
-                autofocus class="parameter-input separator" 
-                id="min-size-diameter" 
-                name="min-size-diameter" 
-                type="number"
-                placeholder="Diam">
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="min-size-area" 
-                name="min-size-area" 
-                type="number"
-                placeholder="Area">
-            </label>
-            </li>
-            <li class="nav-item">
-            <label class="nav-link">
-                Max Size: 
-                <input autocomplete="off" 
-                autofocus class="parameter-input separator" 
-                id="max-size-diameter" 
-                name="max-size-diameter" 
-                type="number"
-                placeholder="Diam">
-                <input autocomplete="off" 
-                autofocus class="parameter-input" 
-                id="max-size-area" 
-                name="max-size-area" 
-                type="number"
-                placeholder="Area">
-            </label>
-            </li>
+            {% include 'controller_parameters.html' %}
         </div>
         </ul>
     </li>
+    <!-- Settings Tab: Darkmode + -->
     <li class="nav-item">
     <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#settings-collapse" aria-expanded="false"> <i class="nav-icons fas fa-gear"></i> Settings </button>
     <div class="collapse" id="settings-collapse">
@@ -195,6 +30,7 @@
         </li>
         </ul>
     </li>
+    <!-- Account Tab: Profile, Logout/Login+Signup -->
     <li class="nav-item">
     <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"> <i class="nav-icons fas fa-house-user"   style="padding-right: 8px;"></i> Account </button>
     <div class="collapse" id="account-collapse">

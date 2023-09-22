@@ -36,10 +36,25 @@
     <link href="/static/controller.css" rel="stylesheet" />
     <link href="/static/header.css" rel="stylesheet" />
 
+    <!-- Import Scripts -->
+    <script src="/scripts/image_upload.js"></script>
+
     <title>SEGMENT: Dashboard</title>
   </head>
 
   <body>
+
+    <!-- Flashed messages -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  
 
     <!-- Contains greetings and perhaps other logistics -->
     <header class="dashboard-header">

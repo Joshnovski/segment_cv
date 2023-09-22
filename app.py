@@ -4,11 +4,19 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.utils import secure_filename
 
 from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
+
+# Set tje upload folder configuration
+UPLOAD_FOLDER = 'static/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Ensure the upload folder  exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -140,3 +148,35 @@ def dashboard():
 
     # Redirect user to home page
     return render_template("dashboard.html")
+
+##############################################################################################################################################
+
+@app.route('/upload', methods=['POST'])
+def upload_image():
+    """User is prompted to select an image after clicking image icon. Image is then stored as a variable"""
+
+    # Ensure user is logged in else redirect to login page
+    if not session.get("user_id"):
+        return redirect("/")
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        if 'file' not in request.files or request.files['file'].filename == '':
+            flash('No image selected for uploading') ###################### NOT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            return redirect("/dashboard")
+        file = request.files['file']
+        if file:
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            flash('Image successfully uploaded')
+            return redirect("/dashboard")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("dashboard.html")
+
+
+
+

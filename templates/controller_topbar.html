@@ -1,0 +1,15 @@
+<label class="nav-link nav-operate-icons-struct">
+    <form>
+        <i class="nav-operate-icons fas fa-floppy-disk"></i>
+    </form>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <i class="nav-operate-icons fas fa-image" onclick="triggerFileInput();"></i>
+        <input type="file" id="file" name="file" style="display: none;" onchange="this.form.submit();">
+    </form>
+    <form>
+        <i class="nav-operate-icons fas fa-rotate"></i>
+    </form>
+    <form>
+        <i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i>
+    </form>
+</label>

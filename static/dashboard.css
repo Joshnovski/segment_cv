@@ -58,3 +58,17 @@ justify-content: space-between;
     padding-left: 15px;
     letter-spacing: 7px;
 }
+
+/* Styling for flash notifications */
+.flashes {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+  }
+  
