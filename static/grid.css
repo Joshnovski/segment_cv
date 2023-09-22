@@ -16,9 +16,12 @@ main
 {
 border-radius: 0px !important;
 border-bottom: none;
-height: 60px;
+height: 40px;
+font-weight: 500;
 background-color: #7A7A7A;
 color: white;
+display: flex;
+align-items: center;
 }
 
 /* Manages The Style of The Scroll List for Control Center */

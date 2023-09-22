@@ -8,12 +8,12 @@
  }
  .dashboard-header-greeting
  {
-   font-weight: 600;
+   font-weight: 700;
    color: #7A7A7A;
  }
  .dashboard-header-info
  {
-   font-weight: 200;
+   font-weight: 230;
    
  }
 
@@ -26,5 +26,5 @@
     align-items: center;
 
     color: #7A7A7A;
-    font-weight: 600;
+    font-weight: 700;
  }
