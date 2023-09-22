@@ -62,6 +62,7 @@ color: white;
     grid-area: c6;
 }
 
+/* Responsive changes based on window width */
 @media (max-width: 1225px) 
 {
     main 
