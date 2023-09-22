@@ -16,8 +16,9 @@ main
 {
 border-radius: 0px !important;
 border-bottom: none;
-height: 20px;
+height: 60px;
 background-color: #7A7A7A;
+color: white;
 }
 
 /* Manages The Style of The Scroll List for Control Center */
@@ -31,7 +32,7 @@ background-color: #7A7A7A;
 /* Core css properties for the grid design */
 .card 
 {
-    background-color: white;
+    background-color: rgb(228, 228, 228);
     border: none;
     border-radius: 0px;
 }

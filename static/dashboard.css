@@ -22,7 +22,7 @@ nav {
 main
 {
     grid-column: 2;
-    background-color: #e6e6e6;
+    background-color: white;
 }
 
 /* universal p tag styling */
@@ -36,7 +36,9 @@ p {
 {
 grid-column: 2;
 height: 70px;
-background-color: #7A7A7A;
+background-color: white;
+display: flex;
+justify-content: space-between;
 }
 
 /* Size for brand */

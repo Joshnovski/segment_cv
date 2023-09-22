@@ -34,6 +34,7 @@
     <link href="/static/dashboard.css" rel="stylesheet" />
     <link href="/static/grid.css" rel="stylesheet" />
     <link href="/static/controller.css" rel="stylesheet" />
+    <link href="/static/header.css" rel="stylesheet" />
 
     <title>SEGMENT: Dashboard</title>
   </head>
@@ -41,7 +42,9 @@
   <body>
 
     <!-- Contains greetings and perhaps other logistics -->
-    <header class="dashboard-header"></header>
+    <header class="dashboard-header">
+      {% include 'header.html' %}
+    </header>
 
     <!-- Contains the control panel -->
     <nav class="d-flex flex-column flex-shrink-0 p-3">

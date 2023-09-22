@@ -1,0 +1,30 @@
+ /* Container for left items */
+ .left-items-container
+ {
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    justify-content: flex-end;
+ }
+ .dashboard-header-greeting
+ {
+   font-weight: 600;
+   color: #7A7A7A;
+ }
+ .dashboard-header-info
+ {
+   font-weight: 200;
+   
+ }
+
+
+/* Header Title Styling */
+ .dashboard-header-title
+ {
+    padding-right: 45px;
+    display: flex;
+    align-items: center;
+
+    color: #7A7A7A;
+    font-weight: 600;
+ }
