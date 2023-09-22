@@ -1,0 +1,27 @@
+/* Contains styles unique to login */
+
+/* Styles the input fields of login */
+input:focus {                                                           
+    box-shadow: none !important;
+    border: 1px solid #7A7A7A !important;                                             
+} 
+
+/* Styles the login form */
+.login-interactive-wrapper {
+    /* border: 1px dotted #ff0000; */
+    width: 307px;
+    margin: auto;
+}
+
+/* Style login btn */
+.btn.btn-primary {
+    background-color: #bdbdbd;
+    border: none;
+    width: 100%;
+}
+.btn.btn-primary:hover {
+    background-color: #a8a8a8;
+}
+.btn.btn-primary:active, .btn.btn-primary:focus {
+    box-shadow: none !important;   
+}   

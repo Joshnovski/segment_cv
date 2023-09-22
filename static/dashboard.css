@@ -1,0 +1,60 @@
+                                                                            /*----- DASHBOARD STYLING ------ */
+                                                                                    /* Primary tags */
+/* Base Body Styling */
+body 
+{
+    font-family: "Inter";
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+}
+
+/* Base Nav Styling */
+nav {
+    width: 315px;
+    height: 100vh;
+    background-color: white;
+    grid-row: 1 / 3;
+}
+
+/* Base Main Styling */
+main
+{
+    grid-column: 2;
+    background-color: white;
+}
+
+/* universal p tag styling */
+p {
+    margin: 0 !important;
+}
+                                                                                    /* Class styling */
+
+/* Header Styling */
+.dashboard-header
+{
+grid-column: 2;
+height: 70px;
+background-color: white;
+display: flex;
+justify-content: space-between;
+}
+
+/* Size for brand */
+.navbar-brand
+{
+    font-size: 26px;
+    font-family: "Outfit";
+    justify-content: center;
+    margin-right: 0px;
+}
+
+/* Colors For Brand */
+.navbar-brand .brand-style
+{
+    color: #7A7A7A;
+    font-weight: 600;
+    padding-left: 15px;
+    letter-spacing: 7px;
+}

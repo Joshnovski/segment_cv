@@ -1,0 +1,14 @@
+/* Contains styles unique to register */
+
+.register-interactive-wrapper {
+    /* border: 1px dotted #ff0000; */
+    width: 307px;
+    margin: auto;
+}
+
+/* Style login btn */
+.btn.btn-primary {
+    background-color: #7A7A7A;
+    border: none;
+    width: 100%;
+}

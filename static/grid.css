@@ -1,0 +1,80 @@
+/* Styling for main pertaining to the grid */
+main 
+{
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "c1 c1 c2 c3"
+    "c4 c4 c5 c6";
+    gap: 20px;
+}
+
+/* Base Header Styling */
+.card-header
+{
+border-radius: 0px !important;
+border-bottom: none;
+height: 60px;
+background-color: #7A7A7A;
+color: white;
+}
+
+/* Manages The Style of The Scroll List for Control Center */
+.scrollable-list-main 
+{
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+} 
+
+/* Core css properties for the grid design */
+.card 
+{
+    background-color: rgb(228, 228, 228);
+    border: none;
+    border-radius: 0px;
+}
+/* Children grids on main */
+.card:nth-child(1)
+{
+    grid-area: c1;
+}
+.card:nth-child(2)
+{
+    grid-area: c2;
+}
+.card:nth-child(3)
+{
+    grid-area: c3;
+}
+.card:nth-child(4)
+{
+    grid-area: c4;
+}
+.card:nth-child(5)
+{
+    grid-area: c5;
+}
+.card:nth-child(6)
+{
+    grid-area: c6;
+}
+
+/* Responsive changes based on window width */
+@media (max-width: 1225px) 
+{
+    main 
+    {
+       grid-template-columns: 1fr 1fr; 
+       grid-template-rows: repeat(4, 200px);
+       grid-template-areas: 
+       "c1 c1"
+       "c4 c4"
+       "c2 c3"
+       "c5 c6"; 
+    }
+}
+
+
