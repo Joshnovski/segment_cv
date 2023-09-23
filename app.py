@@ -162,15 +162,14 @@ def upload_image():
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
-        if 'file' not in request.files or request.files['file'].filename == '':
-            flash('No image selected for uploading') ###################### NOT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            return redirect("/dashboard")
         file = request.files['file']
         if file:
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
-            flash('Image successfully uploaded')
+            flash('Image Successfully Uploaded')
+            return redirect("/dashboard")
+        else: 
             return redirect("/dashboard")
 
     # User reached route via GET (as by clicking a link or via redirect)

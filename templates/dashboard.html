@@ -37,7 +37,7 @@
     <link href="/static/header.css" rel="stylesheet" />
 
     <!-- Import Scripts -->
-    <script src="/scripts/image_upload.js"></script>
+    <script src="/static/scripts/image_upload.js"></script>
 
     <title>SEGMENT: Dashboard</title>
   </head>
@@ -47,11 +47,11 @@
     <!-- Flashed messages -->
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <ul class="flashes">
+        <div id="flashes">
           {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class="flash">{{ message }}</div>
           {% endfor %}
-        </ul>
+        </div>
       {% endif %}
     {% endwith %}
   
