@@ -176,6 +176,13 @@ def upload_image():
     else:
         return render_template("dashboard.html")
 
+@app.route("/run", methods=['POST'])    
+def run():
+    # Run through all the functions
+    # thresholded_image_3chan, markers, image, dtt, dt = load_and_preprocessing()
+    # watershed_image = watershed_and_postprocessing(thresholded_image_3chan, markers)
+    # contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered = calculate_area_and_filter_contours(watershed_image)
 
-
-
+    # if request.form.get("show-size-histogram"):
+        # grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
+    return render_template("dashboard.html") 
