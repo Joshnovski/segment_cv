@@ -1,10 +1,14 @@
 import os
-
+import cv2
+import sys
+import numpy as np
+import matplotlib.pyplot as plt
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
+from matplotlib.widgets import Cursor
 
 from helpers import apology, login_required
 
@@ -168,6 +172,10 @@ def upload_image():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             flash('Image Successfully Uploaded')
+
+            # Store filepath in user's session
+            session['filepath'] = filepath
+
             return redirect("/dashboard")
         else: 
             return redirect("/dashboard")
@@ -175,14 +183,160 @@ def upload_image():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("dashboard.html")
+    
+def load_and_preprocessing():
+
+    # Load the image
+    image = cv2.imread(session.get("filepath"))
+
+    # Crop the bottom part of the image based on bottom_crop_ratio
+    height, width, _ = image.shape
+    image = image[:int(height * (1 - request.form.get("show-size-histogram"))), :]
+
+    # Convert the image to grayscale
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Invert the grayscale to count voids
+    count_voids = request.form.get("segmentation-images")
+    if count_voids:
+        gray_image = cv2.bitwise_not(gray_image)
+
+    # Equalize the histogram of the grayscale image
+    equalize_hist = request.form.get("histogram-equalisation")
+    if equalize_hist:
+        gray_image = cv2.equalizeHist(gray_image)
+
+    # Smooth out noise with slight blur to assist with thresholding
+    kernel_size = request.form.get("blur-kernel-size")
+    gray_image_blurred = cv2.GaussianBlur(gray_image, (kernel_size, kernel_size), 0)
+
+    # Apply a threshold to the grayscale image
+    grayscale_threshold_lower = request.form.get("lower-contrast-threshold")
+    grayscale_threshold_upper = request.form.get("upper-contrast-threshold")
+
+    # Set contrast limits to the grayscale image
+    # _, thresholded_image = cv2.threshold(gray_image_blurred, grayscale_threshold, 255, cv2.THRESH_BINARY)
+    thresholded_image = cv2.inRange(gray_image_blurred, grayscale_threshold_lower, grayscale_threshold_upper)
+
+    # Changes the simplicity of the morphology of the segments
+    grain_morphology = request.form.get("morphology-simplicity")
+    thresholded_image = cv2.morphologyEx(thresholded_image, cv2.MORPH_OPEN, np.ones((grain_morphology, grain_morphology), dtype=int))
+
+    # Convert the thresholded image to 3 channels
+    thresholded_image_3chan = cv2.cvtColor(thresholded_image, cv2.COLOR_GRAY2BGR)
+
+    # Distance transformation
+    distanceTransform_threshold = request.form.get("distance-transform")
+    dt = cv2.distanceTransform(thresholded_image, cv2.DIST_L2, 3)
+    dt = ((dt - dt.min()) / (dt.max() - dt.min()) * 255).astype(np.uint8)
+    _, dtt = cv2.threshold(dt, distanceTransform_threshold, 255, cv2.THRESH_BINARY)
+
+    border = cv2.dilate(thresholded_image, None, iterations=5)
+    border = border - cv2.erode(border, None)
+
+    dtt = dtt.astype(np.uint8)
+    _, markers = cv2.connectedComponents(dtt)
+
+    # Completing the markers now.
+    markers[border == 255] = 255
+    markers = markers.astype(np.int32)
+
+    return thresholded_image_3chan, markers, image, dtt, dt
+
+def watershed_and_postprocessing(thresholded_image_3chan, markers):
+    # The watershed algorithm modifies the markers image
+    cv2.watershed(thresholded_image_3chan, markers)
+    # image[markers == -1] = [0, 0, 255]
+
+    # Create a binary image that marks the borders (where markers == -1)
+    border_mask = np.where(markers == -1, 255, 0).astype(np.uint8)
+
+    # Border Thickness
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    dilated_border_mask = cv2.dilate(border_mask, kernel, iterations=2)
+
+    # Create a grayscale image where the separated grains have their marker values
+    # (with the labels gradient) and everything else is white
+    separated_grains_image = np.where(markers > 1, markers, 255).astype(np.uint8)
+
+    # Normalize the separated_grains_image to have a full range of grayscale values
+    separated_grains_image = cv2.normalize(separated_grains_image, None, 0, 255, cv2.NORM_MINMAX)
+
+    # Apply the mask to the result image
+    result = np.where(dilated_border_mask == 255, dilated_border_mask, separated_grains_image)
+    result = 255 - result
+    _, result = cv2.threshold(result, 0, 255, cv2.THRESH_BINARY)
+
+    return result
+
+def calculate_area_and_filter_contours(result):
+    # Find contours in the new blurred_image
+    contours, _ = cv2.findContours(result, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    # Pixel to mm converter
+    scale_bar_pixels_per_mm = request.form.get("scale-to-pixel-ratio")
+    pixel_size_mm = (1 / scale_bar_pixels_per_mm) ** 2
+
+    # Initialise contour groups arrays
+    grain_contours = []
+    # Initialise all areas and filtered areas arrays
+    grain_areas = []
+    grain_areas_filtered = []
+    # Initialise all diameters and filtered diameters arrays
+    grain_diameters = []
+    grain_diameters_filtered = []
+
+    # Initialise contour surface area total between selected size range
+    contour_area_total = 0
+    #  Initialise contour group surface area total ( used to get average grain area based on # of contours )
+    grain_total_area = 0
+    # Initialise total sum of diameters
+    contoured_diameter_total = 0
+
+    # Filter contours based on size and shape - first pass
+    for contour in contours:
+        grain_area = cv2.contourArea(contour)
+        grain_real_area = grain_area * pixel_size_mm
+        grain_area_min = request.form.get("min-size-area")
+        grain_area_max = request.form.get("max-size-area")
+        # histogram filtration based on selected grain range
+        if grain_area_min <= grain_area < grain_area_max:
+            grain_areas_filtered.append(grain_real_area)
+            grain_diameters_filtered.append(config_watershedAll.area_to_diameter(grain_real_area)) # 0.680 mm
+        # Sum total contoured areas and diameters
+        if grain_area_min <= grain_area < grain_area_max:
+            # Area total of contoured region(s)
+            contour_area_total += grain_real_area
+            contoured_diameter_total += config_watershedAll.area_to_diameter(grain_real_area) # mm sum
+        # grain contour size range
+        if grain_area_min < grain_area < grain_area_max:
+            grain_contours.append(contour)
+            grain_total_area += grain_area
+
+    # Calculate average area in pixels
+    grain_average_area_pixels = grain_total_area / len(grain_contours) if grain_contours else 0
+
+    # Calculate average diameter in pixels
+    grain_average_diameter_real = contoured_diameter_total / len(grain_contours) if grain_contours else 0
+
+    # Convert average area in pixels to average area in square millimeters
+    grain_average_area_mm = grain_average_area_pixels * pixel_size_mm
+
+    # Return the number of chocolate chips, the outlined image, the thresholded image and the average area
+    return contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered
+
 
 @app.route("/run", methods=['POST'])    
 def run():
     # Run through all the functions
-    # thresholded_image_3chan, markers, image, dtt, dt = load_and_preprocessing()
-    # watershed_image = watershed_and_postprocessing(thresholded_image_3chan, markers)
-    # contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered = calculate_area_and_filter_contours(watershed_image)
+    thresholded_image_3chan, markers, image, dtt, dt = load_and_preprocessing()
+    watershed_image = watershed_and_postprocessing(thresholded_image_3chan, markers)
+    contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered = calculate_area_and_filter_contours(watershed_image)
+    # contoured_image = draw_contours(image, grain_contours)
 
     # if request.form.get("show-size-histogram"):
         # grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
-    return render_template("dashboard.html") 
+
+    # if request.form.get("segmentation-images"):
+        # display_images(watershed_image, contoured_image, dtt, image, thresholded_image_3chan, dt)
+    return redirect("/dashboard") 

@@ -10,7 +10,7 @@
     <label>
         <form method="POST" enctype="multipart/form-data" action="/upload">
             <i class="nav-operate-icons fas fa-image"></i>
-            <input type="file" id="file" name="file" style="display: none;" onchange="this.form.submit();">
+            <button type="file" id="file" name="file" style="display: none;" onchange="this.form.submit();"></button>
         </form>
     </label>
     <!-- Reset Parameters btn -->
@@ -18,7 +18,10 @@
         <i class="nav-operate-icons fas fa-rotate"></i>
     </form>
     <!-- Run image processing btn -->
-    <form method="POST" action="/run">
-        <i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i>
-    </form>
+    <label>
+        <form method="POST" action="/run">
+            <i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i>
+            <button style="display: none;" type="submit" onclick="this.form.submit()"></button>
+        </form>
+    </label>
 </div>
