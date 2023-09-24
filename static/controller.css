@@ -96,4 +96,13 @@
     max-height: 50vh;
     overflow-y: auto;
     scrollbar-width: thin;
-} 
+}
+
+/* Sizing section column names for area (mm^2) and diameter of grains (mm) */
+.size-columns
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    padding-right: 20px;
+}
