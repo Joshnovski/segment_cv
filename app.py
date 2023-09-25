@@ -1,6 +1,7 @@
 import os
 import cv2
 import sys
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 from cs50 import SQL
@@ -155,7 +156,7 @@ def dashboard():
 
 ##############################################################################################################################################
 
-@app.route('/upload', methods=['POST'])
+@app.route("/upload", methods=["POST"])
 def upload_image():
     """User is prompted to select an image after clicking image icon. Image is then stored as a variable"""
 
@@ -191,7 +192,7 @@ def load_and_preprocessing():
 
     # Crop the bottom part of the image based on bottom_crop_ratio
     height, width, _ = image.shape
-    image = image[:int(height * (1 - request.form.get("show-size-histogram"))), :]
+    image = image[:int(height * (1 - request.form.get("bottom-crop-ratio"))), :]
 
     # Convert the image to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -269,6 +270,12 @@ def watershed_and_postprocessing(thresholded_image_3chan, markers):
 
     return result
 
+def area_to_diameter(area):
+    return math.sqrt(4*float(area)/math.pi)
+
+def diameter_to_area(diameter):
+    return math.pi*(float(diameter)/2)**2
+
 def calculate_area_and_filter_contours(result):
     # Find contours in the new blurred_image
     contours, _ = cv2.findContours(result, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -302,12 +309,12 @@ def calculate_area_and_filter_contours(result):
         # histogram filtration based on selected grain range
         if grain_area_min <= grain_area < grain_area_max:
             grain_areas_filtered.append(grain_real_area)
-            grain_diameters_filtered.append(config_watershedAll.area_to_diameter(grain_real_area)) # 0.680 mm
+            grain_diameters_filtered.append(area_to_diameter(grain_real_area)) # 0.680 mm
         # Sum total contoured areas and diameters
         if grain_area_min <= grain_area < grain_area_max:
             # Area total of contoured region(s)
             contour_area_total += grain_real_area
-            contoured_diameter_total += config_watershedAll.area_to_diameter(grain_real_area) # mm sum
+            contoured_diameter_total += area_to_diameter(grain_real_area) # mm sum
         # grain contour size range
         if grain_area_min < grain_area < grain_area_max:
             grain_contours.append(contour)
@@ -327,22 +334,20 @@ def calculate_area_and_filter_contours(result):
 
 def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
 
-    # Note if grain or void counting
-    grain_or_void = count_type()
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
     # Calculate bin_width
-    n = histogram_bins
+    n = request.form.get("histogram-bins")
     # Plot first histogram
     ax1.hist(grain_areas_filtered, bins=n, color='orange', alpha=1, range=(min(grain_areas_filtered), max(grain_areas_filtered)), edgecolor='white', label='Areas Selected (Excluding Uncertain Contours)')
     ax1.set_xlabel('Grain Area (mm\u00b2)')
     ax1.set_ylabel('Count of Grains')
-    ax1.set_title(f'{grain_or_void} area histogram')
+    ax1.set_title(f'Contoured Area Histogram')
 
     # Plot the second histogram
     ax2.hist(grain_diameters_filtered, bins=n, color='orange', alpha=1, range=(min(grain_diameters_filtered), max(grain_diameters_filtered)), edgecolor='white', label='Diameters Selected (Excluding Uncertain Contours)')
     ax2.set_xlabel('Grain Diameters (\u03BCm)')
     ax2.set_ylabel('Count of Grains')
-    ax2.set_title(f'{grain_or_void} diameter histogram')
+    ax2.set_title(f'Contoured Diameter Histogram')
 
     # legend positioning
     ax1.legend(loc="upper right")
@@ -367,48 +372,49 @@ def draw_contours(image, grain_contours):
     # result_image = cv2.bitwise_not(result_image)
 
     # Draws contour lines over the copied image
-    cv2.drawContours(result_image, grain_contours, -1, (255, 0, 0), contour_thickness)  # Blue. Thickness 10
+    cv2.drawContours(result_image, grain_contours, -1, (255, 0, 0), request.form.get("contour-thickness"))
 
     return result_image
 
 def display_images(watershed_imaged, outlined_image_cv, distance_transform_thresholded, original_image, thresholded_image_3chan, distance_transform):
 
-    # Note if grain or void counting
-    grain_or_void = count_type()
-
     fig, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(2, 3, figsize=(12, 8), sharex='all', sharey='all')
-    fig.canvas.mpl_connect('button_press_event', on_press)
-    fig.canvas.mpl_connect('button_release_event', on_release)
 
     ax5.imshow(watershed_imaged, cmap='gray')
-    ax5.set_title(f'{grain_or_void} counting: Segment Separation')
+    ax5.set_title(f'Watershed Segmented')
     ax5.axis('off')
     Cursor(ax5, useblit=True, color='red', linewidth=1)
+    plt.savefig('static/images/watershed_image.png')
 
     ax6.imshow(cv2.cvtColor(outlined_image_cv, cv2.COLOR_BGR2RGB))
-    ax6.set_title(f'{grain_or_void} counting: Contour Outlines')
+    ax6.set_title(f'Contour Outlines')
     ax6.axis('off')
     Cursor(ax6, useblit=True, color='red', linewidth=1)
+    plt.savefig('static/images/contoured_image.png')
 
     ax4.imshow(cv2.cvtColor(distance_transform_thresholded, cv2.COLOR_BGR2RGB))
-    ax4.set_title(f'{grain_or_void} counting: Binary Distance Transform')
+    ax4.set_title(f'Binary Distance Transform')
     ax4.axis('off')
     Cursor(ax4, useblit=True, color='red', linewidth=1)
+    plt.savefig('static/images/dtt.png')
 
     ax1.imshow(cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB))
-    ax1.set_title(f'{grain_or_void} counting: Original Image')
+    ax1.set_title(f'Original Image')
     ax1.axis('off')
     Cursor(ax1, useblit=True, color='red', linewidth=1)
+    plt.savefig('static/images/original_image.png')
 
     ax2.imshow(cv2.cvtColor(thresholded_image_3chan, cv2.COLOR_BGR2RGB))
-    ax2.set_title(f'{grain_or_void} counting: Binary Thresholded Contrast')
+    ax2.set_title(f'Binary Thresholded Contrast')
     ax2.axis('off')
     Cursor(ax2, useblit=True, color='red', linewidth=1)
+    plt.savefig('static/images/thresholded_image_3chan.png')
 
     ax3.imshow(cv2.cvtColor(distance_transform, cv2.COLOR_BGR2RGB))
-    ax3.set_title(f'{grain_or_void} counting: Distance Transform')
+    ax3.set_title(f'Distance Transform')
     ax3.axis('off')
     Cursor(ax3, useblit=True, color='red', linewidth=1)
+    plt.savefig('static/images/dt.png')
 
     plt.tight_layout()
     plt.show()
