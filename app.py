@@ -192,7 +192,7 @@ def load_and_preprocessing():
 
     # Crop the bottom part of the image based on bottom_crop_ratio
     height, width, _ = image.shape
-    image = image[:int(height * (1 - request.form.get("bottom-crop-ratio"))), :]
+    image = image[:int(height * (1 - request.get_json().get("bottom-crop-ratio"))), :]
 
     # Convert the image to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
