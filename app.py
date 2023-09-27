@@ -237,7 +237,10 @@ def store_parameters():
     session['min-size-area'] = request.form.get("min-size-area")
     session['max-size-diameter'] = request.form.get("max-size-diameter")
     session['max-size-area'] = request.form.get("max-size-area")
-
+    # Needs to return a response.
+    # Getting weird values here, need to check.
+    print(session['invert-grayscale'])
+    return None
 
 def load_and_preprocessing():
 

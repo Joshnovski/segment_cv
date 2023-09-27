@@ -1,208 +1,209 @@
-<li class="nav-item">
-    <label class="nav-link">
-        Scale to Pixel Ratio: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="scale-to-pixel-ratio" 
-        name="scale-to-pixel-ratio" 
-        type="number"
-        value="255.98">
-    </label>
-
-    </li>
-    <li class="nav-item">
-    <label class="nav-link  border-bottom">
-        Bottom Crop Ratio: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="bottom-crop-ratio" 
-        name="bottom-crop-ratio" 
-        type="number"
-        value="0.05">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Show Size Histograms: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="default-checkbox" 
-        id="show-size-histogram" 
-        name="show-size-histogram" 
-        type="checkbox"
-        checked>
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Segmentation Images: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="default-checkbox" 
-        id="segmentation-images" 
-        name="segmentation-images" 
-        type="checkbox"
-        checked>
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Histogram Bins: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="histogram-bins" 
-        name="histogram-bins" 
-        type="number"
-        value="20">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link border-bottom">
-        Contour Thickness: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="contour-thickness" 
-        name="contour-thickness" 
-        type="number"
-        value="10">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Invert Grayscale: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="default-checkbox" 
-        id="invert-grayscale" 
-        name="invert-grayscale" 
-        type="checkbox">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Histogram Equalisation: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="default-checkbox" 
-        id="histogram-equalisation" 
-        name="histogram-equalisation" 
-        type="checkbox"
-        checked>
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Lower Contrast Threshold: 
-        <input autocomplete="off" 
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="lower-contrast-threshold" 
-        name="lower-contrast-threshold" 
-        type="number"
-        value="170">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Upper Contrast Threshold: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="upper-contrast-threshold" 
-        name="upper-contrast-threshold" 
-        type="number"
-        value="255">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Blur Kernel Size: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="blur-kernel-size" 
-        name="blur-kernel-size" 
-        type="number"
-        value="3">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Distance Transform: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="distance-transform" 
-        name="distance-transform" 
-        type="number"
-        value="7">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link border-bottom">
-        Morphology Simplicity: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="morphology-simplicity" 
-        name="morphology-simplicity" 
-        type="number"
-        value="3">
-    </label>
-    </li>
+<form method="POST" action="/store-parameters">
     <li class="nav-item">
         <label class="nav-link">
+            Scale to Pixel Ratio: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="scale-to-pixel-ratio" 
+            name="scale-to-pixel-ratio" 
+            type="number"
+            value="255.98">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link  border-bottom">
+            Bottom Crop Ratio: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="bottom-crop-ratio" 
+            name="bottom-crop-ratio" 
+            type="number"
+            value="0.05">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Show Size Histograms: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="default-checkbox" 
+            id="show-size-histogram" 
+            name="show-size-histogram" 
+            type="checkbox"
+            checked>
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Segmentation Images: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="default-checkbox" 
+            id="segmentation-images" 
+            name="segmentation-images" 
+            type="checkbox"
+            checked>
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Histogram Bins: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="histogram-bins" 
+            name="histogram-bins" 
+            type="number"
+            value="20">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link border-bottom">
+            Contour Thickness: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="contour-thickness" 
+            name="contour-thickness" 
+            type="number"
+            value="10">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Invert Grayscale: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="default-checkbox" 
+            id="invert-grayscale" 
+            name="invert-grayscale" 
+            type="checkbox">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Histogram Equalisation: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="default-checkbox" 
+            id="histogram-equalisation" 
+            name="histogram-equalisation" 
+            type="checkbox"
+            checked>
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Lower Contrast Threshold: 
+            <input autocomplete="off" 
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="lower-contrast-threshold" 
+            name="lower-contrast-threshold" 
+            type="number"
+            value="170">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Upper Contrast Threshold: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="upper-contrast-threshold" 
+            name="upper-contrast-threshold" 
+            type="number"
+            value="255">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Blur Kernel Size: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="blur-kernel-size" 
+            name="blur-kernel-size" 
+            type="number"
+            value="3">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Distance Transform: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="distance-transform" 
+            name="distance-transform" 
+            type="number"
+            value="7">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link border-bottom">
+            Morphology Simplicity: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="morphology-simplicity" 
+            name="morphology-simplicity" 
+            type="number"
+            value="3">
+        </label>
+        </li>
+        <li class="nav-item">
+            <label class="nav-link">
+                <!-- <div class="contour-color-selector"></div>  -->
+                <div class="size-columns">
+                    <div>mm<sup>2</sup></div>
+                    <div>mm</div>
+                </div>
+            </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Min Size:
             <!-- <div class="contour-color-selector"></div>  -->
-            <div class="size-columns">
-                <div>mm<sup>2</sup></div>
-                <div>mm</div>
-            </div>
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input separator" 
+            id="min-size-diameter" 
+            name="min-size-diameter" 
+            type="number"
+            placeholder="Diam"
+            value="0.6">
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="min-size-area" 
+            name="min-size-area" 
+            type="number"
+            placeholder="Area"
+            value="0.283">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Max Size: 
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input separator" 
+            id="max-size-diameter" 
+            name="max-size-diameter" 
+            type="number"
+            placeholder="Diam"
+            value="1.322">
+            <input autocomplete="off"
+            onchange="this.form.submit();" 
+            autofocus class="parameter-input" 
+            id="max-size-area" 
+            name="max-size-area" 
+            type="number"
+            placeholder="Area"
+            value="1.373">
         </label>
     </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Min Size:
-        <!-- <div class="contour-color-selector"></div>  -->
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input separator" 
-        id="min-size-diameter" 
-        name="min-size-diameter" 
-        type="number"
-        placeholder="Diam"
-        value="0.6">
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="min-size-area" 
-        name="min-size-area" 
-        type="number"
-        placeholder="Area"
-        value="0.283">
-    </label>
-    </li>
-    <li class="nav-item">
-    <label class="nav-link">
-        Max Size: 
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input separator" 
-        id="max-size-diameter" 
-        name="max-size-diameter" 
-        type="number"
-        placeholder="Diam"
-        value="1.322">
-        <input autocomplete="off"
-        onchange="this.form.submit();" 
-        autofocus class="parameter-input" 
-        id="max-size-area" 
-        name="max-size-area" 
-        type="number"
-        placeholder="Area"
-        value="1.373">
-    </label>
-    </li>
+</form>
