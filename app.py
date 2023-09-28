@@ -1,9 +1,8 @@
 import os
 import cv2
-import sys
 import math
-import secrets
 import numpy as np
+import logging as lg # REMOVE THIS LINE LATER!
 import matplotlib.pyplot as plt
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
@@ -16,6 +15,11 @@ from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
+
+# Set logging level
+# lg.getLogger('matplotlib').setLevel(lg.ERROR)
+# lg.getLogger('PIL').setLevel(lg.ERROR)
+lg.basicConfig(level=lg.WARNING)
 
 # Set tje upload folder configuration
 UPLOAD_FOLDER = 'static/uploads'
@@ -414,10 +418,6 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
     for grains in ax2.containers:
         ax2.bar_label(grains)
 
-    # adjust subplot parameters so subplots are fit well in the figure
-    plt.tight_layout()
-    plt.show(block=False)
-
 def draw_contours(image, grain_contours):
 
     # Copy the original image to edit
@@ -470,9 +470,6 @@ def display_images(watershed_imaged, outlined_image_cv, distance_transform_thres
     ax3.axis('off')
     Cursor(ax3, useblit=True, color='red', linewidth=1)
     plt.savefig('static/images/dt.png')
-
-    plt.tight_layout()
-    plt.show()
 
 @app.route("/run", methods=['POST'])    
 def run():
