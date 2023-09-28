@@ -194,12 +194,12 @@ def set_initial_parameters():
         # For image type 1
         session['scale-to-pixel-ratio'] = 255.98
         session['bottom-crop-ratio'] = 0.05
-        session['show-size-histogram'] = True
-        session['segmentation-images'] = True
+        session['show-size-histogram'] = "on"
+        session['segmentation-images'] = "on"
         session['histogram-bins'] = 20
         session['contour-thickness'] = 10
-        session['invert-grayscale'] = False
-        session['histogram-equalisation'] = True
+        session['invert-grayscale'] = None
+        session['histogram-equalisation'] = "on"
         session['lower-contrast-threshold'] = 170
         session['upper-contrast-threshold'] = 255
         session['blur-kernel-size'] = 3
@@ -237,10 +237,8 @@ def store_parameters():
     session['min-size-area'] = request.form.get("min-size-area")
     session['max-size-diameter'] = request.form.get("max-size-diameter")
     session['max-size-area'] = request.form.get("max-size-area")
-    # Needs to return a response.
-    # Getting weird values here, need to check.
-    print(session['invert-grayscale'])
-    return None
+ 
+    return redirect("/dashboard")
 
 def load_and_preprocessing():
 

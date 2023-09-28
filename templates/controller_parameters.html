@@ -8,7 +8,7 @@
             id="scale-to-pixel-ratio" 
             name="scale-to-pixel-ratio" 
             type="number"
-            value="255.98">
+            value="{{ session['scale-to-pixel-ratio'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -20,7 +20,7 @@
             id="bottom-crop-ratio" 
             name="bottom-crop-ratio" 
             type="number"
-            value="0.05">
+            value="{{ session['bottom-crop-ratio'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -31,8 +31,8 @@
             autofocus class="default-checkbox" 
             id="show-size-histogram" 
             name="show-size-histogram" 
-            type="checkbox"
-            checked>
+            type="checkbox" 
+            {{ "checked" if session["show-size-histogram"] == "on" else "" }}>
         </label>
         </li>
         <li class="nav-item">
@@ -44,7 +44,7 @@
             id="segmentation-images" 
             name="segmentation-images" 
             type="checkbox"
-            checked>
+            {{ "checked" if session["segmentation-images"] == "on" else "" }}>
         </label>
         </li>
         <li class="nav-item">
@@ -56,7 +56,7 @@
             id="histogram-bins" 
             name="histogram-bins" 
             type="number"
-            value="20">
+            value="{{ session['histogram-bins'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -68,7 +68,7 @@
             id="contour-thickness" 
             name="contour-thickness" 
             type="number"
-            value="10">
+            value="{{ session['contour-thickness'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -79,7 +79,8 @@
             autofocus class="default-checkbox" 
             id="invert-grayscale" 
             name="invert-grayscale" 
-            type="checkbox">
+            type="checkbox"
+            {{ "checked" if session["invert-grayscale"] == "on" else "" }}>
         </label>
         </li>
         <li class="nav-item">
@@ -91,7 +92,7 @@
             id="histogram-equalisation" 
             name="histogram-equalisation" 
             type="checkbox"
-            checked>
+            {{ "checked" if session["histogram-equalisation"] == "on" else "" }}>
         </label>
         </li>
         <li class="nav-item">
@@ -103,7 +104,7 @@
             id="lower-contrast-threshold" 
             name="lower-contrast-threshold" 
             type="number"
-            value="170">
+            value="{{ session['lower-contrast-threshold'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -115,7 +116,7 @@
             id="upper-contrast-threshold" 
             name="upper-contrast-threshold" 
             type="number"
-            value="255">
+            value="{{ session['upper-contrast-threshold'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -127,7 +128,7 @@
             id="blur-kernel-size" 
             name="blur-kernel-size" 
             type="number"
-            value="3">
+            value="{{ session['blur-kernel-size'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -139,7 +140,7 @@
             id="distance-transform" 
             name="distance-transform" 
             type="number"
-            value="7">
+            value="{{ session['distance-transform'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -151,7 +152,7 @@
             id="morphology-simplicity" 
             name="morphology-simplicity" 
             type="number"
-            value="3">
+            value="{{ session['morphology-simplicity'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -174,7 +175,7 @@
             name="min-size-diameter" 
             type="number"
             placeholder="Diam"
-            value="0.6">
+            value="{{ session['min-size-diameter'] }}">
             <input autocomplete="off"
             onchange="this.form.submit();" 
             autofocus class="parameter-input" 
@@ -182,7 +183,7 @@
             name="min-size-area" 
             type="number"
             placeholder="Area"
-            value="0.283">
+            value="{{ session['min-size-area'] }}">
         </label>
         </li>
         <li class="nav-item">
@@ -195,7 +196,7 @@
             name="max-size-diameter" 
             type="number"
             placeholder="Diam"
-            value="1.322">
+            value="{{ session['max-size-diameter'] }}">
             <input autocomplete="off"
             onchange="this.form.submit();" 
             autofocus class="parameter-input" 
@@ -203,7 +204,7 @@
             name="max-size-area" 
             type="number"
             placeholder="Area"
-            value="1.373">
+            value="{{ session['max-size-area'] }}">
         </label>
     </li>
 </form>
