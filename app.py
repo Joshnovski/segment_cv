@@ -220,24 +220,24 @@ def store_parameters():
     Works in conjunction with set_initial_parameters() to store the values in the session. """
 
     # Store the parameter value in the session
-    session['scale-to-pixel-ratio'] = request.form.get("scale-to-pixel-ratio")
-    session['bottom-crop-ratio'] = request.form.get("bottom-crop-ratio")
+    session['scale-to-pixel-ratio'] = float(request.form.get("scale-to-pixel-ratio"))
+    session['bottom-crop-ratio'] = float(request.form.get("bottom-crop-ratio"))
     session['show-size-histogram'] = request.form.get("show-size-histogram")
     session['segmentation-images'] = request.form.get("segmentation-images")
-    session['histogram-bins'] = request.form.get("histogram-bins")
-    session['contour-thickness'] = request.form.get("contour-thickness")
+    session['histogram-bins'] = int(request.form.get("histogram-bins"))
+    session['contour-thickness'] = int(request.form.get("contour-thickness"))
     session['invert-grayscale'] = request.form.get("invert-grayscale")
     session['histogram-equalisation'] = request.form.get("histogram-equalisation")
-    session['lower-contrast-threshold'] = request.form.get("lower-contrast-threshold")
-    session['upper-contrast-threshold'] = request.form.get("upper-contrast-threshold")
-    session['blur-kernel-size'] = request.form.get("blur-kernel-size")
-    session['distance-transform'] = request.form.get("distance-transform")
-    session['morphology-simplicity'] = request.form.get("morphology-simplicity")
-    session['min-size-diameter'] = request.form.get("min-size-diameter")
-    session['min-size-area'] = request.form.get("min-size-area")
-    session['max-size-diameter'] = request.form.get("max-size-diameter")
-    session['max-size-area'] = request.form.get("max-size-area")
- 
+    session['lower-contrast-threshold'] = int(request.form.get("lower-contrast-threshold"))
+    session['upper-contrast-threshold'] = int(request.form.get("upper-contrast-threshold"))
+    session['blur-kernel-size'] = int(request.form.get("blur-kernel-size"))
+    session['distance-transform'] = int(request.form.get("distance-transform"))
+    session['morphology-simplicity'] = int(request.form.get("morphology-simplicity"))
+    session['min-size-diameter'] = float(request.form.get("min-size-diameter"))
+    session['min-size-area'] = float(request.form.get("min-size-area"))
+    session['max-size-diameter'] = float(request.form.get("max-size-diameter"))
+    session['max-size-area'] = float(request.form.get("max-size-area"))
+    
     return redirect("/dashboard")
 
 def load_and_preprocessing():
