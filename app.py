@@ -3,6 +3,7 @@ import cv2
 import math
 import numpy as np
 import logging as lg # REMOVE THIS LINE LATER!
+import matplotlib
 import matplotlib.pyplot as plt
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
@@ -10,16 +11,17 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 from matplotlib.widgets import Cursor
-
 from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
 
 # Set logging level
-# lg.getLogger('matplotlib').setLevel(lg.ERROR)
-# lg.getLogger('PIL').setLevel(lg.ERROR)
-lg.basicConfig(level=lg.WARNING)
+lg.getLogger('matplotlib').setLevel(lg.ERROR)
+lg.getLogger('PIL').setLevel(lg.ERROR)
+
+# Change to Agg backend for matplotlib
+matplotlib.use('Agg')
 
 # Set tje upload folder configuration
 UPLOAD_FOLDER = 'static/uploads'
@@ -431,45 +433,37 @@ def draw_contours(image, grain_contours):
 
     return result_image
 
-def display_images(watershed_imaged, outlined_image_cv, distance_transform_thresholded, original_image, thresholded_image_3chan, distance_transform):
+def display_images(watershed_image, contoured_image, distance_transform_thresholded, original_image, thresholded_image_3chan, distance_transform):
 
-    fig, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(2, 3, figsize=(12, 8), sharex='all', sharey='all')
-
-    ax5.imshow(watershed_imaged, cmap='gray')
-    ax5.set_title(f'Watershed Segmented')
-    ax5.axis('off')
-    Cursor(ax5, useblit=True, color='red', linewidth=1)
-    plt.savefig('static/images/watershed_image.png')
-
-    ax6.imshow(cv2.cvtColor(outlined_image_cv, cv2.COLOR_BGR2RGB))
-    ax6.set_title(f'Contour Outlines')
-    ax6.axis('off')
-    Cursor(ax6, useblit=True, color='red', linewidth=1)
-    plt.savefig('static/images/contoured_image.png')
-
-    ax4.imshow(cv2.cvtColor(distance_transform_thresholded, cv2.COLOR_BGR2RGB))
-    ax4.set_title(f'Binary Distance Transform')
-    ax4.axis('off')
-    Cursor(ax4, useblit=True, color='red', linewidth=1)
-    plt.savefig('static/images/dtt.png')
-
-    ax1.imshow(cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB))
-    ax1.set_title(f'Original Image')
-    ax1.axis('off')
-    Cursor(ax1, useblit=True, color='red', linewidth=1)
-    plt.savefig('static/images/original_image.png')
-
-    ax2.imshow(cv2.cvtColor(thresholded_image_3chan, cv2.COLOR_BGR2RGB))
-    ax2.set_title(f'Binary Thresholded Contrast')
-    ax2.axis('off')
-    Cursor(ax2, useblit=True, color='red', linewidth=1)
-    plt.savefig('static/images/thresholded_image_3chan.png')
-
-    ax3.imshow(cv2.cvtColor(distance_transform, cv2.COLOR_BGR2RGB))
-    ax3.set_title(f'Distance Transform')
-    ax3.axis('off')
-    Cursor(ax3, useblit=True, color='red', linewidth=1)
-    plt.savefig('static/images/dt.png')
+    # Store each image in a list
+    images = [
+        (watershed_image, "watershed_image"), 
+        (contoured_image, "contoured_image"), 
+        (distance_transform_thresholded, "distance_transform_thresholded"), 
+        (original_image, "original_image"), 
+        (thresholded_image_3chan, "thresholded_image_3chan"), 
+        (distance_transform, "distance_transform")]
+    
+    # Create each figure and save it.
+    for image, filename in images:
+        # Create new figure
+        #Get image size
+        fig, ax = plt.subplots(figsize=(6, 6))
+        # Check if the image is grayscale or RGB
+        if len(image.shape) == 2 or image.shape[2] == 1:
+            # Grayscale image
+            cmap = 'gray'
+        else:
+            # RGB image
+            cmap = None
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        # Display the image
+        ax.imshow(image, cmap=cmap)
+        ax.axis('off')
+        # Save the figure
+        plt.savefig(f'static/images/{filename}.png', bbox_inches='tight', pad_inches=0)
+        # Close the figure
+        plt.close(fig)
 
 @app.route("/run", methods=['POST'])    
 def run():
