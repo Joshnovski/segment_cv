@@ -218,7 +218,6 @@ def set_initial_parameters():
         # Locks out the repeated setting of parameters if they have already been set.
         session['parameters_set'] = True
 
-
 @app.route("/store-parameters", methods=["POST"])
 def store_parameters():
 
@@ -365,8 +364,8 @@ def calculate_area_and_filter_contours(result):
     for contour in contours:
         grain_area = cv2.contourArea(contour)
         grain_real_area = grain_area * pixel_size_mm
-        grain_area_min = session.get("min-size-area")
-        grain_area_max = session.get("max-size-area")
+        grain_area_min = session.get("min-size-area") / pixel_size_mm
+        grain_area_max = session.get("max-size-area") / pixel_size_mm
         # histogram filtration based on selected grain range
         if grain_area_min <= grain_area < grain_area_max:
             grain_areas_filtered.append(grain_real_area)
