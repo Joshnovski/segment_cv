@@ -179,13 +179,14 @@ def upload_image():
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
-            flash('Image Successfully Uploaded')
+            flash('Image Successfully Uploaded', 'success')
 
             # Store filepath in user's session
             session['filepath'] = filepath
 
             return redirect("/dashboard")
-        else: 
+        else:
+            flash('Please Upload Image', 'error') 
             return redirect("/dashboard")
 
     # User reached route via GET (as by clicking a link or via redirect)
@@ -466,6 +467,11 @@ def display_images(watershed_image, contoured_image, distance_transform_threshol
 
 @app.route("/run", methods=['POST'])    
 def run():
+
+    if cv2.imread(session.get("filepath")) is None:
+        flash('Please Upload Image', 'error') 
+        return redirect("/dashboard")
+
     # Run through all the functions
     thresholded_image_3chan, markers, image, dtt, dt = load_and_preprocessing()
     watershed_image = watershed_and_postprocessing(thresholded_image_3chan, markers)
@@ -477,4 +483,8 @@ def run():
 
     if session.get("segmentation-images"):
         display_images(watershed_image, contoured_image, dtt, image, thresholded_image_3chan, dt)
+
+    # Flash a success message
+    flash('Segmentation Complete', 'success')
+
     return redirect("/dashboard") 
