@@ -6,7 +6,7 @@ import logging as lg # REMOVE THIS LINE LATER!
 import matplotlib
 import matplotlib.pyplot as plt
 from cs50 import SQL
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, flash, redirect, render_template, jsonify, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
@@ -243,7 +243,7 @@ def store_parameters():
     session['max-size-diameter'] = float(request.form.get("max-size-diameter"))
     session['max-size-area'] = float(request.form.get("max-size-area"))
     
-    return redirect("/dashboard")
+    return jsonify(success = True)
 
 def load_and_preprocessing():
 

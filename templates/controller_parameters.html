@@ -1,9 +1,8 @@
-<form method="POST" action="/store-parameters">
+<form method="POST" action="/store-parameters" id="store-parameters">
     <li class="nav-item">
         <label class="nav-link">
             Scale to Pixel Ratio: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="scale-to-pixel-ratio" 
             name="scale-to-pixel-ratio" 
@@ -15,7 +14,6 @@
         <label class="nav-link  border-bottom">
             Bottom Crop Ratio: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="bottom-crop-ratio" 
             name="bottom-crop-ratio" 
@@ -27,7 +25,6 @@
         <label class="nav-link">
             Show Size Histograms: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="default-checkbox" 
             id="show-size-histogram" 
             name="show-size-histogram" 
@@ -39,7 +36,6 @@
         <label class="nav-link">
             Segmentation Images: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="default-checkbox" 
             id="segmentation-images" 
             name="segmentation-images" 
@@ -51,7 +47,6 @@
         <label class="nav-link">
             Histogram Bins: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="histogram-bins" 
             name="histogram-bins" 
@@ -63,7 +58,6 @@
         <label class="nav-link border-bottom">
             Contour Thickness: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="contour-thickness" 
             name="contour-thickness" 
@@ -75,7 +69,6 @@
         <label class="nav-link">
             Invert Grayscale: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="default-checkbox" 
             id="invert-grayscale" 
             name="invert-grayscale" 
@@ -87,7 +80,6 @@
         <label class="nav-link">
             Histogram Equalisation: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="default-checkbox" 
             id="histogram-equalisation" 
             name="histogram-equalisation" 
@@ -99,7 +91,6 @@
         <label class="nav-link">
             Lower Contrast Threshold: 
             <input autocomplete="off" 
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="lower-contrast-threshold" 
             name="lower-contrast-threshold" 
@@ -111,7 +102,6 @@
         <label class="nav-link">
             Upper Contrast Threshold: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="upper-contrast-threshold" 
             name="upper-contrast-threshold" 
@@ -123,7 +113,6 @@
         <label class="nav-link">
             Blur Kernel Size: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="blur-kernel-size" 
             name="blur-kernel-size" 
@@ -135,7 +124,6 @@
         <label class="nav-link">
             Distance Transform: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="distance-transform" 
             name="distance-transform" 
@@ -147,7 +135,6 @@
         <label class="nav-link border-bottom">
             Morphology Simplicity: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="morphology-simplicity" 
             name="morphology-simplicity" 
@@ -169,7 +156,6 @@
             Min Size:
             <!-- <div class="contour-color-selector"></div>  -->
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input separator" 
             id="min-size-diameter" 
             name="min-size-diameter" 
@@ -177,7 +163,6 @@
             placeholder="Diam"
             value="{{ session['min-size-diameter'] }}">
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="min-size-area" 
             name="min-size-area" 
@@ -190,7 +175,6 @@
         <label class="nav-link">
             Max Size: 
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input separator" 
             id="max-size-diameter" 
             name="max-size-diameter" 
@@ -198,7 +182,6 @@
             placeholder="Diam"
             value="{{ session['max-size-diameter'] }}">
             <input autocomplete="off"
-            onchange="this.form.submit();" 
             autofocus class="parameter-input" 
             id="max-size-area" 
             name="max-size-area" 
