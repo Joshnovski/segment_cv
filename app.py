@@ -394,21 +394,35 @@ def calculate_area_and_filter_contours(result):
     return contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered
 
 def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
-
+    
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
     # Calculate bin_width
     n = session.get("histogram-bins")
+    # Determine range of histogram
+    if grain_areas_filtered == []:
+        min_range_area = 0
+        max_range_area = 0
+    else:
+        min_range_area = min(grain_areas_filtered)
+        max_range_area = max(grain_areas_filtered)
+
+    if grain_diameters_filtered == []:
+        min_range_diameter = 0
+        max_range_diameter = 0
+    else:
+        min_range_diameter = min(grain_diameters_filtered)
+        max_range_diameter = max(grain_diameters_filtered)
     # Plot first histogram
-    ax1.hist(grain_areas_filtered, bins=n, color='orange', alpha=1, range=(min(grain_areas_filtered), max(grain_areas_filtered)), edgecolor='white', label='Areas Selected (Excluding Uncertain Contours)')
+    ax1.hist(grain_areas_filtered, bins=n, color='orange', alpha=1, range=(min_range_area, max_range_area), edgecolor='white', label='Areas Selected (Excluding Uncertain Contours)')
     ax1.set_xlabel('Grain Area (mm\u00b2)')
     ax1.set_ylabel('Count of Grains')
     ax1.set_title(f'Contoured Area Histogram')
 
     # Plot the second histogram
-    ax2.hist(grain_diameters_filtered, bins=n, color='orange', alpha=1, range=(min(grain_diameters_filtered), max(grain_diameters_filtered)), edgecolor='white', label='Diameters Selected (Excluding Uncertain Contours)')
+    ax2.hist(grain_diameters_filtered, bins=n, color='orange', alpha=1, range=(min_range_diameter, max_range_diameter), edgecolor='white', label='Diameters Selected (Excluding Uncertain Contours)')
     ax2.set_xlabel('Grain Diameters (\u03BCm)')
     ax2.set_ylabel('Count of Grains')
-    ax2.set_title(f'Contoured Diameter Histogram')
+    ax2.set_title('Contoured Diameter Histogram')
 
     # legend positioning
     ax1.legend(loc="upper right")
