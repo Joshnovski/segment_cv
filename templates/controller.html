@@ -10,14 +10,14 @@
     </button>
     <div class="collapse border-bottom" id="control-collapse">
         <ul class="nav nav-pills flex-column">
-         <!-- Save, Image Upload, Reset Parameters and Run Icons -->
-        <li class="nav-item border-bottom border-top">
-            {% include 'controller_topbar.html' %}
-        </li>
-        <!-- Input Parameters for control panel -->
-        <div class="scrollable-list-controller">
-            {% include 'controller_parameters.html' %}
-        </div>
+            <!-- Save, Image Upload, Reset Parameters and Run Icons -->
+            <li class="nav-item border-bottom border-top">
+                {% include 'controller_topbar.html' %}
+            </li>
+            <!-- Input Parameters for control panel -->
+            <div class="scrollable-list-controller">
+                {% include 'controller_parameters.html' %}
+            </div>
         </ul>
     </li>
     <!-- Results panel -->
@@ -31,14 +31,10 @@
         </button>
         <div class="collapse border-bottom" id="results-collapse">
             <ul class="nav nav-pills flex-column">
-                <!-- Save, Image Upload, Reset Parameters and Run Icons -->
-            <li class="nav-item border-bottom border-top">
-                {% include 'controller_topbar.html' %}
-            </li>
-            <!-- Input Parameters for control panel -->
-            <div class="scrollable-list-controller">
-                {% include 'controller_parameters.html' %}
-            </div>
+                <!-- Input Parameters for control panel -->
+                <div class="scrollable-list-controller">
+                    {% include 'controller_results.html' %}
+                </div>
             </ul>
         </li>
     <!-- Settings Tab: Darkmode + -->
