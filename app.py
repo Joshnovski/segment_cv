@@ -159,7 +159,7 @@ def dashboard():
         return redirect("/")
 
     # Redirect user to home page
-    return render_template("dashboard.html")
+    return render_template("dashboard.html", os=os, images_existing=len(os.listdir('static/images')))
 
 ##############################################################################################################################################
 
@@ -197,6 +197,16 @@ def upload_image():
 def set_initial_parameters():
 
     """ Initialise the parameters in the session. Might be possible to scale this for multiple pre-sets. """
+
+    # If the session is starting for the first time, clear the processed images and uploaded images.
+    if not session.get('initialized'):
+        for file in os.listdir('static/images'):
+            os.remove(f'static/images/{file}')
+        for file in os.listdir('static/uploads'):
+            os.remove(f'static/uploads/{file}')
+        session['initialized'] = True
+
+    # If the session is starting for the first time, set the parameters to default values
     if not session.get('parameters_set'):
         # For image type 1
         session['scale-to-pixel-ratio'] = 255.98

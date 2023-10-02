@@ -1,25 +1,37 @@
 <!-- Cards for images and results -->
 <div class="card">
     <header class="card-header">Segment Surface Area Histogram</header>
-    <img src="{{ url_for('static', filename='images/area_histogram.png') }}" alt="Segment Surface Area Histogram"> 
+    {% if not images_existing == 0 %}
+        <img src="{{ url_for('static', filename='images/area_histogram.png') }}" alt="Segment Surface Area Histogram"> 
+    {% endif %}
 </div>
 <div class="card">
     <header class="card-header">Original Image</header>
-    <img src="{{ url_for('static', filename='images/original_image.png') }}" alt="Original Image"> 
+    {% if not images_existing == 0 %}
+    <img src="{{ url_for('static', filename='images/original_image.png') }}" alt="Original Image">
+    {% endif %} 
 </div>
 <div class="card">
     <header class="card-header">Distance Transform</header>
-    <img src="{{ url_for('static', filename='images/distance_transform.png') }}" alt="Distance Transform"> 
+    {% if not images_existing == 0 %}
+    <img src="{{ url_for('static', filename='images/distance_transform.png') }}" alt="Distance Transform">
+    {% endif %} 
 </div>
 <div class="card">
     <header class="card-header">Segment Diameter Approximation Histogram</header>
-    <img src="{{ url_for('static', filename='images/diameter_histogram.png') }}" alt="Segment Diameter Approximation Histogram"> 
+    {% if not images_existing == 0 %}
+    <img src="{{ url_for('static', filename='images/diameter_histogram.png') }}" alt="Segment Diameter Approximation Histogram">
+    {% endif %} 
 </div>
 <div class="card">
     <header class="card-header">Watershed Segmentation</header>
-    <img src="{{ url_for('static', filename='images/watershed_image.png') }}" alt="Watershed Segmentation"> 
+    {% if not images_existing == 0 %}
+    <img src="{{ url_for('static', filename='images/watershed_image.png') }}" alt="Watershed Segmentation">
+    {% endif %} 
 </div>
 <div class="card">
     <header class="card-header">Contoured Segments</header>
-    <img src="{{ url_for('static', filename='images/contoured_image.png') }}" alt="Contoured Segments"> 
+    {% if not images_existing == 0 %}
+    <img src="{{ url_for('static', filename='images/contoured_image.png') }}" alt="Contoured Segments">
+    {% endif %} 
 </div>
