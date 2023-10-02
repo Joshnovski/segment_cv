@@ -14,9 +14,12 @@
         </form>
     </label>
     <!-- Reset Parameters btn -->
-    <form>
-        <i class="nav-operate-icons fas fa-rotate"></i>
-    </form>
+    <label>
+        <form method="POST" action="/reset">
+            <i class="nav-operate-icons fas fa-rotate"></i>
+            <button style="display: none;" type="submit" onclick="this.form.submit()"></button>
+        </form>        
+    </label>
     <!-- Run image processing btn -->
     <label>
         <form method="POST" action="/run">

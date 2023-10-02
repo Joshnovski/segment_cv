@@ -229,6 +229,17 @@ def set_initial_parameters():
         # Locks out the repeated setting of parameters if they have already been set.
         session['parameters_set'] = True
 
+@app.route("/reset", methods=["POST"])
+def reset_parameters():
+
+    # Reset parameters without also removing the already uploaded image
+    session['initialized'] = True
+    # Reset session check for parameters to pass if statement in set_initial_parameters()
+    session.pop('parameters_set', None)
+    # Run the set initial parameters function to reset the parameters
+    set_initial_parameters()
+    return redirect("/dashboard")
+
 @app.route("/store-parameters", methods=["POST"])
 def store_parameters():
 
