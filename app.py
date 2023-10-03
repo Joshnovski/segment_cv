@@ -203,7 +203,7 @@ def set_initial_parameters():
         for file in os.listdir('static/images'):
             try:
                 os.remove(f'static/images/{file}')
-            except FileNotFoundError:
+            except FileNotFoundError or PermissionError:
                 pass
         for file in os.listdir('static/uploads'):
             os.remove(f'static/uploads/{file}')

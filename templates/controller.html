@@ -1,6 +1,6 @@
-<ul class="nav nav-pills flex-column">
+<ul class="nav nav-pills flex-column pill-gap">
     <!-- Main Control Panel with parameters -->
-    <li class="nav-item">
+    <li class="nav-item border-top border-bottom">
     <button class="nav-link nav-link-title" 
     data-bs-toggle="collapse" 
     data-bs-target="#control-collapse" 
@@ -8,7 +8,7 @@
     <i class="nav-icons fas fa-sliders"></i> 
     Control Center
     </button>
-    <div class="collapse border-bottom" id="control-collapse">
+    <div class="collapse" id="control-collapse">
         <ul class="nav nav-pills flex-column">
             <!-- Save, Image Upload, Reset Parameters and Run Icons -->
             <li class="nav-item border-bottom border-top">
@@ -21,7 +21,7 @@
         </ul>
     </li>
     <!-- Results panel -->
-    <li class="nav-item">
+    <li class="nav-item border-top border-bottom">
         <button class="nav-link nav-link-title" 
         data-bs-toggle="collapse" 
         data-bs-target="#results-collapse" 
@@ -29,7 +29,7 @@
         <i class="nav-icons fas fa-chart-column"></i> 
         Results
         </button>
-        <div class="collapse border-bottom" id="results-collapse">
+        <div class="collapse" id="results-collapse">
             <ul class="nav nav-pills flex-column">
                 <!-- Input Parameters for control panel -->
                 <div class="scrollable-list-controller">
@@ -38,17 +38,17 @@
             </ul>
         </li>
     <!-- Settings Tab: Darkmode + -->
-    <li class="nav-item">
+    <li class="nav-item border-top border-bottom">
     <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#settings-collapse" aria-expanded="false"> <i class="nav-icons fas fa-gear"></i> Settings </button>
     <div class="collapse" id="settings-collapse">
         <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <label class="nav-link border-bottom"><i class="nav-icons fas fa-circle-half-stroke"></i>Dark Mode:</label>
+            <label class="nav-link"><i class="nav-icons fas fa-circle-half-stroke"></i>Dark Mode:</label>
         </li>
         </ul>
     </li>
     <!-- Account Tab: Profile, Logout/Login+Signup -->
-    <li class="nav-item">
+    <li class="nav-item border-top border-bottom">
     <button class="nav-link nav-link-title" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false"> <i class="nav-icons fas fa-house-user"   style="padding-right: 8px;"></i> Account </button>
     <div class="collapse" id="account-collapse">
         <ul class="nav nav-pills flex-column">
@@ -57,7 +57,7 @@
             <label class="nav-link"><i class="nav-icons fas fa-user"></i>Profile</label>
             </li>
             <li class="nav-item">
-            <a class="nav-link border-bottom" href="/logout"><i class="nav-icons fas fa-door-open"  style="padding-right: 7px;"></i>Log Out</a>
+            <a class="nav-link" href="/logout"><i class="nav-icons fas fa-door-open"  style="padding-right: 7px;"></i>Log Out</a>
             </li>
         {% else %}
             <li class="nav-item">

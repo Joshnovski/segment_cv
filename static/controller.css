@@ -118,3 +118,9 @@
     gap: 40px;
     padding-right: 20px;
 }
+
+/* Padding between the pills */
+.pill-gap
+{
+    gap: 10px;
+}
