@@ -69,6 +69,18 @@
 {
     border-color: #575757;
 }
+
+/* Results Stylings */
+.results
+{
+    width: 60px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7A7A7A;
+    float: right;
+    margin-top: -2px;
+}
+
 /* Separator between sizing inputs */
 .separator 
 {

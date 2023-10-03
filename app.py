@@ -201,12 +201,15 @@ def set_initial_parameters():
     # If the session is starting for the first time, clear the processed images and uploaded images.
     if not session.get('initialized'):
         for file in os.listdir('static/images'):
-            os.remove(f'static/images/{file}')
+            try:
+                os.remove(f'static/images/{file}')
+            except FileNotFoundError:
+                pass
         for file in os.listdir('static/uploads'):
             os.remove(f'static/uploads/{file}')
         session['initialized'] = True
 
-    # If the session is starting for the first time, set the parameters to default values
+    # If the session is starting for the first time, set the parameters and results to default values
     if not session.get('parameters_set'):
         # For image type 1
         session['scale-to-pixel-ratio'] = 255.98
@@ -226,6 +229,7 @@ def set_initial_parameters():
         session['min-size-area'] = 0.6
         session['max-size-diameter'] = 1.373
         session['max-size-area'] = 1.322
+
         # Locks out the repeated setting of parameters if they have already been set.
         session['parameters_set'] = True
 
@@ -405,11 +409,18 @@ def calculate_area_and_filter_contours(result):
     # Calculate average area in pixels
     grain_average_area_pixels = grain_total_area / len(grain_contours) if grain_contours else 0
 
-    # Calculate average diameter in pixels
+    # Calculate average diameter in mm
     grain_average_diameter_real = contoured_diameter_total / len(grain_contours) if grain_contours else 0
 
     # Convert average area in pixels to average area in square millimeters
     grain_average_area_mm = grain_average_area_pixels * pixel_size_mm
+
+    # Store the average grain diameter in the session
+    session['average-grain-diameter'] = round(grain_average_diameter_real, 3)
+    # Store the average grain area in the session
+    session['average-grain-area'] = round(grain_average_area_mm, 2)
+    # Store the number of segments in the session
+    session['number-of-segments'] = len(grain_contours)
 
     # Return the number of chocolate chips, the outlined image, the thresholded image and the average area
     return contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered
