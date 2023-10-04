@@ -40,8 +40,6 @@ be processed before ``dict``.
 
     app.session_interface.serializer.register(TagOrderedDict, index=0)
 """
-from __future__ import annotations
-
 import typing as t
 from base64 import b64decode
 from base64 import b64encode
@@ -63,9 +61,9 @@ class JSONTag:
 
     #: The tag to mark the serialized object with. If ``None``, this tag is
     #: only used as an intermediate step during tagging.
-    key: str | None = None
+    key: t.Optional[str] = None
 
-    def __init__(self, serializer: TaggedJSONSerializer) -> None:
+    def __init__(self, serializer: "TaggedJSONSerializer") -> None:
         """Create a tagger for the given serializer."""
         self.serializer = serializer
 
@@ -246,17 +244,17 @@ class TaggedJSONSerializer:
     ]
 
     def __init__(self) -> None:
-        self.tags: dict[str, JSONTag] = {}
-        self.order: list[JSONTag] = []
+        self.tags: t.Dict[str, JSONTag] = {}
+        self.order: t.List[JSONTag] = []
 
         for cls in self.default_tags:
             self.register(cls)
 
     def register(
         self,
-        tag_class: type[JSONTag],
+        tag_class: t.Type[JSONTag],
         force: bool = False,
-        index: int | None = None,
+        index: t.Optional[int] = None,
     ) -> None:
         """Register a new tag with this serializer.
 
@@ -285,7 +283,7 @@ class TaggedJSONSerializer:
         else:
             self.order.insert(index, tag)
 
-    def tag(self, value: t.Any) -> dict[str, t.Any]:
+    def tag(self, value: t.Any) -> t.Dict[str, t.Any]:
         """Convert a value to a tagged representation if necessary."""
         for tag in self.order:
             if tag.check(value):
@@ -293,7 +291,7 @@ class TaggedJSONSerializer:
 
         return value
 
-    def untag(self, value: dict[str, t.Any]) -> t.Any:
+    def untag(self, value: t.Dict[str, t.Any]) -> t.Any:
         """Convert a tagged representation back to the original type."""
         if len(value) != 1:
             return value
