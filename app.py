@@ -1,13 +1,12 @@
 import os
 import cv2
 import math
-import json
-import plotly
-import plotly.graph_objects as go
-import numpy as np
-import logging as lg # REMOVE THIS LINE LATER!
 import matplotlib
 import matplotlib.pyplot as plt
+import numpy as np
+import logging as lg # REMOVE THIS LINE LATER!
+import plotly.graph_objs as go
+from plotly.offline import plot
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, jsonify, request, session
 from flask_session import Session
@@ -160,9 +159,13 @@ def dashboard():
     # Ensure user is logged in else redirect to login page
     if not session.get("user_id"):
         return redirect("/")
+    
+    # Retrieve from the session after run, else set to None
+    area_histogram_div = session.get('area_histogram_div', None)
+    diameter_histogram_div = session.get('diameter_histogram_div', None)
 
     # Redirect user to home page
-    return render_template("dashboard.html", os=os, images_existing=len(os.listdir('static/images')))
+    return render_template("dashboard.html", os=os, images_existing=len(os.listdir('static/images')), area_histogram_div=area_histogram_div, diameter_histogram_div=diameter_histogram_div)
 
 ##############################################################################################################################################
 
@@ -203,13 +206,13 @@ def set_initial_parameters():
 
     # If the session is starting for the first time, clear the processed images and uploaded images.
     if not session.get('initialized'):
-        for file in os.listdir('static/images'):
-            try:
-                os.remove(f'static/images/{file}')
-            except FileNotFoundError or PermissionError:
-                pass
-        for file in os.listdir('static/uploads'):
-            os.remove(f'static/uploads/{file}')
+        try:
+            for file in os.listdir('static/images'):
+                    os.remove(f'static/images/{file}')
+            for file in os.listdir('static/uploads'):
+                os.remove(f'static/uploads/{file}')
+        except (PermissionError, FileNotFoundError):
+            pass
         session['initialized'] = True
 
     # If the session is starting for the first time, set the parameters and results to default values
@@ -429,18 +432,27 @@ def calculate_area_and_filter_contours(result):
     return contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered
 
 def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
-    # Calculate bin_width
-    n = session.get("histogram-bins")
-    def plot_histogram(data, label, file_name):
-        if not data:
-            min_range, max_range = 0, 0
-        else:
-            min_range, max_range = min(data), max(data)
-        histogram = go.Figure(data=[go.Histogram(x=data, nbinsx=session.get("histogram-bins"), range_x=[min_range, max_range])])
-        histogram.update_layout(xaxis_title=label, yaxis_title="Count of Segments")
-        return json.dumps(histogram, cls=plotly.utils.PlotlyJSONEncoder)
-    plot_histogram(grain_areas_filtered, 'Area (mm\u00b2)', 'static/images/area_histogram.png')
-    plot_histogram(grain_diameters_filtered, 'Diameter (\u03BCm)', 'static/images/diameter_histogram.png')
+
+    # style histograms
+    histogram_list = []
+    size_data = [grain_areas_filtered, grain_diameters_filtered]
+    size_types = ['Area', 'Diameter']
+    for (size_type, unit_type) in zip(size_data, size_types):
+        layout = go.Layout(
+            autosize=True,
+            margin = go.layout.Margin(l=0, r=0, b=0, t=0), 
+            xaxis = go.layout.XAxis(title=f'Contour {unit_type}'), 
+            yaxis = go.layout.YAxis(title='Number of Segments'),
+            plot_bgcolor='#e4e4e4',
+            paper_bgcolor='#e4e4e4', 
+            showlegend = False)
+
+        # Plot histogram
+        histogram = go.Figure(go.Histogram(x=size_type, marker=dict(color='#7A7A7A')), layout=layout)
+        histogram = plot(histogram, output_type='div', include_plotlyjs=False)
+        histogram_list.append(histogram)
+
+    return histogram_list
 
 def draw_contours(image, grain_contours):
 
@@ -501,7 +513,10 @@ def run():
     contoured_image = draw_contours(image, grain_contours)
 
     if session.get("show-size-histogram"):
-        grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
+        histogram_list = grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
+        # Store in the session
+        session['area_histogram_div'] = histogram_list[0]
+        session['diameter_histogram_div'] = histogram_list[1]
 
     if session.get("segmentation-images"):
         display_images(watershed_image, contoured_image, dtt, image, thresholded_image_3chan, dt)

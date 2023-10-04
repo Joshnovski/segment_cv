@@ -35,9 +35,12 @@ align-items: center;
 /* Core css properties for the grid design */
 .card 
 {
-    background-color: rgb(228, 228, 228);
+    background-color: #e4e4e4;
     border: none;
     border-radius: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 /* Children grids on main */
 .card:nth-child(1)
@@ -78,6 +81,13 @@ align-items: center;
        "c2 c3"
        "c5 c6"; 
     }
+}
+
+.card-histogram
+{
+    flex: 1;
+    overflow: auto;
+    display: flex;
 }
 
 

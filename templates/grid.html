@@ -1,9 +1,11 @@
 <!-- Cards for images and results -->
 <div class="card">
     <header class="card-header">Segment Surface Area Histogram</header>
-    {% if not images_existing == 0 %}
-        <img src="{{ url_for('static', filename='images/area_histogram.png') }}" alt="Segment Surface Area Histogram"> 
-    {% endif %}
+    <div class="card-histogram">
+        {% if area_histogram_div %}
+            {{ area_histogram_div | safe }}
+        {% endif %}
+    </div>
 </div>
 <div class="card">
     <header class="card-header">Original Image</header>
@@ -19,9 +21,11 @@
 </div>
 <div class="card">
     <header class="card-header">Segment Diameter Approximation Histogram</header>
-    {% if not images_existing == 0 %}
-    <img src="{{ url_for('static', filename='images/diameter_histogram.png') }}" alt="Segment Diameter Approximation Histogram">
-    {% endif %} 
+    <div class="card-histogram">
+        {% if diameter_histogram_div %}
+            {{ diameter_histogram_div | safe }}
+        {% endif %}
+    </div>
 </div>
 <div class="card">
     <header class="card-header">Watershed Segmentation</header>
