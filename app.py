@@ -1,6 +1,9 @@
 import os
 import cv2
 import math
+import json
+import plotly
+import plotly.graph_objects as go
 import numpy as np
 import logging as lg # REMOVE THIS LINE LATER!
 import matplotlib
@@ -433,12 +436,9 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
             min_range, max_range = 0, 0
         else:
             min_range, max_range = min(data), max(data)
-        fig, ax = plt.subplots(figsize=(14, 6))
-        ax.hist(data, bins=n, color='#7A7A7A', alpha=1, range=(min_range, max_range), edgecolor='white')
-        ax.set_xlabel(label)
-        ax.set_ylabel('Count of Segments')
-        plt.savefig(file_name, bbox_inches='tight', pad_inches=0)
-        plt.close(fig)
+        histogram = go.Figure(data=[go.Histogram(x=data, nbinsx=session.get("histogram-bins"), range_x=[min_range, max_range])])
+        histogram.update_layout(xaxis_title=label, yaxis_title="Count of Segments")
+        return json.dumps(histogram, cls=plotly.utils.PlotlyJSONEncoder)
     plot_histogram(grain_areas_filtered, 'Area (mm\u00b2)', 'static/images/area_histogram.png')
     plot_histogram(grain_diameters_filtered, 'Diameter (\u03BCm)', 'static/images/diameter_histogram.png')
 
