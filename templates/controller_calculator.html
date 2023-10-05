@@ -1,0 +1,33 @@
+<li class="nav-item">
+    <label class="nav-link border-top">
+        Aspect Ratio: 
+        {% if session['number-of-segments'] is number %}
+            <p class="results">{{ session['number-of-segments'] }}</p>
+        {% endif %}
+    </label>
+</li>
+<li class="nav-item">
+    <label class="nav-link">
+        Distance in Pixels: 
+        {% if session['number-of-segments'] is number %}
+            <p class="results">{{ session['number-of-segments'] }}</p>
+        {% endif %}
+    </label>
+</li>
+<li class="nav-item">
+    <label class="nav-link">
+        Known Distance (mm):
+        {% if session['average-grain-area'] is number %} 
+            <p class="results">{{ session['average-grain-area'] }}</p>
+        {% endif %}
+    </label>
+</li>
+<li class="nav-item">
+    <label class="nav-link border-top">
+        Scale (pixels/mm):
+        {% if session['average-grain-diameter'] is number %} 
+            <p class="results">{{ session['average-grain-diameter'] }}</p>
+        {% endif %} 
+    </label>
+</li>
+

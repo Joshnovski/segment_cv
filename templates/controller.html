@@ -20,6 +20,23 @@
             </div>
         </ul>
     </li>
+    <!-- Scale Calculator -->
+    <li class="nav-item border-top border-bottom">
+        <button class="nav-link nav-link-title" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#scale-collapse" 
+        aria-expanded="false"> 
+        <i class="nav-icons fas fa-ruler-combined"></i> 
+        Scale Calculator
+        </button>
+        <div class="collapse" id="scale-collapse">
+            <ul class="nav nav-pills flex-column">
+                <!-- Input Parameters for control panel -->
+                <div class="scrollable-list-controller">
+                    {% include 'controller_calculator.html' %}
+                </div>
+            </ul>
+        </li>
     <!-- Results panel -->
     <li class="nav-item border-top border-bottom">
         <button class="nav-link nav-link-title" 
