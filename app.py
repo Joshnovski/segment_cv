@@ -448,8 +448,9 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
             showlegend = False)
 
         # Plot histogram
+        config = {'responsive': True}
         histogram = go.Figure(go.Histogram(x=size_type, marker=dict(color='#7A7A7A')), layout=layout)
-        histogram = plot(histogram, output_type='div', include_plotlyjs=False)
+        histogram = plot(histogram, output_type='div', include_plotlyjs=False, config=config)
         histogram_list.append(histogram)
 
     return histogram_list

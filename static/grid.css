@@ -83,11 +83,18 @@ align-items: center;
     }
 }
 
-.card-histogram
+/* ALTERNATIVE SOLUTION WOULD BE TO CENTER IT */
+.card-container
 {
     flex: 1;
     overflow: auto;
     display: flex;
+    align-items: center;
+}
+
+.histogram-padding
+{
+    padding: 10px 20px 10px 10px;
 }
 
 
