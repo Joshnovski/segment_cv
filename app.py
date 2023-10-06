@@ -217,8 +217,13 @@ def set_initial_parameters():
 
     # If the session is starting for the first time, set the parameters and results to default values
     if not session.get('parameters_set'):
-        # For image type 1
-        session['scale-to-pixel-ratio'] = 255.98
+
+        # Scale calculator
+        session['pixel-distance'] = 2559.8
+        session['scalebar-length'] = 10
+        session['scale-to-pixel-ratio'] = round(session['pixel-distance'] / session['scalebar-length'], 2)
+
+        # Control Center Parameters
         session['bottom-crop-ratio'] = 0.05
         session['show-size-histogram'] = "on"
         session['segmentation-images'] = "on"
@@ -239,6 +244,15 @@ def set_initial_parameters():
         # Locks out the repeated setting of parameters if they have already been set.
         session['parameters_set'] = True
 
+@app.route("/calculate-scale", methods=["POST"])
+def calculate_scale():
+
+    # Calculate the scale value if the user changed input
+    session['pixel-distance'] = float(request.form.get("pixel-distance"))
+    session['scalebar-length'] = float(request.form.get("scalebar-length"))
+    session['scale-to-pixel-ratio'] = round(session['pixel-distance'] / session['scalebar-length'], 2)
+    return redirect("/dashboard") 
+
 @app.route("/reset", methods=["POST"])
 def reset_parameters():
 
@@ -257,7 +271,6 @@ def store_parameters():
     Works in conjunction with set_initial_parameters() to store the values in the session. """
 
     # Store the parameter value in the session
-    session['scale-to-pixel-ratio'] = float(request.form.get("scale-to-pixel-ratio"))
     session['bottom-crop-ratio'] = float(request.form.get("bottom-crop-ratio"))
     session['show-size-histogram'] = request.form.get("show-size-histogram")
     session['segmentation-images'] = request.form.get("segmentation-images")

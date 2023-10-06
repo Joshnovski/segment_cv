@@ -1,33 +1,31 @@
-<li class="nav-item">
-    <label class="nav-link border-top">
-        Aspect Ratio: 
-        {% if session['number-of-segments'] is number %}
-            <p class="results">{{ session['number-of-segments'] }}</p>
-        {% endif %}
-    </label>
-</li>
-<li class="nav-item">
+<form method="POST" action="/calculate-scale" id="scale-parameters">
+    <li class="nav-item">
     <label class="nav-link">
         Distance in Pixels: 
-        {% if session['number-of-segments'] is number %}
-            <p class="results">{{ session['number-of-segments'] }}</p>
-        {% endif %}
+        <input autocomplete="off"
+        autofocus class="parameter-input" 
+        id="pixel-distance" 
+        name="pixel-distance" 
+        type="number"
+        value="{{ session['pixel-distance'] }}">
     </label>
-</li>
-<li class="nav-item">
+    </li>
+    <li class="nav-item">
     <label class="nav-link">
         Known Distance (mm):
-        {% if session['average-grain-area'] is number %} 
-            <p class="results">{{ session['average-grain-area'] }}</p>
-        {% endif %}
+        <input autocomplete="off"
+        autofocus class="parameter-input" 
+        id="scalebar-length" 
+        name="scalebar-length" 
+        type="number"
+        value="{{ session['scalebar-length'] }}">
     </label>
-</li>
-<li class="nav-item">
+    </li>
+    <li class="nav-item">
     <label class="nav-link border-top">
-        Scale (pixels/mm):
-        {% if session['average-grain-diameter'] is number %} 
-            <p class="results">{{ session['average-grain-diameter'] }}</p>
-        {% endif %} 
+        Send to Control Center: 
+        <button class="parameter-input" type="submit">Send</button>
     </label>
-</li>
+    </li>
+</form>
 
