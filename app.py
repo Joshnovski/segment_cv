@@ -1,6 +1,7 @@
 import os
 import cv2
 import math
+import time
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
@@ -40,6 +41,14 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///segment.db")
 
+# Cleanup sessions older than 1 day
+session_dir = 'flask_session'
+session_lifetime = 1 * 24 * 60 * 60 # 31 days
+now = time.time()
+for filename in os.listdir(session_dir):
+    file_path = os.path.join(session_dir, filename)
+    if os.path.getmtime(file_path) < now - session_lifetime:
+        os.remove(file_path)
 
 @app.after_request
 def after_request(response):
