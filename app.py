@@ -237,9 +237,7 @@ def set_initial_parameters():
         session['distance-transform'] = 7
         session['morphology-simplicity'] = 3
         session['min-size-diameter'] = 0.283
-        session['min-size-area'] = 0.6
         session['max-size-diameter'] = 1.373
-        session['max-size-area'] = 1.322
 
         # Locks out the repeated setting of parameters if they have already been set.
         session['parameters_set'] = True
@@ -284,9 +282,7 @@ def store_parameters():
     session['distance-transform'] = int(request.form.get("distance-transform"))
     session['morphology-simplicity'] = int(request.form.get("morphology-simplicity"))
     session['min-size-diameter'] = float(request.form.get("min-size-diameter"))
-    session['min-size-area'] = float(request.form.get("min-size-area"))
     session['max-size-diameter'] = float(request.form.get("max-size-diameter"))
-    session['max-size-area'] = float(request.form.get("max-size-area"))
     
     return jsonify(success = True)
 
@@ -385,9 +381,10 @@ def calculate_area_and_filter_contours(result):
     # Find contours in the new blurred_image
     contours, _ = cv2.findContours(result, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # Pixel to mm converter
-    scale_bar_pixels_per_mm = session.get("scale-to-pixel-ratio")
-    pixel_size_mm = (1 / scale_bar_pixels_per_mm) ** 2
+    # Pixel to real units converter
+    scale_bar_pixels_per_unit = session.get("scale-to-pixel-ratio")
+    # (units/pixel)^2
+    pixel_size_real = (1 / scale_bar_pixels_per_unit) ** 2
 
     # Initialise contour groups arrays
     grain_contours = []
@@ -407,49 +404,49 @@ def calculate_area_and_filter_contours(result):
 
     # Filter contours based on size and shape - first pass
     for contour in contours:
+        # Calculates the area in pixels^2 for each contoured segment
         grain_area = cv2.contourArea(contour)
-        grain_real_area = grain_area * pixel_size_mm
-        grain_area_min = session.get("min-size-area") / pixel_size_mm
-        grain_area_max = session.get("max-size-area") / pixel_size_mm
+        # Convert the area in pixels^2 to real units^2
+        grain_real_area = grain_area * pixel_size_real
+        # Calculate filtration boundaries by units/(units/pixel)^2 = pixels^2/units
+        grain_area_min = diameter_to_area(session.get("min-size-diameter"))
+        grain_area_max = diameter_to_area(session.get("max-size-diameter"))
         # histogram filtration based on selected grain range
-        if grain_area_min <= grain_area < grain_area_max:
+        if grain_area_min <= grain_real_area < grain_area_max:
             grain_areas_filtered.append(grain_real_area)
-            grain_diameters_filtered.append(area_to_diameter(grain_real_area)) # 0.680 mm
+            grain_diameters_filtered.append(area_to_diameter(grain_real_area))
         # Sum total contoured areas and diameters
-        if grain_area_min <= grain_area < grain_area_max:
+        if grain_area_min <= grain_real_area < grain_area_max:
             # Area total of contoured region(s)
             contour_area_total += grain_real_area
-            contoured_diameter_total += area_to_diameter(grain_real_area) # mm sum
+            contoured_diameter_total += area_to_diameter(grain_real_area)
         # grain contour size range
-        if grain_area_min < grain_area < grain_area_max:
+        if grain_area_min < grain_real_area < grain_area_max:
             grain_contours.append(contour)
-            grain_total_area += grain_area
+            grain_total_area += grain_real_area
 
-    # Calculate average area in pixels
-    grain_average_area_pixels = grain_total_area / len(grain_contours) if grain_contours else 0
+    # Calculate average area in real units^2
+    grain_average_area = grain_total_area / len(grain_contours) if grain_contours else 0
 
-    # Calculate average diameter in mm
-    grain_average_diameter_real = contoured_diameter_total / len(grain_contours) if grain_contours else 0
-
-    # Convert average area in pixels to average area in square millimeters
-    grain_average_area_mm = grain_average_area_pixels * pixel_size_mm
+    # Calculate average diameter in real units
+    grain_average_diameter = contoured_diameter_total / len(grain_contours) if grain_contours else 0
 
     # Store the average grain diameter in the session
-    session['average-grain-diameter'] = round(grain_average_diameter_real, 3)
+    session['average-grain-diameter'] = round(grain_average_diameter, 2)
     # Store the average grain area in the session
-    session['average-grain-area'] = round(grain_average_area_mm, 2)
+    session['average-grain-area'] = round(grain_average_area, 2)
     # Store the number of segments in the session
     session['number-of-segments'] = len(grain_contours)
 
     # Return the number of chocolate chips, the outlined image, the thresholded image and the average area
-    return contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered
+    return contour_area_total, grain_average_diameter, grain_contours, grain_average_area, pixel_size_real, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered
 
 def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
 
     # style histograms
     histogram_list = []
     size_data = [grain_areas_filtered, grain_diameters_filtered]
-    size_types = ['Area', 'Diameter']
+    size_types = ['Area (mm)', 'Diameter (mm^2)']
     for (size_type, unit_type) in zip(size_data, size_types):
         layout = go.Layout(
             autosize=True,
@@ -523,17 +520,17 @@ def run():
     # Run through all the functions
     thresholded_image_3chan, markers, image, dtt, dt = load_and_preprocessing()
     watershed_image = watershed_and_postprocessing(thresholded_image_3chan, markers)
-    contour_area_total, grain_average_diameter_real, grain_contours, grain_average_area_mm, pixel_size_mm, grain_areas, grain_diameters, grain_areas_filtered, grain_diameters_filtered = calculate_area_and_filter_contours(watershed_image)
+    _, _, grain_contours, _, _, _, _, grain_areas_filtered, grain_diameters_filtered = calculate_area_and_filter_contours(watershed_image)
     contoured_image = draw_contours(image, grain_contours)
 
-    if session.get("show-size-histogram"):
-        histogram_list = grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
-        # Store in the session
-        session['area_histogram_div'] = histogram_list[0]
-        session['diameter_histogram_div'] = histogram_list[1]
 
-    if session.get("segmentation-images"):
-        display_images(watershed_image, contoured_image, dtt, image, thresholded_image_3chan, dt)
+    histogram_list = grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
+    # Store in the session
+    session['area_histogram_div'] = histogram_list[0]
+    session['diameter_histogram_div'] = histogram_list[1]
+
+
+    display_images(watershed_image, contoured_image, dtt, image, thresholded_image_3chan, dt)
 
     # Flash a success message
     flash('Segmentation Complete', 'success')

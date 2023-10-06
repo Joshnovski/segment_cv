@@ -18,28 +18,6 @@
         </li>
         <li class="nav-item">
         <label class="nav-link">
-            Show Size Histograms: 
-            <input autocomplete="off"
-            autofocus class="default-checkbox" 
-            id="show-size-histogram" 
-            name="show-size-histogram" 
-            type="checkbox" 
-            {{ "checked" if session["show-size-histogram"] == "on" else "" }}>
-        </label>
-        </li>
-        <li class="nav-item">
-        <label class="nav-link">
-            Segmentation Images: 
-            <input autocomplete="off"
-            autofocus class="default-checkbox" 
-            id="segmentation-images" 
-            name="segmentation-images" 
-            type="checkbox"
-            {{ "checked" if session["segmentation-images"] == "on" else "" }}>
-        </label>
-        </li>
-        <li class="nav-item">
-        <label class="nav-link">
             Histogram Bins: 
             <input autocomplete="off"
             autofocus class="parameter-input" 
@@ -138,17 +116,10 @@
         </label>
         </li>
         <li class="nav-item">
-            <label class="nav-link">
-                <!-- <div class="contour-color-selector"></div>  -->
-                <div class="size-columns">
-                    <div>mm<sup>2</sup></div>
-                    <div>mm</div>
-                </div>
-            </label>
         </li>
         <li class="nav-item">
         <label class="nav-link">
-            Min Size:
+            Min Segment Size (mm):
             <!-- <div class="contour-color-selector"></div>  -->
             <input autocomplete="off"
             autofocus class="parameter-input separator" 
@@ -157,18 +128,11 @@
             type="number"
             placeholder="Diam"
             value="{{ session['min-size-diameter'] }}">
-            <input autocomplete="off"
-            autofocus class="parameter-input" 
-            id="min-size-area" 
-            name="min-size-area" 
-            type="number"
-            placeholder="Area"
-            value="{{ session['min-size-area'] }}">
         </label>
         </li>
         <li class="nav-item">
         <label class="nav-link">
-            Max Size: 
+            Max Segment Size (mm): 
             <input autocomplete="off"
             autofocus class="parameter-input separator" 
             id="max-size-diameter" 
@@ -176,13 +140,6 @@
             type="number"
             placeholder="Diam"
             value="{{ session['max-size-diameter'] }}">
-            <input autocomplete="off"
-            autofocus class="parameter-input" 
-            id="max-size-area" 
-            name="max-size-area" 
-            type="number"
-            placeholder="Area"
-            value="{{ session['max-size-area'] }}">
         </label>
     </li>
 </form>
