@@ -122,3 +122,22 @@
 {
     gap: 10px;
 }
+
+/* Submit btn */
+.submit-btn 
+{
+    font-size: 13px;
+    font-weight: 400;
+    color: white;
+    background-color: #a1a1a1;
+    border: none;
+    border-radius: 0.15rem;
+    width: 50%;  /* Or any specific width */
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.submit-btn:hover
+{
+    background-color: #b8b8b8;
+}

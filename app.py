@@ -249,6 +249,9 @@ def calculate_scale():
     session['pixel-distance'] = float(request.form.get("pixel-distance"))
     session['scalebar-length'] = float(request.form.get("scalebar-length"))
     session['scale-to-pixel-ratio'] = round(session['pixel-distance'] / session['scalebar-length'], 2)
+
+    flash('Calculation Complete! Control Center Updated', 'success')
+
     return redirect("/dashboard") 
 
 @app.route("/reset", methods=["POST"])
