@@ -15,12 +15,14 @@
     font-weight: 500;
     color: #7A7A7A;
 }
-
+ 
 /* Dropdown Headers */
 .nav-link-title
 {
     font-size: 18px;
     font-weight: 600 !important;
+    height: 60px;
+    padding-left: 30px;
 }
 
 /* Style Properties of Nav Links*/
@@ -144,4 +146,10 @@
 .submit-btn:hover
 {
     background-color: #b8b8b8;
+}
+
+/* Pills padding from top */
+.pills-pd
+{
+    padding-top: 30px;
 }

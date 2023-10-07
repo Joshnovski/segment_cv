@@ -69,17 +69,32 @@ align-items: center;
 }
 
 /* Responsive changes based on window width */
-@media (max-width: 1225px) 
+@media (max-width: 1600px) 
 {
     main 
     {
        grid-template-columns: 1fr 1fr; 
-       grid-template-rows: repeat(4, 200px);
+       grid-template-rows: repeat(4, 400px);
        grid-template-areas: 
        "c1 c1"
        "c4 c4"
        "c2 c3"
        "c5 c6"; 
+    }
+}
+@media (max-width: 1150px) 
+{
+    main 
+    {
+       grid-template-columns: 1fr; 
+       grid-template-rows: repeat(6, 400px);
+       grid-template-areas: 
+       "c1"
+       "c4"
+       "c2"
+       "c3"
+       "c5"
+       "c6"; 
     }
 }
 
