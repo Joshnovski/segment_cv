@@ -44,6 +44,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="/static/scripts/image_upload.js"></script>
     <script src="/static/scripts/controller_state.js"></script>
+    <script src="/static/scripts/click_dropdown.js"></script>
 
     <title>SEGMENT: Dashboard</title>
   </head>
@@ -74,11 +75,13 @@
     </header>
 
     <!-- Contains the control panel -->
-    <nav class="d-flex flex-column flex-shrink-0 p-3">
-      <a class="navbar-brand d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none  border-bottom" href="/">
-        <img src="../static/brand.PNG" width="35" height="30" class="logo-alignment" alt="">
-        <span class="brand-style">SEGMENT</span>
-      </a>
+    <nav class="d-flex flex-column flex-shrink-0">
+      <div class="brand-container">
+        <a class="navbar-brand d-flex align-items-center link-dark text-decoration-none" href="/">
+          <img src="../static/brand.PNG" width="35" height="30" class="logo-alignment" alt="">
+          <span class="brand-style">SEGMENT</span>
+        </a>
+      </div>
       <!-- Contains main layout of controller exluding heading -->
       {% include 'controller.html' %}
     </nav>

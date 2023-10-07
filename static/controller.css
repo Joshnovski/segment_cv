@@ -1,4 +1,14 @@
 /* Dropdown Items From Nav Headers */
+.nav-item-title:hover
+{
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.nav-item-title.active
+{
+    background-color: #f0f0f0;
+}
+
 .nav-item
 {
     font-size: 13px;
@@ -21,11 +31,11 @@
 }
 .nav-link:hover
 {
-    color: #575757;
+    color: #7A7A7A ;
 }
 .nav-link:active, .nav-link:focus 
 {
-    color: #575757 !important;   
+    color: #7A7A7A;   
 }
 
 /* General Nav Icons Styling */
@@ -115,12 +125,6 @@
     justify-content: flex-end;
     gap: 40px;
     padding-right: 20px;
-}
-
-/* Padding between the pills */
-.pill-gap
-{
-    gap: 10px;
 }
 
 /* Submit btn */
