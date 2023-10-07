@@ -1,19 +1,19 @@
 /* Dropdown Items From Nav Headers */
 .nav-item-title:hover
 {
-    background-color: #f0f0f0;
+    background-color: #202020;
     cursor: pointer;
 }
 .nav-item-title.active
 {
-    background-color: #f0f0f0;
+    background-color: #202020;
 }
 
 .nav-item
 {
     font-size: 13px;
     font-weight: 500;
-    color: #7A7A7A;
+    color: white;
 }
  
 /* Dropdown Headers */
@@ -28,27 +28,35 @@
 /* Style Properties of Nav Links*/
 .nav-link
 {
-    color: #7A7A7A;
+    color: white;
     cursor: pointer;
 }
 .nav-link:hover
 {
-    color: #7A7A7A ;
+    color: #3FD4C1;
 }
 .nav-link:active, .nav-link:focus 
 {
-    color: #7A7A7A;   
+    color: #3FD4C1;   
 }
 
 /* General Nav Icons Styling */
 .nav-icons 
 {
-    color: #7A7A7A;
+    color: white;
     padding-right: 10px;
+}
+.nav-icons:hover
+{
+    color: #3FD4C1;
+}
+.nav-icons:active, .nav-icons:focus
+{
+    color: #3FD4C1;
 }
 .nav-operate-icons 
 {
-    color: #7A7A7A;
+    color: white;
     padding-right: 30px;
     cursor: pointer;
 }
