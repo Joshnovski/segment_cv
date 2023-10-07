@@ -18,7 +18,7 @@ border-radius: 0px !important;
 border-bottom: none;
 height: 40px;
 font-weight: 500;
-background-color: #7A7A7A;
+background-color: #b8b8b8;
 color: white;
 display: flex;
 align-items: center;
@@ -35,7 +35,7 @@ align-items: center;
 /* Core css properties for the grid design */
 .card 
 {
-    background-color: #e4e4e4;
+    background-color: white;
     border: none;
     border-radius: 0px;
     box-sizing: border-box;

@@ -462,16 +462,17 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
     for (size_type, unit_type) in zip(size_data, size_types):
         layout = go.Layout(
             autosize=True,
+            font=dict(family='Inter', color='#7A7A7A'),
             margin = go.layout.Margin(l=0, r=0, b=0, t=0), 
             xaxis = go.layout.XAxis(title=f'Contour {unit_type}'), 
-            yaxis = go.layout.YAxis(title='Number of Segments'),
-            plot_bgcolor='#e4e4e4',
-            paper_bgcolor='#e4e4e4', 
+            yaxis = go.layout.YAxis(title='Number of Segments', gridcolor='#ebebeb'),
+            plot_bgcolor='white',
+            paper_bgcolor='white', 
             showlegend = False)
 
         # Plot histogram
         config = {'responsive': True}
-        histogram = go.Figure(go.Histogram(x=size_type, marker=dict(color='#7A7A7A')), layout=layout)
+        histogram = go.Figure(go.Histogram(x=size_type, nbinsx=session['histogram-bins'], marker=dict(color='#7A7A7A')), layout=layout)
         histogram = plot(histogram, output_type='div', include_plotlyjs=False, config=config)
         histogram_list.append(histogram)
 

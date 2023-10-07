@@ -22,7 +22,7 @@ nav {
 main
 {
     grid-column: 2;
-    background-color: white;
+    background-color: rgb(243, 243, 243);
 }
 
 /* universal p tag styling */
