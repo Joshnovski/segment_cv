@@ -12,7 +12,7 @@ body
 
 /* Base Nav Styling */
 nav {
-    width: 315px;
+    width: 275px;
     height: 100vh;
     background-color: #262626;
     grid-row: 1 / 3;

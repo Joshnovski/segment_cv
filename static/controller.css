@@ -32,7 +32,7 @@
 
 .nav-item
 {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 500;
     color: white;
 }
@@ -40,7 +40,7 @@
 /* Dropdown Headers */
 .nav-link-title
 {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     height: 60px;
     padding-left: 30px;
@@ -73,7 +73,7 @@
 }
 .nav-operate-icons:hover 
 {
-    color: #575757;
+    color: #3FD4C1;
 }
 .nav-operate-icons-struct 
 {
@@ -121,10 +121,10 @@
 /* Styles for Checkboxes In Control Center */
 .default-checkbox 
 {
-    color: #7A7A7A;
+    color: white;
     background-color: #fff;
     border: 1px solid #d4d4d4;
-    accent-color: #7A7A7A;
+    accent-color: #25a494;
     border-radius: 0.25rem;
     float: right;
     margin-right: 25px;
@@ -151,26 +151,49 @@
 }
 
 /* Submit btn */
+.submit-btn-container
+{
+    background-color: #2e2e2e;
+}
 .submit-btn 
 {
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
     color: white;
-    background-color: #a1a1a1;
+    background-color: #2e2e2e;
     border: none;
     border-radius: 0.15rem;
-    width: 50%;  /* Or any specific width */
+    width: 100%;  /* Or any specific width */
     position: relative;
     left: 50%;
     transform: translate(-50%);
 }
+.submit-btn-container:hover
+{
+    background-color: #3FD4C1;
+}
 .submit-btn:hover
 {
-    background-color: #b8b8b8;
+    background-color: #3FD4C1;
+    color: #262626;
+    font-weight: 500;
 }
 
 /* Pills padding from top */
 .pills-pd
 {
     padding-top: 30px;
+}
+
+
+/* Important border bottom bypasses */
+.border-bottom
+{
+    border-bottom-color: rgb(53, 53, 53) !important;
+    border-radius: 0 0 0 0 !important;
+}
+.border-top
+{
+    border-top-color: rgb(53, 53, 53) !important;
+    border-radius: 0 0 0 0 !important;
 }
