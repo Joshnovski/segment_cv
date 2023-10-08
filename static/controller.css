@@ -2,11 +2,32 @@
 .nav-item-title:hover
 {
     background-color: #202020;
+    color: #3FD4C1;
+    border-left: 3px solid #3FD4C1;
+    cursor: pointer;
+} 
+.nav-item-title:hover .nav-link, 
+.nav-item-title:hover .nav-icons {
+    background-color: #202020;
+    color: #3FD4C1;
     cursor: pointer;
 }
+
 .nav-item-title.active
 {
     background-color: #202020;
+    color: #3FD4C1;
+    border-left: 3px solid #3FD4C1;
+} 
+.nav-item-title.active .nav-link, 
+.nav-item-title.active .nav-icons {
+    background-color: #202020;
+    color: #3FD4C1;
+}
+
+.nav-link-title:focus
+{
+    color: white;
 }
 
 .nav-item
@@ -20,9 +41,11 @@
 .nav-link-title
 {
     font-size: 18px;
-    font-weight: 600 !important;
+    font-weight: 600;
     height: 60px;
     padding-left: 30px;
+    color: white;
+
 }
 
 /* Style Properties of Nav Links*/
@@ -35,25 +58,13 @@
 {
     color: #3FD4C1;
 }
-.nav-link:active, .nav-link:focus 
-{
-    color: #3FD4C1;   
-}
 
 /* General Nav Icons Styling */
 .nav-icons 
 {
-    color: white;
     padding-right: 10px;
 }
-.nav-icons:hover
-{
-    color: #3FD4C1;
-}
-.nav-icons:active, .nav-icons:focus
-{
-    color: #3FD4C1;
-}
+
 .nav-operate-icons 
 {
     color: white;
@@ -78,16 +89,17 @@
     width: 60px;
     font-size: 13px;
     font-weight: 400;
-    color: #212529;
-    background-color: #fff;
-    border: 1.7px solid #7A7A7A;
+    color: white;
+    background-color: #262626;
+    border: 1.7px solid #3FD4C1;
     border-radius: 0.25rem;
     float: right;
     margin-top: -2px;
 }
-.parameter-input:hover 
+.parameter-input:focus-visible
 {
-    border-color: #575757;
+    outline: none;
+    border: 1.7px solid #3FD4C1;
 }
 
 /* Results Stylings */
@@ -96,7 +108,7 @@
     width: 60px;
     font-size: 13px;
     font-weight: 400;
-    color: #7A7A7A;
+    color: white;
     float: right;
 }
 
