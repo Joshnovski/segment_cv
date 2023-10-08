@@ -458,21 +458,22 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
     # style histograms
     histogram_list = []
     size_data = [grain_areas_filtered, grain_diameters_filtered]
-    size_types = ['Area (mm)', 'Diameter (mm^2)']
+    size_types = ['Area (mm)', 'Diameter (mm<sup>2</sup>)']
     for (size_type, unit_type) in zip(size_data, size_types):
         layout = go.Layout(
             autosize=True,
-            font=dict(family='Inter', color='#7A7A7A'),
+            font=dict(family='Inter', color='white'),
             margin = go.layout.Margin(l=0, r=0, b=0, t=0), 
             xaxis = go.layout.XAxis(title=f'Contour {unit_type}'), 
-            yaxis = go.layout.YAxis(title='Number of Segments', gridcolor='#ebebeb'),
-            plot_bgcolor='white',
-            paper_bgcolor='white', 
-            showlegend = False)
+            yaxis = go.layout.YAxis(title='Number of Segments', gridcolor='#575757'),
+            plot_bgcolor='#262626',
+            paper_bgcolor='#262626', 
+            showlegend = False,
+            bargap=0.07,)
 
         # Plot histogram
         config = {'responsive': True}
-        histogram = go.Figure(go.Histogram(x=size_type, nbinsx=session['histogram-bins'], marker=dict(color='#7A7A7A')), layout=layout)
+        histogram = go.Figure(go.Histogram(x=size_type, nbinsx=session['histogram-bins'], marker=dict(color='#3FD4C1')), layout=layout)
         histogram = plot(histogram, output_type='div', include_plotlyjs=False, config=config)
         histogram_list.append(histogram)
 
@@ -487,7 +488,7 @@ def draw_contours(image, grain_contours):
     # result_image = cv2.bitwise_not(result_image)
 
     # Draws contour lines over the copied image
-    cv2.drawContours(result_image, grain_contours, -1, (255, 0, 0), session.get("contour-thickness"))
+    cv2.drawContours(result_image, grain_contours, -1, (193, 212, 63), session.get("contour-thickness"))
 
     return result_image
 

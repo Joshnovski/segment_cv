@@ -25,6 +25,27 @@ main
     background-color: #121212;
 }
 
+/* Universal Scrollbar styling */
+/* This is the scrollbar track (the background) */
+::-webkit-scrollbar {
+    background-color: #262626; /* Color of the scrollbar track */
+    width: 10px;
+}
+
+/* This is the draggable scrolling handle */
+::-webkit-scrollbar-thumb {
+    background-color: #3a3a3a; /* Darker color for the thumb */
+}
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: #3FD4C1;
+}
+
+/* This is the (optional) button at the top and bottom of the scrollbar */
+::-webkit-scrollbar-button {
+    display: none; /* If you don't want to display the buttons */
+}
+
 /* universal p tag styling */
 p {
     margin: 0 !important;
@@ -97,4 +118,3 @@ justify-content: space-between;
 .flash-error {
     background-color: #e74c3c;
 }
-  
