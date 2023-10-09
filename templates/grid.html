@@ -23,7 +23,7 @@
     </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
-        <img src="{{ url_for('static', filename='images/original_image.png') }}" alt="Original Image">
+        <img class="grid-img" src="{{ url_for('static', filename='images/original_image.png') }}" alt="Original Image">
         {% endif %} 
     </div>
 </div>
@@ -37,7 +37,7 @@
     </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
-        <img src="{{ url_for('static', filename='images/distance_transform_thresholded.png') }}" alt="Distance Transform">
+        <img class="grid-img" src="{{ url_for('static', filename='images/distance_transform_thresholded.png') }}" alt="Distance Transform">
         {% endif %}
     </div> 
 </div>
@@ -65,7 +65,7 @@
     </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
-        <img src="{{ url_for('static', filename='images/watershed_image.png') }}" alt="Watershed Segmentation">
+        <img class="grid-img" src="{{ url_for('static', filename='images/watershed_image.png') }}" alt="Watershed Segmentation">
         {% endif %} 
     </div>
 </div>
@@ -79,7 +79,7 @@
     </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
-        <img src="{{ url_for('static', filename='images/contoured_image.png') }}" alt="Contoured Segments">
+        <img class="grid-img" src="{{ url_for('static', filename='images/contoured_image.png') }}" alt="Contoured Segments">
         {% endif %} 
     </div>  
 </div>

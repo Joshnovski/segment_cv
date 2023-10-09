@@ -134,8 +134,18 @@ justify-content: space-between;
     justify-content: center;
 }
 
-.enlarged-card {
+.enlarged-card 
+{
     width: 80%;  /* You can adjust this value */
     height: 80%; /* You can adjust this value */
     overflow: auto;
+}
+.enlarged-card .card-container {
+    height: 100%;
+}
+.enlarged-image
+{
+    width: auto;   /* or any other value that works for you */
+    height: 100% !important;
+    max-width: none !important;
 }

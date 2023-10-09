@@ -29,8 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // Copying main content
-            const originalMainContent = originalCard.querySelector('.card-container').innerHTML;
-            enlargedCardContainer.innerHTML = originalMainContent;
+            const originalMainContent = originalCard.querySelector('.card-container').cloneNode(true);
+            enlargedCardContainer.innerHTML = "";  // clear any previous content
+            enlargedCardContainer.appendChild(originalMainContent);
+
+            const enlargedImage = enlargedCardContainer.querySelector('.grid-img');
+            if (enlargedImage) {
+                enlargedImage.classList.add('enlarged-image');
+            }
 
             // Displaying the overlay
             overlay.style.display = 'flex';

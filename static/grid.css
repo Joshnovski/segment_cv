@@ -11,6 +11,12 @@ main
     gap: 20px;
 }
 
+.grid-img
+{
+    height: auto;
+    max-width: 100%;
+}
+
 /* Base Header Styling */
 .card-header
 {
