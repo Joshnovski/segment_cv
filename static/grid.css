@@ -43,8 +43,11 @@ justify-content: space-between;
 .floppy-icon {
     font-size: 20px;  /* Adjust as needed */
 }
-.arrows-icon {
-    font-size: 18px;  /* Adjust as needed */
+.expand-icon {
+    font-size: 20px;  /* Adjust as needed */
+}
+.close-icon {
+    font-size: 20px;  /* Adjust as needed */
 }
 
 /* Manages The Style of The Scroll List for Control Center */

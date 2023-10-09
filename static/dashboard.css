@@ -118,3 +118,24 @@ justify-content: space-between;
 .flash-error {
     background-color: #e74c3c;
 }
+
+/* OVERLAY FOR ENLARGED IMAGES AND PLOTS */
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.enlarged-card {
+    width: 80%;  /* You can adjust this value */
+    height: 80%; /* You can adjust this value */
+    overflow: auto;
+}
