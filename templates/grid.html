@@ -1,6 +1,12 @@
 <!-- Cards for images and results -->
 <div class="card">
-    <header class="card-header">Segment Surface Area Histogram</header>
+    <header class="card-header">
+        Segment Surface Area Histogram 
+        <div class="icon-container">
+            <i class="icon-style nav-icons fa-lg floppy-icon fas fa-floppy-disk"></i>
+            <i class="icon-style nav-icons fa-lg arrows-icon fas fa-up-right-and-down-left-from-center"></i>
+        </div>
+    </header>
     <div class="card-container histogram-padding">
         {% if area_histogram_div %}
             {{ area_histogram_div | safe }}
@@ -8,7 +14,13 @@
     </div>
 </div>
 <div class="card">
-    <header class="card-header">Original Image</header>
+    <header class="card-header">
+        Original Image
+        <div class="icon-container">
+            <i class="icon-style nav-icons fa-lg floppy-icon fas fa-floppy-disk"></i>
+            <i class="icon-style nav-icons fa-lg arrows-icon fas fa-up-right-and-down-left-from-center"></i>
+        </div>
+    </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
         <img src="{{ url_for('static', filename='images/original_image.png') }}" alt="Original Image">
@@ -16,7 +28,13 @@
     </div>
 </div>
 <div class="card">
-    <header class="card-header">Distance Transform</header>
+    <header class="card-header">
+        Distance Transform
+        <div class="icon-container">
+            <i class="icon-style nav-icons fa-lg floppy-icon fas fa-floppy-disk"></i>
+            <i class="icon-style nav-icons fa-lg arrows-icon fas fa-up-right-and-down-left-from-center"></i>
+        </div>
+    </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
         <img src="{{ url_for('static', filename='images/distance_transform_thresholded.png') }}" alt="Distance Transform">
@@ -24,7 +42,13 @@
     </div> 
 </div>
 <div class="card">
-    <header class="card-header">Segment Diameter Approximation Histogram</header>
+    <header class="card-header">
+        Segment Diameter Approximation Histogram
+        <div class="icon-container">
+            <i class="icon-style nav-icons fa-lg floppy-icon fas fa-floppy-disk"></i>
+            <i class="icon-style nav-icons fa-lg arrows-icon fas fa-up-right-and-down-left-from-center"></i>
+        </div>
+    </header>
     <div class="card-container histogram-padding">
         {% if diameter_histogram_div %}
             {{ diameter_histogram_div | safe }}
@@ -32,7 +56,13 @@
     </div>
 </div>
 <div class="card">
-    <header class="card-header">Watershed Segmentation</header>
+    <header class="card-header">
+        Watershed Segmentation
+        <div class="icon-container">
+            <i class="icon-style nav-icons fa-lg floppy-icon fas fa-floppy-disk"></i>
+            <i class="icon-style nav-icons fa-lg arrows-icon fas fa-up-right-and-down-left-from-center"></i>
+        </div>
+    </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
         <img src="{{ url_for('static', filename='images/watershed_image.png') }}" alt="Watershed Segmentation">
@@ -40,7 +70,13 @@
     </div>
 </div>
 <div class="card">
-    <header class="card-header">Contoured Segments</header>
+    <header class="card-header">
+        Contoured Segments
+        <div class="icon-container">
+            <i class="icon-style nav-icons fa-lg floppy-icon fas fa-floppy-disk"></i>
+            <i class="icon-style nav-icons fa-lg arrows-icon fas fa-up-right-and-down-left-from-center"></i>
+        </div>
+    </header>
     <div class="card-container">
         {% if not images_existing == 0 %}
         <img src="{{ url_for('static', filename='images/contoured_image.png') }}" alt="Contoured Segments">

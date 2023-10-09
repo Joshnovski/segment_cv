@@ -19,9 +19,32 @@ border-bottom: none;
 height: 50px;
 font-weight: 500;
 background-color: #1F1F1F;
+border-right: 3px solid #3FD4C1;
 color: white;
 display: flex;
 align-items: center;
+justify-content: space-between;
+}
+.icon-container 
+{
+    display: flex; 
+    align-items: center;
+    gap: 10px; /* This will give some space between the two icons */
+}
+.icon-style
+{
+    color: #3FD4C1;
+    cursor: pointer;
+}
+.icon-style:hover
+{
+    color: white;
+}
+.floppy-icon {
+    font-size: 20px;  /* Adjust as needed */
+}
+.arrows-icon {
+    font-size: 18px;  /* Adjust as needed */
 }
 
 /* Manages The Style of The Scroll List for Control Center */
@@ -112,5 +135,3 @@ align-items: center;
 {
     padding: 10px 20px 10px 10px;
 }
-
-
