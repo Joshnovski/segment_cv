@@ -1,23 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const overlay = document.getElementById("overlay");
-    const enlargedCardHeader = overlay.querySelector('.card-header');
+    let enlargedCardHeader = overlay.querySelector('.card-header');
     const enlargedCardContainer = overlay.querySelector('.card-container');
-    const closeIcon = overlay.querySelector('.close-icon');
 
     // Show the enlarged card when the expand-icon is clicked
     document.querySelectorAll('.expand-icon').forEach(icon => {
         icon.addEventListener('click', function() {
             const originalCard = icon.closest('.card');
 
-            // Copying header content
-            const originalHeaderContent = originalCard.querySelector('.card-header').cloneNode(true);
-            enlargedCardHeader.innerHTML = '';
+            // Get header text
+            const headerText = originalCard.querySelector('.card-header').firstChild.textContent.trim();
+
+            // Copying header inner content
+            const originalHeaderContent = originalCard.querySelector('.icon-container').cloneNode(true);
+
+            // Clearing and appending text and icons to the enlarged card's header
+            enlargedCardHeader.innerHTML = headerText;
             enlargedCardHeader.appendChild(originalHeaderContent);
+
             const newExpandIcon = enlargedCardHeader.querySelector('.expand-icon');
             newExpandIcon.classList.remove('expand-icon');
             newExpandIcon.classList.add('fa-times', 'close-icon');
-            
+
+            // Need to bind the close event to the new close icon
+            newExpandIcon.addEventListener('click', function() {
+                overlay.style.display = 'none';
+            });
+
             // Copying main content
             const originalMainContent = originalCard.querySelector('.card-container').innerHTML;
             enlargedCardContainer.innerHTML = originalMainContent;
@@ -26,10 +36,5 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.style.display = 'flex';
         });
     });
-
-    // Hide the enlarged card when the close-icon (X) is clicked
-    closeIcon.addEventListener('click', function() {
-        overlay.style.display = 'none';
-    });
-
 });
+
