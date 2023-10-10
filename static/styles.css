@@ -2,22 +2,42 @@
 
 /* Font for body */
 body 
-{
+{   
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
     font-family: "Inter";
+    background-color: #121212;
 }
 
+nav
+{
+    height: 70px;
+    background-color: #262626;
+}
+
+main
+{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* Size for brand */
 nav .navbar-brand
 {
     font-size: 26px;
     font-family: "Outfit";
+    margin-left: 15px;
 }
 
 /* Colors for brand */
 nav .navbar-brand .brand-style
 {
-    color: #7A7A7A;
+    color: white;
     font-weight: 600;
     margin-left: 8px;
     letter-spacing: 7px;
@@ -34,5 +54,34 @@ nav .logo-alignment
 nav .nav-link
 {
     margin-top: -10px;
+    color: white;
+}
+nav .nav-link:hover
+{
+    color: #3FD4C1;
+}
+
+/* btn stylings */
+
+main .form-control
+{
+    background-color: #121212;
+    border: 1px solid white;
+    color: white;
+}
+main .form-control:focus
+{
+    background-color: #262626;
+    border: 1px solid white;
+    color: white;
+}
+
+main .btn.btn-primary
+{
+    background-color: #262626;
+}
+main .btn.btn-primary:hover
+{
+    background-color: #3FD4C1;
 }
 
