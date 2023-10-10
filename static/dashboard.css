@@ -140,13 +140,6 @@ justify-content: space-between;
     height: calc(50% + 20vw); /* You can adjust this value */
     overflow: auto;
 }
-/* When the screen width is 965px or less */
-@media (max-width: 850px) {
-    .enlarged-card {
-        width: 50%; /* or whatever you wish */
-        height: 50%; /* or whatever you wish */
-    }
-}
 .enlarged-card .card-container {
     height: 100%;
 }
@@ -155,4 +148,9 @@ justify-content: space-between;
     width: auto;   /* or any other value that works for you */
     height: 93% !important;
     max-width: none !important;
+}
+
+.enlarged-card .histogram-container
+{
+    transform: scale(1.5);
 }

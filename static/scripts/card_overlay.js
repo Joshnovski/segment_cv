@@ -34,11 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let originalMainContent;
             if (originalCard.querySelector('.card-container')) {
                 originalMainContent = originalCard.querySelector('.card-container').cloneNode(true);
-                console.log("image");
             }
             if (originalCard.querySelector('.histogram-container')) {
                 originalMainContent = originalCard.querySelector('.histogram-container').cloneNode(true);
-                console.log("histogram");
             }
             enlargedCardContainer.innerHTML = "";  // clear any previous content
             enlargedCardContainer.appendChild(originalMainContent);
