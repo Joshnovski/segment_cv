@@ -27,10 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Need to bind the close event to the new close icon
             newExpandIcon.addEventListener('click', function() {
                 overlay.style.display = 'none';
+                enlargedCard.style.width = "";
             });
 
             // Copying main content
-            const originalMainContent = originalCard.querySelector('.card-container').children[0].cloneNode(true);
+            let originalMainContent;
+            if (originalCard.querySelector('.card-container')) {
+                originalMainContent = originalCard.querySelector('.card-container').cloneNode(true);
+                console.log("image");
+            }
+            if (originalCard.querySelector('.histogram-container')) {
+                originalMainContent = originalCard.querySelector('.histogram-container').cloneNode(true);
+                console.log("histogram");
+            }
             enlargedCardContainer.innerHTML = "";  // clear any previous content
             enlargedCardContainer.appendChild(originalMainContent);
 

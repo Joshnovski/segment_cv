@@ -137,7 +137,7 @@ justify-content: space-between;
 .enlarged-card 
 {
     width: 80%;  /* You can adjust this value */
-    height: calc(60% + 20vw); /* You can adjust this value */
+    height: calc(50% + 20vw); /* You can adjust this value */
     overflow: auto;
 }
 /* When the screen width is 965px or less */
