@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById("overlay");
     let enlargedCardHeader = overlay.querySelector('.card-header');
     const enlargedCardContainer = overlay.querySelector('.card-container');
+    const enlargedCard = overlay.querySelector('.enlarged-card'); // Fetch the enlarged card
 
     // Show the enlarged card when the expand-icon is clicked
     document.querySelectorAll('.expand-icon').forEach(icon => {
@@ -29,13 +30,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // Copying main content
-            const originalMainContent = originalCard.querySelector('.card-container').cloneNode(true);
+            const originalMainContent = originalCard.querySelector('.card-container').children[0].cloneNode(true);
             enlargedCardContainer.innerHTML = "";  // clear any previous content
             enlargedCardContainer.appendChild(originalMainContent);
 
             const enlargedImage = enlargedCardContainer.querySelector('.grid-img');
             if (enlargedImage) {
                 enlargedImage.classList.add('enlarged-image');
+
+                // Get the width of the enlarged image
+                const computedWidth = getComputedStyle(enlargedImage).width;
+                
+                // Set the width of the enlarged card to match the image's width
+                enlargedCard.style.width = computedWidth;
             }
 
             // Displaying the overlay
@@ -43,4 +50,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
