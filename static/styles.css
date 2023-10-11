@@ -15,6 +15,7 @@ nav
 {
     height: 70px;
     background-color: #262626;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5); /* horizontal offset, vertical offset, blur radius, color */
 }
 
 main
