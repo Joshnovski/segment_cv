@@ -67,7 +67,8 @@ nav .nav-link:hover
 main .form-control
 {
     background-color: rgba(0, 0, 0, 0);;
-    border: 1px solid white;
+    border: 1px solid rgb(148, 148, 148);
+    padding: 8px 12px 10px 8px;
     color: white;
 }
 main .form-control:focus
@@ -91,9 +92,23 @@ main .btn.btn-primary:hover
 main .authentication-container
 {
     background-color: #1a1a1a;
-    padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+main .authentication-header
+{
+    text-align: center;
+    background-color: #3FD4C1;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    padding: 15px 0 15px 0;
+    
+}
+main .authentication-content
+{
+    padding: 40px;
 }
 
 /* General text styling */
