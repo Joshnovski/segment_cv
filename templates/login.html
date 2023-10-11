@@ -9,15 +9,23 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/" method="post">
-        <div class="login-interactive-wrapper">
-            <div class="mb-3">
-                <input autocomplete="off" autofocus class="form-control mx-auto" id="username" name="username" placeholder="Username" type="text">
+    <div class="authentication-container">
+        <form action="/" method="post">
+            <div class="login-interactive-wrapper">
+                <div class="mb-3">
+                    <input autocomplete="off" autofocus class="form-control mx-auto" id="username" name="username" placeholder="Username" type="text">
+                </div>
+                <div class="mb-2">
+                    <input class="form-control mx-auto" id="password" name="password" placeholder="Password" type="password">
+                </div>
+                <div class="mb-4 text forgot-password-btn">
+                    <span class="highlight-link"><s>Forgot password?</s></span>
+                </div>
+                <button class="btn btn-primary" type="submit">Login</button>
+                <div class="mt-3 text bottom-text">
+                    Need an account? <a class="highlight-link" href="/register">Sign up</a>
+                </div>
             </div>
-            <div class="mb-3">
-                <input class="form-control mx-auto" id="password" name="password" placeholder="Password" type="password">
-            </div>
-            <button class="btn btn-primary" type="submit">Login</button>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

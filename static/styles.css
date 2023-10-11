@@ -15,7 +15,7 @@ nav
 {
     height: 70px;
     background-color: #262626;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5); /* horizontal offset, vertical offset, blur radius, color */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
 main
@@ -66,7 +66,7 @@ nav .nav-link:hover
 
 main .form-control
 {
-    background-color: #121212;
+    background-color: rgba(0, 0, 0, 0);;
     border: 1px solid white;
     color: white;
 }
@@ -86,3 +86,34 @@ main .btn.btn-primary:hover
     background-color: #3FD4C1;
 }
 
+/* Commmon authentication styles */
+
+main .authentication-container
+{
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* General text styling */
+main .text
+{
+    color: rgb(165, 165, 165);
+}
+
+.bottom-text
+{
+    text-align: center;
+}
+
+.highlight-link
+{
+    color: #3FD4C1;
+    cursor: pointer;
+    text-decoration: none;
+}
+.highlight-link:hover 
+{
+    color: white;
+}
