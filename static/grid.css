@@ -25,7 +25,7 @@ border-bottom: none;
 height: 50px;
 font-weight: 500;
 background-color: #1F1F1F;
-border-bottom: 2px solid #3FD4C1;
+border-bottom: 2px solid #1d897b;
 color: white;
 display: flex;
 align-items: center;
@@ -39,7 +39,7 @@ justify-content: space-between;
 }
 .icon-style
 {
-    color: #3FD4C1;
+    color: #1d897b;
     cursor: pointer;
 }
 .icon-style:hover

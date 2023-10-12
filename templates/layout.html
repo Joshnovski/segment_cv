@@ -27,8 +27,10 @@
 
     <!-- https://favicon.io/emoji-favicons/money-bag/ -->
     <link href="/static/favicon.ico" rel="icon" />
-
     <link href="/static/styles.css" rel="stylesheet" />
+
+    <!-- Import Scripts -->
+    <script src="/static/scripts/run_complete_flash.js"></script>
 
     <!-- Adds style document for the current page -->
     {% block head %}{% endblock %}
@@ -37,6 +39,24 @@
   </head>
 
   <body>
+
+    <!-- Flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div id="flashes">
+          {% for category, message in messages %}
+            {% if category == 'success' %}
+              <div class="flash flash-success">{{ message }}</div>
+            {% elif category == 'error' %}
+              <div class="flash flash-error">{{ message }}</div>
+            {% else %}
+              <div class="flash">{{ message }}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     <nav class="navbar navbar-expand-md">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -54,7 +74,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbar">
+        <!-- <div class="collapse navbar-collapse" id="navbar">
           {% if session["user_id"] %}
           <ul class="navbar-nav me-auto mt-2">
           </ul>
@@ -73,17 +93,9 @@
             </li>
           </ul>
           {% endif %}
-        </div>
+        </div> -->
       </div>
     </nav>
-
-    {% if get_flashed_messages() %}
-    <header>
-      <div class="alert alert-primary mb-0 text-center" role="alert">
-        {{ get_flashed_messages() | join(" ") }}
-      </div>
-    </header>
-    {% endif %}
 
     <main class="container-fluid py-5">
       {% block main %}{% endblock %}

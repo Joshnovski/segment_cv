@@ -72,20 +72,28 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
+        # Ensure both username and password were submitted
+        if not username and not password:
+            flash('Must provide username and password', 'error')
+            return render_template("login.html")
+
         # Ensure username was submitted
-        if not username:
-            return apology("must provide username", 403)
+        elif not username:
+            flash('Must provide a username', 'error')
+            return render_template("login.html")
 
         # Ensure password was submitted
         elif not password:
-            return apology("must provide password", 403)
+            flash('Must provide password', 'error')
+            return render_template("login.html")
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], password):
-            return apology("invalid username and/or password", 403)
+            flash('Invalid username and/or password', 'error')
+            return render_template("login.html")
 
         # Remember which user has logged in (ensures logged in UI)
         session["user_id"] = rows[0]["id"]
@@ -129,21 +137,21 @@ def register():
 
         # Query database for existing username
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
+
+        # Ensure username and both password fields are filled
+        if username == "" or password == "" or confirmation == "":
+            flash('Some fields have been left blank', 'error')
+            return render_template("register.html")
+
         # Ensure username exists
-        if len(rows) == 1:
-            return apology("Username already exists", 400)
-
-        # Ensure username field left blank
-        elif username == "":
-            return apology("Username is required", 400)
-
-        # Ensure both password fields are filled
-        elif password == "" or confirmation == "":
-            return apology("Password and confirmation is required", 400)
+        elif len(rows) == 1:
+            flash('Username already exists', 'error')
+            return render_template("register.html")
 
         # Ensure password was submitted
         elif not password == confirmation:
-            return apology("Password confirmation doesn't match", 400)
+            flash("Password and confirmation do not match", 'error')
+            return render_template("register.html")
 
         # Makes a hash code of the password
         hashed_password = generate_password_hash(password)
@@ -473,7 +481,7 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
 
         # Plot histogram
         config = {'responsive': True}
-        histogram = go.Figure(go.Histogram(x=size_type, nbinsx=session['histogram-bins'], marker=dict(color='#3FD4C1')), layout=layout)
+        histogram = go.Figure(go.Histogram(x=size_type, nbinsx=session['histogram-bins'], marker=dict(color='#1d897b')), layout=layout)
         histogram = plot(histogram, output_type='div', include_plotlyjs=False, config=config)
         histogram_list.append(histogram)
 
@@ -488,7 +496,7 @@ def draw_contours(image, grain_contours):
     # result_image = cv2.bitwise_not(result_image)
 
     # Draws contour lines over the copied image
-    cv2.drawContours(result_image, grain_contours, -1, (193, 212, 63), session.get("contour-thickness"))
+    cv2.drawContours(result_image, grain_contours, -1, (123, 137, 29), session.get("contour-thickness"))
 
     return result_image
 
