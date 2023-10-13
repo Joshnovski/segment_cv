@@ -2,22 +2,43 @@
 
 /* Font for body */
 body 
-{
+{   
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
     font-family: "Inter";
+    background-color: #121212;
 }
 
+nav
+{
+    height: 70px;
+    background-color: #262626;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+main
+{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* Size for brand */
 nav .navbar-brand
 {
     font-size: 26px;
     font-family: "Outfit";
+    margin-left: 15px;
 }
 
 /* Colors for brand */
 nav .navbar-brand .brand-style
 {
-    color: #7A7A7A;
+    color: white;
     font-weight: 600;
     margin-left: 8px;
     letter-spacing: 7px;
@@ -34,4 +55,103 @@ nav .logo-alignment
 nav .nav-link
 {
     margin-top: -10px;
+    color: white;
+}
+nav .nav-link:hover
+{
+    color: #3FD4C1;
+}
+
+/* btn stylings */
+
+main .form-control
+{
+    background-color: rgba(0, 0, 0, 0);;
+    border: 1px solid rgb(148, 148, 148);
+    padding: 8px 12px 10px 8px;
+    color: white;
+}
+main .form-control:focus
+{
+    background-color: #262626;
+    border: 1px solid white;
+    color: white;
+}
+
+main .btn.btn-primary
+{
+    background-color: #262626;
+}
+main .btn.btn-primary:hover
+{
+    background-color: #1d897b;
+}
+
+/* Commmon authentication styles */
+
+main .authentication-container
+{
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+main .authentication-header
+{
+    text-align: center;
+    background-color: #1d897b;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    padding: 15px 0 15px 0;
+    
+}
+main .authentication-content
+{
+    padding: 40px;
+}
+
+/* General text styling */
+main .text
+{
+    color: rgb(165, 165, 165);
+}
+
+.bottom-text
+{
+    text-align: center;
+}
+
+.highlight-link
+{
+    color: #1d897b;
+    cursor: pointer;
+    text-decoration: none;
+}
+.highlight-link:hover 
+{
+    color: white;
+}
+
+/* Styling for flash notifications */
+#flashes {
+    position: fixed;
+    top:0;
+    left: 50%;
+    color: white;
+    transform: translate(-50%);
+    z-index: 1000;
+    width: 100vw;
+}
+.flash {
+    padding: 5px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    text-align: center;
+  }
+.flash-success {
+    background-color: #1d897b;
+}
+.flash-error {
+    background-color: #e74c3c;
 }

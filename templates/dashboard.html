@@ -21,9 +21,13 @@
     <!-- icon imports -->
     <script src="https://kit.fontawesome.com/e61406d2e1.js" crossorigin="anonymous"></script>
 
-    <!-- Outfit font import -->
+    <!-- font imports -->
     <link
     href="https://fonts.googleapis.com/css?family=Outfit"
+    rel="stylesheet"
+    />
+    <link
+    href="https://fonts.googleapis.com/css?family=Inter"
     rel="stylesheet"
     />
 
@@ -36,10 +40,36 @@
     <link href="/static/controller.css" rel="stylesheet" />
     <link href="/static/header.css" rel="stylesheet" />
 
+    <!-- Import Scripts -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/static/scripts/image_upload.js"></script>
+    <script src="/static/scripts/controller_state.js"></script>
+    <script src="/static/scripts/click_dropdown.js"></script>
+    <script src="/static/scripts/card_overlay.js"></script>
+    <script src="/static/scripts/histogram_scaler.js"></script>
+
     <title>SEGMENT: Dashboard</title>
   </head>
 
   <body>
+
+    <!-- Flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div id="flashes">
+          {% for category, message in messages %}
+            {% if category == 'success' %}
+              <div class="flash flash-success">{{ message }}</div>
+            {% elif category == 'error' %}
+              <div class="flash flash-error">{{ message }}</div>
+            {% else %}
+              <div class="flash">{{ message }}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  
 
     <!-- Contains greetings and perhaps other logistics -->
     <header class="dashboard-header">
@@ -47,11 +77,13 @@
     </header>
 
     <!-- Contains the control panel -->
-    <nav class="d-flex flex-column flex-shrink-0 p-3">
-      <a class="navbar-brand d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none  border-bottom" href="/">
-        <img src="../static/brand.PNG" width="35" height="30" class="logo-alignment" alt="">
-        <span class="brand-style">SEGMENT</span>
-      </a>
+    <nav class="d-flex flex-column flex-shrink-0">
+      <div class="brand-container">
+        <a class="navbar-brand d-flex align-items-center link-dark text-decoration-none" href="/">
+          <img src="../static/brand-white.PNG" width="35" height="30" class="logo-alignment" alt="">
+          <span class="brand-style">SEGMENT</span>
+        </a>
+      </div>
       <!-- Contains main layout of controller exluding heading -->
       {% include 'controller.html' %}
     </nav>
@@ -59,9 +91,9 @@
     <!-- Contains the output grid -->
     <main class="scrollable-list-main ">
       {% include 'grid.html' %}
+      {% include 'enlarge_card.html' %}
     </main>
 
     <!-- <footer></footer> -->
-
   </body>
 </html>

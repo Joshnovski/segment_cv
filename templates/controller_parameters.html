@@ -1,0 +1,145 @@
+<form method="POST" action="/store-parameters" id="store-parameters">
+    <li class="nav-item">
+        <label class="nav-link">
+            Scale (pixels/mm): 
+            <p class="results">{{ session['scale-to-pixel-ratio'] }}</p>
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link border-bottom">
+            Bottom Crop Ratio: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="bottom-crop-ratio" 
+            name="bottom-crop-ratio" 
+            type="number"
+            value="{{ session['bottom-crop-ratio'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Histogram Bins: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="histogram-bins" 
+            name="histogram-bins" 
+            type="number"
+            value="{{ session['histogram-bins'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link border-bottom">
+            Contour Thickness: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="contour-thickness" 
+            name="contour-thickness" 
+            type="number"
+            value="{{ session['contour-thickness'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Invert Grayscale: 
+            <input autocomplete="off"
+            autofocus class="default-checkbox" 
+            id="invert-grayscale" 
+            name="invert-grayscale" 
+            type="checkbox"
+            {{ "checked" if session["invert-grayscale"] == "on" else "" }}>
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Histogram Equalisation: 
+            <input autocomplete="off"
+            autofocus class="default-checkbox" 
+            id="histogram-equalisation" 
+            name="histogram-equalisation" 
+            type="checkbox"
+            {{ "checked" if session["histogram-equalisation"] == "on" else "" }}>
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Lower Contrast Threshold: 
+            <input autocomplete="off" 
+            autofocus class="parameter-input" 
+            id="lower-contrast-threshold" 
+            name="lower-contrast-threshold" 
+            type="number"
+            value="{{ session['lower-contrast-threshold'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Upper Contrast Threshold: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="upper-contrast-threshold" 
+            name="upper-contrast-threshold" 
+            type="number"
+            value="{{ session['upper-contrast-threshold'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Blur Kernel Size: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="blur-kernel-size" 
+            name="blur-kernel-size" 
+            type="number"
+            value="{{ session['blur-kernel-size'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Distance Transform: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="distance-transform" 
+            name="distance-transform" 
+            type="number"
+            value="{{ session['distance-transform'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link border-bottom">
+            Morphology Simplicity: 
+            <input autocomplete="off"
+            autofocus class="parameter-input" 
+            id="morphology-simplicity" 
+            name="morphology-simplicity" 
+            type="number"
+            value="{{ session['morphology-simplicity'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        </li>
+        <li class="nav-item">
+        <label class="nav-link">
+            Min Segment Size (mm):
+            <!-- <div class="contour-color-selector"></div>  -->
+            <input autocomplete="off"
+            autofocus class="parameter-input separator" 
+            id="min-size-diameter" 
+            name="min-size-diameter" 
+            type="number"
+            placeholder="Diam"
+            value="{{ session['min-size-diameter'] }}">
+        </label>
+        </li>
+        <li class="nav-item">
+        <label class="nav-link border-bottom">
+            Max Segment Size (mm): 
+            <input autocomplete="off"
+            autofocus class="parameter-input separator" 
+            id="max-size-diameter" 
+            name="max-size-diameter" 
+            type="number"
+            placeholder="Diam"
+            value="{{ session['max-size-diameter'] }}">
+        </label>
+    </li>
+</form>

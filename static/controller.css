@@ -1,47 +1,79 @@
 /* Dropdown Items From Nav Headers */
-.nav-item
+.nav-item-title:hover
 {
-    font-size: 13px;
-    font-weight: 500;
-    color: #7A7A7A;
+    background-color: #202020;
+    color: #1d897b;
+    border-left: 3px solid #1d897b;
+    cursor: pointer;
+} 
+.nav-item-title:hover .nav-link, 
+.nav-item-title:hover .nav-icons {
+    background-color: #202020;
+    color: #1d897b;
+    cursor: pointer;
 }
 
+.nav-item-title.active
+{
+    background-color: #202020;
+    color: #1d897b;
+    border-left: 3px solid #1d897b;
+} 
+.nav-item-title.active .nav-link, 
+.nav-item-title.active .nav-icons {
+    background-color: #202020;
+    color: #1d897b;
+}
+
+.nav-link-title:focus
+{
+    color: white;
+}
+
+.nav-item
+{
+    font-size: 11px;
+    font-weight: 500;
+    color: white;
+}
+ 
 /* Dropdown Headers */
 .nav-link-title
 {
-    font-size: 18px;
-    font-weight: 600 !important;
+    font-size: 15px;
+    font-weight: 600;
+    height: 60px;
+    padding-left: 30px;
+    color: white;
+
 }
 
 /* Style Properties of Nav Links*/
 .nav-link
 {
-    color: #7A7A7A;
+    color: white;
     cursor: pointer;
 }
 .nav-link:hover
 {
-    color: #575757;
-}
-.nav-link:active, .nav-link:focus 
-{
-    color: #575757 !important;   
+    color: #1d897b;
 }
 
 /* General Nav Icons Styling */
 .nav-icons 
 {
-    color: #7A7A7A;
     padding-right: 10px;
 }
+
 .nav-operate-icons 
 {
-    color: #7A7A7A;
+    color: white;
     padding-right: 30px;
+    cursor: pointer;
 }
 .nav-operate-icons:hover 
 {
-    color: #575757;
+    color: #1d897b;
 }
 .nav-operate-icons-struct 
 {
@@ -57,17 +89,29 @@
     width: 60px;
     font-size: 13px;
     font-weight: 400;
-    color: #212529;
-    background-color: #fff;
-    border: 1.7px solid #7A7A7A;
+    color: white;
+    background-color: #262626;
+    border: 1.7px solid #1d897b;
     border-radius: 0.25rem;
     float: right;
     margin-top: -2px;
 }
-.parameter-input:hover 
+.parameter-input:focus-visible
 {
-    border-color: #575757;
+    outline: none;
+    border: 1.7px solid #1d897b;
 }
+
+/* Results Stylings */
+.results
+{
+    width: 60px;
+    font-size: 13px;
+    font-weight: 400;
+    color: white;
+    float: right;
+}
+
 /* Separator between sizing inputs */
 .separator 
 {
@@ -77,11 +121,10 @@
 /* Styles for Checkboxes In Control Center */
 .default-checkbox 
 {
-    color: #7A7A7A;
+    color: white;
     background-color: #fff;
     border: 1px solid #d4d4d4;
-    border-color: red;
-    accent-color: #7A7A7A;
+    accent-color: #1d897b;
     border-radius: 0.25rem;
     float: right;
     margin-right: 25px;
@@ -92,7 +135,72 @@
 /* Manages The Style of The Scroll List for Control Center */
 .scrollable-list-controller 
 {
-    max-height: 50vh;
+    max-height: 30vh;
     overflow-y: auto;
     scrollbar-width: thin;
-} 
+    scrollbar-color: #121212 #262626;
+}
+
+/* Sizing section column names for area (mm^2) and diameter of grains (mm) */
+.size-columns
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    padding-right: 20px;
+}
+
+/* Submit btn */
+.submit-btn-container
+{
+    background-color: #2e2e2e;
+}
+.submit-btn 
+{
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background-color: #2e2e2e;
+    border: none;
+    border-radius: 0.15rem;
+    width: 100%;  /* Or any specific width */
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.submit-btn-container:hover
+{
+    background-color: #1d897b;
+}
+.submit-btn:hover
+{
+    background-color: #1d897b;
+    color: #262626;
+    font-weight: 500;
+}
+
+/* Pills padding from top */
+.pills-pd
+{
+    padding-top: 30px;
+}
+
+
+/* Important border bottom bypasses */
+.border-bottom
+{
+    border-bottom-color: rgb(53, 53, 53) !important;
+    border-radius: 0 0 0 0 !important;
+}
+.border-top
+{
+    border-top-color: rgb(53, 53, 53) !important;
+    border-radius: 0 0 0 0 !important;
+}
+
+/* Extra padding for parameter values */
+
+.parameter-bottompadding
+{
+    margin-bottom: 4px;
+}

@@ -12,9 +12,9 @@ body
 
 /* Base Nav Styling */
 nav {
-    width: 315px;
+    width: 275px;
     height: 100vh;
-    background-color: white;
+    background-color: #262626;
     grid-row: 1 / 3;
 }
 
@@ -22,7 +22,28 @@ nav {
 main
 {
     grid-column: 2;
-    background-color: white;
+    background-color: #121212;
+}
+
+/* Universal Scrollbar styling */
+/* This is the scrollbar track (the background) */
+::-webkit-scrollbar {
+    background-color: #262626; /* Color of the scrollbar track */
+    width: 10px;
+}
+
+/* This is the draggable scrolling handle */
+::-webkit-scrollbar-thumb {
+    background-color: #3a3a3a; /* Darker color for the thumb */
+}
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: #1d897b;
+}
+
+/* This is the (optional) button at the top and bottom of the scrollbar */
+::-webkit-scrollbar-button {
+    display: none; /* If you don't want to display the buttons */
 }
 
 /* universal p tag styling */
@@ -36,9 +57,25 @@ p {
 {
 grid-column: 2;
 height: 70px;
-background-color: white;
+background-color: #262626;
 display: flex;
 justify-content: space-between;
+}
+
+/* Botton padding for brand*/
+.pb
+{
+ padding-bottom: 0.65rem;
+}
+
+.brand-container
+{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2b2b2b;
+    box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.5); /*WHY CAN"T I SEE THE SHADOW!!*/
 }
 
 /* Size for brand */
@@ -53,8 +90,67 @@ justify-content: space-between;
 /* Colors For Brand */
 .navbar-brand .brand-style
 {
-    color: #7A7A7A;
+    color: #FFFFFF;
     font-weight: 600;
     padding-left: 15px;
     letter-spacing: 7px;
+}
+
+/* Styling for flash notifications */
+#flashes {
+    position: fixed;
+    top:0;
+    left: 50%;
+    color: white;
+    transform: translate(-50%);
+    z-index: 1000;
+    width: 100vw;
+}
+.flash {
+    padding: 5px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    text-align: center;
+  }
+.flash-success {
+    background-color: #1d897b;
+}
+.flash-error {
+    background-color: #e74c3c;
+}
+
+/* OVERLAY FOR ENLARGED IMAGES AND PLOTS */
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.enlarged-card 
+{
+    width: 80%;  /* You can adjust this value */
+    height: calc(50% + 20vw); /* You can adjust this value */
+    overflow: auto;
+}
+.enlarged-card .card-container {
+    height: 100%;
+}
+.enlarged-image
+{
+    width: auto;   /* or any other value that works for you */
+    height: 93% !important;
+    max-width: none !important;
+}
+
+.enlarged-card .histogram-container
+{
+    transform: scale(1.5);
 }

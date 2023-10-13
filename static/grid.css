@@ -11,14 +11,49 @@ main
     gap: 20px;
 }
 
+.grid-img
+{
+    height: auto;
+    max-width: 100%;
+}
+
 /* Base Header Styling */
 .card-header
 {
 border-radius: 0px !important;
 border-bottom: none;
-height: 60px;
-background-color: #7A7A7A;
+height: 50px;
+font-weight: 500;
+background-color: #1F1F1F;
+border-bottom: 2px solid #1d897b;
 color: white;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.icon-container 
+{
+    display: flex; 
+    align-items: center;
+    gap: 10px; /* This will give some space between the two icons */
+}
+.icon-style
+{
+    color: #1d897b;
+    cursor: pointer;
+}
+.icon-style:hover
+{
+    color: white;
+}
+.floppy-icon {
+    font-size: 20px;  /* Adjust as needed */
+}
+.expand-icon {
+    font-size: 20px;  /* Adjust as needed */
+}
+.close-icon {
+    font-size: 20px;  /* Adjust as needed */
 }
 
 /* Manages The Style of The Scroll List for Control Center */
@@ -32,9 +67,12 @@ color: white;
 /* Core css properties for the grid design */
 .card 
 {
-    background-color: rgb(228, 228, 228);
+    background-color: #262626;
     border: none;
     border-radius: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 /* Children grids on main */
 .card:nth-child(1)
@@ -63,18 +101,52 @@ color: white;
 }
 
 /* Responsive changes based on window width */
-@media (max-width: 1225px) 
+@media (max-width: 1600px) 
 {
     main 
     {
        grid-template-columns: 1fr 1fr; 
-       grid-template-rows: repeat(4, 200px);
+       grid-template-rows: repeat(4, 400px);
        grid-template-areas: 
        "c1 c1"
        "c4 c4"
        "c2 c3"
        "c5 c6"; 
     }
+}
+@media (max-width: 1150px) 
+{
+    main 
+    {
+       grid-template-columns: 1fr; 
+       grid-template-rows: repeat(6, 400px);
+       grid-template-areas: 
+       "c1"
+       "c4"
+       "c2"
+       "c3"
+       "c5"
+       "c6"; 
+    }
+}
+
+/* ALTERNATIVE SOLUTION WOULD BE TO CENTER IT */
+.card-container
+{
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.histogram-container
+{
+
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

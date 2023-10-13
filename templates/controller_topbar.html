@@ -1,0 +1,32 @@
+<div class="nav-link nav-operate-icons-struct">
+    <!-- Save btn -->
+    <!-- <label>
+        <form>
+        <i class="nav-operate-icons fas fa-floppy-disk"></i>
+        </form>
+    </label> -->
+
+    <!-- Image upload btn -->
+    <label>
+        <form method="POST" enctype="multipart/form-data" action="/upload">
+            <i class="nav-operate-icons fas fa-image"></i>
+            <input type="file" id="file" name="file" style="display: none;" onchange="this.form.submit();"></input>
+        </form>
+    </label>
+    <!-- Reset Parameters btn -->
+    <label>
+        <form method="POST" action="/reset">
+            <i class="nav-operate-icons fas fa-rotate"></i>
+            <button style="display: none;" type="submit" onclick="this.form.submit()"></button>
+        </form>        
+    </label>
+    <!-- Run image processing btn -->
+    <label>
+        <form method="POST" action="/run">
+            <!-- parameters -->
+
+            <i class="nav-operate-icons fas fa-play" style="padding-right: 0px !important;"></i>
+            <button style="display: none;" type="submit" onclick="this.form.submit()"></button>
+        </form>
+    </label>
+</div>

@@ -12,7 +12,7 @@ input:focus {
     width: 307px;
     margin: auto;
 }
-
+  
 /* Style login btn */
 .btn.btn-primary {
     background-color: #bdbdbd;
@@ -25,3 +25,9 @@ input:focus {
 .btn.btn-primary:active, .btn.btn-primary:focus {
     box-shadow: none !important;   
 }   
+
+/* forgot password btn */
+.forgot-password-btn
+{
+    text-align: left !important;
+}

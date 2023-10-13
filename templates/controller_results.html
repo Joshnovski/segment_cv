@@ -1,0 +1,25 @@
+<li class="nav-item">
+    <label class="nav-link border-bottom">
+        Number of Segments: 
+        {% if session['number-of-segments'] is number %}
+            <p class="results">{{ session['number-of-segments'] }}</p>
+        {% endif %}
+    </label>
+</li>
+<li class="nav-item">
+    <label class="nav-link">
+        Ave Area of Segments (mm<sup>2</sup>):
+        {% if session['average-grain-area'] is number %} 
+            <p class="results">{{ session['average-grain-area'] }}</p>
+        {% endif %}
+    </label>
+</li>
+<li class="nav-item">
+    <label class="nav-link border-bottom">
+        Ave Diam of Segments (mm):
+        {% if session['average-grain-diameter'] is number %} 
+            <p class="results">{{ session['average-grain-diameter'] }}</p>
+        {% endif %} 
+    </label>
+</li>
+

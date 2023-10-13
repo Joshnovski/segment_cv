@@ -1,5 +1,11 @@
 /* Contains styles unique to register */
 
+/* Styles the input fields of login */
+input:focus {                                                           
+    box-shadow: none !important;
+    border: 1px solid #7A7A7A !important;                                             
+}
+
 .register-interactive-wrapper {
     /* border: 1px dotted #ff0000; */
     width: 307px;
@@ -12,3 +18,9 @@
     border: none;
     width: 100%;
 }
+.btn.btn-primary:hover {
+    background-color: #a8a8a8;
+}
+.btn.btn-primary:active, .btn.btn-primary:focus {
+    box-shadow: none !important;   
+}    
