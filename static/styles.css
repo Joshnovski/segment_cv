@@ -8,7 +8,9 @@ body
     height: 100vh;
     margin: 0;
     font-family: "Inter";
-    background-color: #121212;
+    /* background-color: #121212;#3f3f3f #111111*/
+    background: linear-gradient(90deg,#5c5c5c,#111111);
+    overflow: hidden;
 }
 
 nav
@@ -66,7 +68,7 @@ nav .nav-link:hover
 
 main .form-control
 {
-    background-color: rgba(0, 0, 0, 0);;
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid rgb(148, 148, 148);
     padding: 8px 12px 10px 8px;
     color: white;
@@ -155,3 +157,78 @@ main .text
 .flash-error {
     background-color: #e74c3c;
 }
+
+/* Background animation */
+.slider-thumb::before {
+  position: absolute;
+  content: "";
+  left: 40%;
+  top: 15%;
+  width: 1550px;
+  height: 1550px;
+  opacity: 0.7;
+  background: rgb(29, 29, 29);
+  border: 15px solid #1d897b;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: sliderShape 20s linear infinite;
+  display: block;
+  z-index: -1;
+  -webkit-animation: sliderShape 20s linear infinite;
+}
+@keyframes sliderShape{
+  0%,100%{
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  34%{
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+  }
+  50%{
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  67%{
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+  }
+}
+
+/* New ::after style for second object */
+.slider-thumb::after {
+    position: absolute;
+    content: "";
+    right: 70%;  /* Adjust as per your design needs */
+    bottom: 25%;   /* Adjust as per your design needs */
+    width: 1550px;
+    height: 1550px;
+    opacity: 0.7;  /* Adjust as per your design needs */
+    background: rgb(29, 29, 29);
+    border: 15px solid #1d897b;  /* Adjust as per your design needs */
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;  /* Adjust as per your design needs */
+    will-change: border-radius, transform, opacity;
+    animation: sliderShape2 20s linear infinite;  /* You can create a new animation or use the existing one */
+    display: block;
+    z-index: -1;  /* To ensure it stays below the ::before pseudo-element */
+    -webkit-animation: sliderShape2 20s linear infinite;
+  }
+  
+  @keyframes sliderShape2 {
+    /* You can define a new animation or copy the existing one and make modifications */
+    /* This example copies the existing animation */
+    0%,100%{
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      transform: translate3d(0,0,0) rotateZ(0.01deg);
+    }
+    34%{
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+    }
+    50%{
+      transform: translate3d(0,0,0) rotateZ(0.01deg);
+    }
+    67%{
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+      transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+    }
+  }
