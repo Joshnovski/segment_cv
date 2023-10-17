@@ -1,11 +1,11 @@
 <form method="POST" action="/store-parameters" id="store-parameters">
     <li class="nav-item">
-        <label class="nav-link">
+        <label class="nav-link border-bottom">
             Scale (pixels/mm): 
             <p class="results">{{ session['scale-to-pixel-ratio'] }}</p>
         </label>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
         <label class="nav-link border-bottom">
             Bottom Crop Ratio: 
             <input autocomplete="off"
@@ -15,7 +15,7 @@
             type="number"
             value="{{ session['bottom-crop-ratio'] }}">
         </label>
-        </li>
+        </li> -->
         <li class="nav-item">
         <label class="nav-link">
             Histogram Bins: 

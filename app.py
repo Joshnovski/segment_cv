@@ -147,6 +147,30 @@ def register():
         elif len(rows) == 1:
             flash('Username already exists', 'error')
             return render_template("register.html")
+        
+        # Ensure username has at list 3 characters
+        if len(username) < 3:
+            flash('Username must be at least 3 characters', 'error')
+            return render_template("register.html")
+
+        # Ensure password is sufficiently secure
+        if len(password) < 8:
+            flash("Password must be at least 8 characters", 'error')
+            return render_template("register.html")
+        elif not any(char.isdigit() for char in password):
+            flash("Password must contain at least one number", 'error')
+            return render_template("register.html")
+        elif not any(char.isupper() for char in password):
+            flash("Password must contain at least one uppercase letter", 'error')
+            return render_template("register.html")
+        elif not any(char.islower() for char in password):
+            flash("Password must contain at least one lowercase letter", 'error')
+            return render_template("register.html")
+        elif not any(not char.isalnum() for char in password):
+            flash("Password must contain at least one symbol", 'error')
+            return render_template("register.html")
+        
+
 
         # Ensure password was submitted
         elif not password == confirmation:
@@ -265,6 +289,7 @@ def calculate_scale():
     # Calculate the scale value if the user changed input
     session['pixel-distance'] = float(request.form.get("pixel-distance"))
     session['scalebar-length'] = float(request.form.get("scalebar-length"))
+
     session['scale-to-pixel-ratio'] = round(session['pixel-distance'] / session['scalebar-length'], 2)
 
     flash('Calculation Complete! Control Center Updated', 'success')
@@ -288,23 +313,45 @@ def store_parameters():
     """ Only triggers once a change in the input has been detected but does't store values to session otherwise. 
     Works in conjunction with set_initial_parameters() to store the values in the session. """
 
-    # Store the parameter value in the session
-    session['bottom-crop-ratio'] = float(request.form.get("bottom-crop-ratio"))
-    session['show-size-histogram'] = request.form.get("show-size-histogram")
-    session['segmentation-images'] = request.form.get("segmentation-images")
-    session['histogram-bins'] = int(request.form.get("histogram-bins"))
-    session['contour-thickness'] = int(request.form.get("contour-thickness"))
-    session['invert-grayscale'] = request.form.get("invert-grayscale")
-    session['histogram-equalisation'] = request.form.get("histogram-equalisation")
-    session['lower-contrast-threshold'] = int(request.form.get("lower-contrast-threshold"))
-    session['upper-contrast-threshold'] = int(request.form.get("upper-contrast-threshold"))
-    session['blur-kernel-size'] = int(request.form.get("blur-kernel-size"))
-    session['distance-transform'] = int(request.form.get("distance-transform"))
-    session['morphology-simplicity'] = int(request.form.get("morphology-simplicity"))
-    session['min-size-diameter'] = float(request.form.get("min-size-diameter"))
-    session['max-size-diameter'] = float(request.form.get("max-size-diameter"))
-    
-    return jsonify(success = True)
+    # Dictionary of parameters, their expected types, and validation functions
+    params = {
+        # 'bottom-crop-ratio': (float, None),
+        'show-size-histogram': (str, None),
+        'segmentation-images': (str, None),
+        'histogram-bins': (int, lambda x: x >= 0 and x <= 100),
+        'contour-thickness': (int, lambda x: x > 0 and x <= 100),
+        'invert-grayscale': (str, None),
+        'histogram-equalisation': (str, None),
+        'lower-contrast-threshold': (int, lambda x: x >= 0 and x <= 255),
+        'upper-contrast-threshold': (int, lambda x: x >= 0 and x <= 255),
+        'blur-kernel-size': (int, lambda x: x > 0 and x % 2 == 1),
+        'distance-transform': (int, lambda x: x >= 0 and x <= 255),
+        'morphology-simplicity': (int, lambda x: x >= 0 and x <= 500),
+        'min-size-diameter': (float, lambda x: x >= 0 and x <= 1000),
+        'max-size-diameter': (float, lambda x: x >= 0 and x <= 1000),
+    }
+
+    # Error messages for specific validations
+    error_messages = {
+        'histogram-bins': 'Histogram Bins must be positive',
+        'blur-kernel-size': 'Blur Kernel Size must be odd and positive',
+        'morphology-simplicity': 'Morphology Simplicity must be positive'
+    }
+
+    for param, (data_type, validator) in params.items():
+        try:
+            value = data_type(request.form.get(param))
+            
+            if validator and not validator(value):
+                raise ValueError(error_messages.get(param, f"Invalid value for {param}"))
+            
+            session[param] = value
+
+        except ValueError as e:
+            flash(str(e), 'error')
+            return redirect("/dashboard")
+
+    return jsonify(success=True)
 
 def load_and_preprocessing():
 
