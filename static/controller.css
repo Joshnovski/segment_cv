@@ -74,7 +74,7 @@
 .nav-operate-icons 
 {
     color: white;
-    padding-right: 30px;
+    padding-right: 0px;
     cursor: pointer;
 }
 .nav-operate-icons:hover 
@@ -209,4 +209,13 @@
 .parameter-bottompadding
 {
     margin-bottom: 4px;
+}
+
+/* Spacing */
+.spacing
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 60px 5px 60px;
 }
