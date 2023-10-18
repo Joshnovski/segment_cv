@@ -58,6 +58,12 @@
 {
     color: #1d897b;
 }
+/* width of button in nav-link-title*/
+.nav-link.nav-link-title
+{
+    width: 100%;
+    text-align: left;
+}
 
 /* General Nav Icons Styling */
 .nav-icons 
