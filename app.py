@@ -205,8 +205,10 @@ def dashboard():
     area_histogram_div = session.get('area_histogram_div', None)
     diameter_histogram_div = session.get('diameter_histogram_div', None)
 
+    user = db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])
+
     # Redirect user to home page
-    return render_template("dashboard.html", os=os, images_existing=len(os.listdir('static/images')), area_histogram_div=area_histogram_div, diameter_histogram_div=diameter_histogram_div)
+    return render_template("dashboard.html", username=user[0]['username'], os=os, images_existing=len(os.listdir('static/images')), area_histogram_div=area_histogram_div, diameter_histogram_div=diameter_histogram_div)
 
 ##############################################################################################################################################
 
