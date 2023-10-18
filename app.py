@@ -309,8 +309,7 @@ def reset_parameters():
 
 @app.route("/store-parameters", methods=["POST"])
 def store_parameters():
-
-    """ Only triggers once a change in the input has been detected but does't store values to session otherwise. 
+    """ Only triggers once a change in the input has been detected but doesn't store values to session otherwise.
     Works in conjunction with set_initial_parameters() to store the values in the session. """
 
     # Dictionary of parameters, their expected types, and validation functions
@@ -333,25 +332,39 @@ def store_parameters():
 
     # Error messages for specific validations
     error_messages = {
-        'histogram-bins': 'Histogram Bins must be positive',
         'blur-kernel-size': 'Blur Kernel Size must be odd and positive',
-        'morphology-simplicity': 'Morphology Simplicity must be positive'
     }
+
+    error_response = []
 
     for param, (data_type, validator) in params.items():
         try:
-            value = data_type(request.form.get(param))
-            
+            raw_value = request.form.get(param)
+
+            # Special handling for checkboxes
+            if param in ["invert-grayscale", "histogram-equalisation"]:
+                session[param] = "on" if raw_value else None
+                continue
+
+            # Check if raw_value is None before casting
+            if raw_value is None:
+                error_response.append(f"Missing value for {param}")
+                continue
+
+            value = data_type(raw_value)
+
             if validator and not validator(value):
-                raise ValueError(error_messages.get(param, f"Invalid value for {param}"))
-            
+                error_response.append(error_messages.get(param, f"Invalid value for {param}"))
+                continue
+
             session[param] = value
 
         except ValueError as e:
-            flash(str(e), 'error')
-            return redirect("/dashboard")
+            error_response.append(str(e))
 
-    return jsonify(success=True)
+    else:
+        return jsonify(success=True)
+
 
 def load_and_preprocessing():
 
