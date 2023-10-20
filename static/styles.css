@@ -1,16 +1,19 @@
 /* Common styles across all pages */
 
 /* Font for body */
+html, body
+{
+  overflow: hidden;
+}
 body 
 {   
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-    font-family: "Inter";
-    /* background-color: #121212;#3f3f3f #111111*/
-    background: linear-gradient(90deg,#5c5c5c,#111111);
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: "Inter";
+  background: linear-gradient(90deg,#5c5c5c,#111111);
+  position: relative;
 }
 
 nav

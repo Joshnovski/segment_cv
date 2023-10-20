@@ -43,7 +43,7 @@ db = SQL("sqlite:///segment.db")
 
 # Cleanup sessions older than 1 day
 session_dir = 'flask_session'
-session_lifetime = 1 * 12 * 60 * 60 # 12 hours
+session_lifetime = 1 * 1 * 60 * 60 # 1 hour
 now = time.time()
 for filename in os.listdir(session_dir):
     file_path = os.path.join(session_dir, filename)
