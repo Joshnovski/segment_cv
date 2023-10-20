@@ -41,9 +41,9 @@
 .nav-link-title
 {
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     height: 60px;
-    padding-left: 30px;
+    padding-left: 16px;
     color: white;
 
 }
@@ -68,7 +68,7 @@
 /* General Nav Icons Styling */
 .nav-icons 
 {
-    padding-right: 10px;
+    padding-right: 30px !important;
 }
 
 .nav-operate-icons 

@@ -23,8 +23,10 @@
  {
     padding-right: 45px;
     display: flex;
+    letter-spacing: 3px;
+    font-size: 15px;
     align-items: center;
 
-    color: white;
+    color: #1d897b;
     font-weight: 700;
  }
