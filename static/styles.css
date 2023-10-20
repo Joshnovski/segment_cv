@@ -21,6 +21,8 @@ nav
     height: 70px;
     background-color: #262626;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
 }
 
 main
@@ -33,11 +35,16 @@ main
 }
 
 /* Size for brand */
-nav .navbar-brand
+.navbar
+{
+  padding: 0;
+}
+.navbar-brand
 {
     font-size: 26px;
     font-family: "Outfit";
     margin-left: 15px;
+    padding: 0;
 }
 
 /* Colors for brand */
@@ -231,3 +238,75 @@ main .text
       transform: translate3d(0,-3px,0) rotateZ(0.01deg);
     }
   }
+
+/* Media transformations */
+
+.authentication-container 
+{
+  transition: transform 0.5s ease;
+}
+nav
+{
+  transition: height 0.5s ease;
+}
+.navbar-brand-content
+{
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 460px) 
+{
+    .authentication-container 
+    {
+      transform: scale(0.8);
+    }
+    nav
+    {
+      height: 50px;
+    }
+    .navbar-brand-content
+    {
+      transform: scale(0.7);
+    }
+}
+
+@media (max-width: 345px) 
+{
+    .authentication-container 
+    {
+      transform: scale(0.6);
+    }
+}
+@media (max-height: 560px) 
+{
+    .authentication-container 
+    {
+      transform: scale(0.8);
+    }
+    nav
+    {
+      height: 50px;
+    }
+    .navbar-brand-content
+    {
+      transform-origin: left;
+      transform: scale(0.7);
+    }
+}
+@media (max-height: 400px) 
+{
+    .authentication-container 
+    {
+      transform: scale(0.6);
+    }
+    nav
+    {
+      height: 50px;
+    }
+    .navbar-brand-content
+    {
+      transform-origin: left;
+      transform: scale(0.7);
+    }
+}
