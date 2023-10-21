@@ -1,4 +1,16 @@
 /* Dropdown Items From Nav Headers */
+/* Making the nav content contained and scrollable if extended too far */
+.nav-content
+{
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.nav-content::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
 .nav-item-title:hover
 {
     background-color: #202020;

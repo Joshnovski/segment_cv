@@ -30,7 +30,6 @@ main
     background-color: #262626; /* Color of the scrollbar track */
     width: 10px;
 }
-
 /* This is the draggable scrolling handle */
 ::-webkit-scrollbar-thumb {
     background-color: #3a3a3a; /* Darker color for the thumb */
