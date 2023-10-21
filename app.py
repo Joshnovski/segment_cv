@@ -148,9 +148,9 @@ def register():
             flash('Username already exists', 'error')
             return render_template("register.html")
         
-        # Ensure username has at list 3 characters
-        if len(username) < 3:
-            flash('Username must be at least 3 characters', 'error')
+        # Ensure username has between 3 and 12 characters
+        elif len(username) < 3 or len(username) > 12:
+            flash("Username must be between 3 and 12 characters", 'error')
             return render_template("register.html")
 
         # Ensure password is sufficiently secure
