@@ -68,7 +68,7 @@
 /* General Nav Icons Styling */
 .nav-icons 
 {
-    padding-right: 30px !important;
+    padding-right: 30px;
 }
 
 .nav-operate-icons 
@@ -218,4 +218,23 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 5px 60px 5px 60px;
+}
+
+/* Responsive media changes */
+@media (max-width: 870px)
+{
+    .nav-link
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-title-name
+    {
+        display: none;
+    }
+    .nav-icons
+    {
+        padding-right: 0px;
+    }
 }
