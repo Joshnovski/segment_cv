@@ -47,13 +47,15 @@ justify-content: space-between;
     color: white;
 }
 .floppy-icon {
-    font-size: 20px;  /* Adjust as needed */
+    font-size: 20px;
 }
 .expand-icon {
-    font-size: 20px;  /* Adjust as needed */
+    font-size: 20px;
+    color: #1d897b;
+    background-color: #202020;
 }
 .close-icon {
-    font-size: 20px;  /* Adjust as needed */
+    font-size: 20px;
 }
 
 /* Manages The Style of The Scroll List for Control Center */

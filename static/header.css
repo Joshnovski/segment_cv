@@ -30,3 +30,17 @@
     color: #1d897b;
     font-weight: 700;
  }
+
+ /* Responsiveness for mobile */
+ /* @media (max-width: 840px)
+ {
+    .dashboard-header-greeting
+    {
+      font-weight: 400;
+    }
+    .dashboard-header-info
+    {
+      display: none;
+    }
+
+ } */
