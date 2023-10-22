@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
             nav.classList.add('expanded');
             main.classList.add('nav-expanded');
             header.classList.add('header-expanded');
+
+            // Set the overlay height based on the scrollable content
+            main.style.setProperty('--overlay-height', `${main.scrollHeight}px`);
         }
     });
 
