@@ -6,8 +6,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import logging as lg # REMOVE THIS LINE LATER!
-import plotly.graph_objs as go
-from plotly.offline import plot
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, jsonify, request, session
 from flask_session import Session
