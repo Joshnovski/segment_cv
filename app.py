@@ -15,8 +15,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 from matplotlib.widgets import Cursor
 from helpers import apology, login_required
-
-# Configure application
+ 
+# Configure application here
 app = Flask(__name__)
 
 # Set logging level
@@ -526,28 +526,20 @@ def calculate_area_and_filter_contours(result):
 def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
 
     # style histograms
-    histogram_list = []
-    size_data = [grain_areas_filtered, grain_diameters_filtered]
-    size_types = ['Area (mm)', 'Diameter (mm<sup>2</sup>)']
-    for (size_type, unit_type) in zip(size_data, size_types):
-        layout = go.Layout(
-            autosize=True,
-            font=dict(family='Inter', color='white'),
-            margin = go.layout.Margin(l=0, r=0, b=0, t=0), 
-            xaxis = go.layout.XAxis(title=f'Contour {unit_type}'), 
-            yaxis = go.layout.YAxis(title='Number of Segments', gridcolor='#575757'),
-            plot_bgcolor='#262626',
-            paper_bgcolor='#262626', 
-            showlegend = False,
-            bargap=0.07,)
-
-        # Plot histogram
-        config = {'responsive': True}
-        histogram = go.Figure(go.Histogram(x=size_type, nbinsx=session['histogram-bins'], marker=dict(color='#1d897b')), layout=layout)
-        histogram = plot(histogram, output_type='div', include_plotlyjs=False, config=config)
-        histogram_list.append(histogram)
-
-    return histogram_list
+    n = session['histogram-bins']
+    def plot_histogram(data, label, file_name):
+        if not data:
+            min_range, max_range = 0, 0
+        else:
+            min_range, max_range = min(data), max(data)
+        fig, ax = plt.subplots(figsize=(14, 6))
+        ax.hist(data, bins=n, color='red', alpha=1, range=(min_range, max_range), edgecolor='white')
+        ax.set_xlabel(label)
+        ax.set_ylabel('Count of Segments')
+        plt.savefig(file_name, bbox_inches='tight', pad_inches=0)
+        plt.close(fig)
+    plot_histogram(grain_areas_filtered, 'Area (mm\u00b2)', 'static/images/area_histogram.png')
+    plot_histogram(grain_diameters_filtered, 'Diameter (\u03BCm)', 'static/images/diameter_histogram.png')
 
 def draw_contours(image, grain_contours):
 

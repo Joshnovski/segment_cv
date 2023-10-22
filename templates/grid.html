@@ -7,10 +7,10 @@
             <i class="icon-style fa-lg expand-icon fas fa-expand"></i>
         </div>
     </header>
-    <div class="histogram-container">
-        {% if area_histogram_div %}
-            {{ area_histogram_div | safe }}
-        {% endif %}
+    <div class="card-container">
+        {% if not images_existing == 0 %}
+        <img class="grid-img" src="{{ url_for('static', filename='images/area_histogram.png') }}" alt="Segment Surface Area Histogram">
+        {% endif %} 
     </div>
 </div>
 <div class="card">
@@ -49,10 +49,10 @@
             <i class="icon-style fa-lg expand-icon fas fa-expand"></i>
         </div>
     </header>
-    <div class="histogram-container">
-        {% if diameter_histogram_div %}
-            {{ diameter_histogram_div | safe }}
-        {% endif %}
+    <div class="card-container">
+        {% if not images_existing == 0 %}
+        <img class="grid-img" src="{{ url_for('static', filename='images/diameter_histogram.png') }}" alt="Segment Diameter Approximation Histogram">
+        {% endif %} 
     </div>
 </div>
 <div class="card">
