@@ -31,22 +31,39 @@
     font-weight: 700;
  }
 
- /* Responsiveness for mobile */
- @media (max-width: 660px)
- {
-    .dashboard-header-greeting
-    {
-      font-weight: 400;
-    }
-    .dashboard-header-info
-    {
-      display: none;
-    }
- }
- @media (max-width: 540px)
- {
-    .dashboard-header-greeting
-    {
-      display: none;
-    }
- }
+/* Responsiveness for mobile */
+@media (max-width: 660px) {
+  .dashboard-header-greeting {
+    font-weight: 400;
+  }
+  .dashboard-header-info {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .dashboard-header-greeting {
+    display: none;
+  }
+}
+
+/* nav expanded alternate */
+@media (max-width: 850px) {
+  header.header-expanded .dashboard-header-greeting {
+    font-weight: 400;
+  }
+  header.header-expanded .dashboard-header-info {
+    display: none;
+  }
+}
+@media (max-width: 660px) {
+  header.header-expanded .dashboard-header-greeting {
+    display: none;
+  }
+}
+@media (max-width: 486px){
+  header.header-expanded .dashboard-header-title {
+    display: none;
+  }
+}
+

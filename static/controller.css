@@ -23,7 +23,7 @@
     background-color: #202020;
     color: #1d897b;
     cursor: pointer;
-}
+} 
 
 .nav-item-title.active
 {
@@ -248,5 +248,22 @@
     .nav-icons
     {
         padding-right: 0px;
+    }
+    nav.expanded .nav-link
+    {
+        display: inherit;
+    }
+    nav.expanded .nav-operate-icons-struct
+    {
+        display: flex;
+        justify-content: space-between;
+    }
+    nav.expanded .nav-title-name
+    {
+        display: contents;
+    }
+    nav.expanded .nav-icons
+    {
+        padding-right: 30px;
     }
 }

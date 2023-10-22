@@ -196,10 +196,36 @@ justify-content: space-between;
     nav 
     {
         width: 70px;
-        transition: width 0.5s ease
+        cursor: pointer;
+        /* transition: width 0.9s ease */
+    }
+    nav.expanded
+    {
+        width: 275px;
+    }
+    main.nav-expanded
+    {
+        cursor: pointer;
+    }
+    main.nav-expanded .card
+    {
+        display: none;
+    }
+    main.nav-expanded 
+    {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    main.nav-expanded::-webkit-scrollbar { 
+        width: 0;
+        background: transparent;
     }
     .brand-style
     {
         display: none;
+    }
+    nav.expanded .brand-style
+    {
+        display: initial;
     }
 }
