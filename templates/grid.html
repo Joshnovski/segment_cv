@@ -7,7 +7,7 @@
             <i class="icon-style fa-lg expand-icon fas fa-expand"></i>
         </div>
     </header>
-    <div class="card-container">
+    <div class="card-container histogram-content">
         {% if not images_existing == 0 %}
         <img class="grid-img" src="{{ url_for('static', filename='images/area_histogram.png') }}" alt="Segment Surface Area Histogram">
         {% endif %} 
@@ -49,7 +49,7 @@
             <i class="icon-style fa-lg expand-icon fas fa-expand"></i>
         </div>
     </header>
-    <div class="card-container">
+    <div class="card-container histogram-content">
         {% if not images_existing == 0 %}
         <img class="grid-img" src="{{ url_for('static', filename='images/diameter_histogram.png') }}" alt="Segment Diameter Approximation Histogram">
         {% endif %} 

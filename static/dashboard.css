@@ -149,11 +149,14 @@ justify-content: space-between;
     height: 93% !important;
     max-width: none !important;
 }
-
-.enlarged-card .histogram-container
-{
-    transform: scale(1.5);
+.histogram-content .enlarged-image {
+    height: 85% !important;
 }
+
+/* .enlarged-card .histogram-container
+{
+    height: 100%;
+} */
 
 /* background animation */
 
@@ -243,5 +246,14 @@ justify-content: space-between;
     main.nav-expanded .card
     {
         display: none;
+    }
+}
+
+@media (max-width: 610px)
+{
+    .enlarged-card 
+    {
+        transform: scale(0.8);
+        transition: transform 0.5s ease;
     }
 }
