@@ -533,11 +533,25 @@ def grain_size_histogram(grain_areas_filtered, grain_diameters_filtered):
         else:
             min_range, max_range = min(data), max(data)
         fig, ax = plt.subplots(figsize=(14, 6))
-        ax.hist(data, bins=n, color='red', alpha=1, range=(min_range, max_range), edgecolor='white')
-        ax.set_xlabel(label)
-        ax.set_ylabel('Count of Segments')
-        plt.savefig(file_name, bbox_inches='tight', pad_inches=0)
+        ax.hist(data, bins=n, color='#1d897b', alpha=1, range=(min_range, max_range), edgecolor='#262626')
+        # Label and title styles
+        ax.set_xlabel(label, color='white', fontsize = 14)
+        ax.set_ylabel('Count of Segments', color='white', fontsize = 14)
+        # Tick colors
+        ax.tick_params(axis='both', colors='white')
+        # Grid color
+        ax.yaxis.grid(True, linestyle='--', which='major', color='#575757', alpha=.25)
+        # Set background colors
+        ax.set_facecolor('#262626') # for the main background
+        fig.set_facecolor('#262626') # for space around the plot
+        ax.spines['bottom'].set_color('white')
+        ax.spines['top'].set_color('#262626')
+        ax.spines['right'].set_color('#262626')
+        ax.spines['left'].set_color('#262626')
+
+        plt.savefig(file_name, bbox_inches='tight', pad_inches=0, facecolor=fig.get_facecolor())
         plt.close(fig)
+
     plot_histogram(grain_areas_filtered, 'Area (mm\u00b2)', 'static/images/area_histogram.png')
     plot_histogram(grain_diameters_filtered, 'Diameter (\u03BCm)', 'static/images/diameter_histogram.png')
 
@@ -598,14 +612,7 @@ def run():
     watershed_image = watershed_and_postprocessing(thresholded_image_3chan, markers)
     _, _, grain_contours, _, _, _, _, grain_areas_filtered, grain_diameters_filtered = calculate_area_and_filter_contours(watershed_image)
     contoured_image = draw_contours(image, grain_contours)
-
-
-    histogram_list = grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
-    # Store in the session
-    session['area_histogram_div'] = histogram_list[0]
-    session['diameter_histogram_div'] = histogram_list[1]
-
-
+    grain_size_histogram(grain_areas_filtered, grain_diameters_filtered)
     display_images(watershed_image, contoured_image, dtt, image, thresholded_image_3chan, dt)
 
     # Flash a success message
