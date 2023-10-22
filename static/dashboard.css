@@ -198,7 +198,6 @@ justify-content: space-between;
     nav 
     {
         width: 70px;
-        cursor: pointer;
         /* transition: width 0.9s ease */
     }
     nav.expanded
