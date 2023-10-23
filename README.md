@@ -7,7 +7,7 @@
     <img src="static/brand-cyan.png" alt="Logo" width="120" height="80">
   </a>
 
-  <h3 align="center">SEGMENT</h3>
+  <h3 align="center">S E G M E N T</h3>
 
   <p align="center">
     A computer vision web tool for segment characterisation.
