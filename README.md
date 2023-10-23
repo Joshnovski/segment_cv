@@ -75,6 +75,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![Python][Python.org]][Python-url]
 * [![HTML][HTML.com]][HTML-url]
 * [![CSS][CSS.com]][CSS-url]
+* [![JavaScript][JavaScript.js]]
 * [![Flask][Flask.py]][Flask-url]
 * [![Figma][Figma.com]][Figma-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
@@ -147,3 +148,4 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [Figma-url]: https://www.figma.com/
 [Flask.py]: https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white
 [Flask-url]: https://flask.palletsprojects.com/en/3.0.x/
+[JavaScript.js]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
