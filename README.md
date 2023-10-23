@@ -14,9 +14,9 @@
     <br />
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://segmentcv-deploy-e9a646f7dbd1.herokuapp.com/dashboard">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">View Portfolio</a>
+    <a href="https://joshnovski.github.io/personal-website/">View Portfolio</a>
   </p>
 </div>
 
