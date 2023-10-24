@@ -70,11 +70,10 @@ Segmentation results come in the form of a numerical results section, histograms
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Flask][Flask.com]][Flask-url]
-* [![JavaScript][JavaScript.com]][JavaScript-url]
 * [![Python][Python.org]][Python-url]
-* [![HTML][HTML.com]][HTML-url]
-* [![CSS][CSS.com]][CSS-url]
+* [![SQLite][SQLite.org]][SQLite-url]
+* [![HTML%][HTML5.html]][HTML5-url]
+* [![CSS#][CSS3.css]][CSS3-url]
 * [![JavaScript][JavaScript.js]][JavaScript-url]
 * [![Flask][Flask.py]][Flask-url]
 * [![Figma][Figma.com]][Figma-url]
@@ -150,3 +149,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [Flask-url]: https://flask.palletsprojects.com/en/3.0.x/
 [JavaScript.js]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [JavaScript-url]: https://www.w3schools.com/Js/
+[CSS3.css]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
+[CSS3-url]: https://www.w3schools.com/css/default.asp
+[HTML5.html]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
+[HTML5-url]: https://www.w3schools.com/html/default.asp
+[Python.org]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[Python-url]: https://www.python.org/
+[SQLite.org]: https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white
+[SQLite-url]: https://www.sqlite.org/index.html
