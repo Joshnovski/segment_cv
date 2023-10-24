@@ -70,11 +70,10 @@ Segmentation results come in the form of a numerical results section, histograms
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Python][Python.org]][Python-url]
+* [![OpenCV][OpenCV.org]][OpenCV-url]
+* [![Matplotlib][Matplotlib.org]][Matplotlib-url]
+* [![NumPy][NumPy.org]][NumPy-url]
 * [![SQLite][SQLite.org]][SQLite-url]
-* [![HTML%][HTML5.html]][HTML5-url]
-* [![CSS#][CSS3.css]][CSS3-url]
-* [![JavaScript][JavaScript.js]][JavaScript-url]
 * [![Flask][Flask.py]][Flask-url]
 * [![Figma][Figma.com]][Figma-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
@@ -157,3 +156,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [Python-url]: https://www.python.org/
 [SQLite.org]: https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white
 [SQLite-url]: https://www.sqlite.org/index.html
+[OpenCV.org]: https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white
+[OpenCV-url]: https://opencv.org/
+[Matplotlib.org]: https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black
+[Matplotlib-url]: https://matplotlib.org/
+[NumPy.org]: https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white
+[NumPy-url]: https://numpy.org/
