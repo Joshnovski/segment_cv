@@ -84,25 +84,26 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<h3>Control Panel</h3>
+<h5>Control Panel</h5>
 
-<h3>Scale Calculator</h3>
+<h5>Scale Calculator</h5>
 
-<h3>Results</h3>
+<h5>Results</h5>
 
-<h3>Account</h3>
+<h5>Account</h5>
 
-<h3>Segment Surface Area Histogram</h3>
+<h5>Segment Surface Area Histogram</h5>
 
-<h3>Segment Diameter Approximation Histogram</h3>
+<h5>Segment Diameter Approximation Histogram</h5>
 
-<h3>Original Image</h3>
+<h5>Original Image</h5>
 
-<h3>Distance Transform Image</h3>
+<h5>Distance Transform Image</h5>
 
-<h3>Watershed Segmentation Image</h3>
+<h5>Watershed Segmentation Image</h5>
 
-<h3>Contoured Segments Image</h3>
+<h5>Contoured Segments Image</h5>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
