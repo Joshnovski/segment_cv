@@ -59,6 +59,8 @@ SEGMENT is a computer vision web tool which utilises the OpenCV library to perfo
 
 Segmentation results come in the form of a numerical results section, histograms, and processing stages of the uploaded image. The numerical results section contains values for the number of segments, the average segment surface area in mm<sup>2</sup> and the average diameter of the segment in mm which uses the assumption that the segments are mostly circular. The histogram plots illustrate the distribution of the segment surface areas and diameters. The processing stage images show the original uploaded image, the pixel distance transform of the grayscaled image, the post-watershed image and the contoured image, where each segment is outlined.
 
+The watershed algorithm used in SEGMENT is a powerful image segmentation technique that is more thoughtful than other segmentation methods. It is widely used medical imaging and computer vision applications, and is a crucial step in many image processing pipelines. Despite its limitation, the watershed algorithm remains a popular choice for image segmentation tasks due to its ability to handle images with significant amounts of noise and irregular shapes.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
