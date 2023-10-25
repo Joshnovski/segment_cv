@@ -34,7 +34,7 @@
     </li>
     <li>
       <a href="#usage">Usage</a>
-      <ul>
+<!--       <ul>
         <li><a href="#authentication">Authentication</a></li>
         <li><a href="#control-panel">Control Panel</a></li>
         <li><a href="#scale-calculator">Scale Calculator</a></li>
@@ -46,7 +46,7 @@
         <li><a href="#distance-transform">Distance Transform Image</a></li>
         <li><a href="#watershed">Watershed Segmentation Image</a></li>
         <li><a href="#contoured">Contoured Segments Image</a></li>
-      </ul>
+      </ul> -->
     </li>
   </ol>
 </details>
