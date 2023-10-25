@@ -88,7 +88,12 @@ Users will first be greeted with a login page consisting of login and sign-up op
 The dashboard is divided into two sections. The section to the left is the navigation bar, or 'control panel', and the section to the right is the image output grid where size histograms and image processing steps are illustrated. Users will mostly interact with the control panel in order to upload images, adjust processing parameters, run the segmentation program and record sizing results. The images showing the segmentation steps are there so users can make appropriate parameter adjustments to improve segmentation quality.
 
 #### [Control Panel]()
-...............It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to ult model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy............... 
+This is the main operations center for running and controlling the segmentation program. 
+
+* Icons: The First row of icons show an image icon, a reset icon and a play icon. THe image icon allows users to select an image from their files, then a flash notification will tell the user when the upload process is complete. The reset icon, resets all variables to their default values. Lastly, the play icon runs the segmentation program, providing a flash notification once it is complete.
+* Scale: This value shows the result from the 'scale calculator' calculation as a ratio of pixels/mm.
+* Histogram Bins: The number of unit spacing groups along the x-axis. A higher bin number can highlight fine details in the distribution of groups but may sacrifice readability of the plot.
+* Contour Thickness: A scale value for the thickness of drawn contours seen in the 'contoured segments' image.
 
 #### [Scale Calculator]()
 The scale calculator within the control panel allows users to quickly calculate and input the pixel/mm ratio needed to produce accurate size values for the segments. Users are required to have a scale bar or an object of known size in the image as a point of reference. Users are required to count the number of pixels corresponding to that known length and input the values in the input boxes. Pressing calculate will send the calculated ratio to the 'Control Center' menu as a parameter used in the running of the segmentation script. Later down the line, I would like to provide users with the ability to quickly count the distance in pixels by drawing a line on the image, but at the moment they may have to use a program like ImageJ or something similar.
