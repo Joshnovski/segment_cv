@@ -85,32 +85,23 @@ This section should list any major frameworks/libraries used to bootstrap your p
 ## Usage
 
 ## Control Panel
-<br />
-<br />
+
 ## Scale Calculator
-<br />
-<br />
+
 ## Results
-<br />
-<br />
+
 ## Account
-<br />
-<br />
+
 ## Segment Surface Area Histogram
-<br />
-<br />
+
 ## Segment Diameter Approximation Histogram
-<br />
-<br />
+
 ## Original Image
-<br />
-<br />
+
 ## Distance Transform Image
-<br />
-<br />
+
 ## Watershed Segmentation Image
-<br />
-<br />
+
 ## Contoured Segments Image
 
 
