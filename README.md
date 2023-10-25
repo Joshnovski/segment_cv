@@ -66,8 +66,6 @@ Segmentation results come in the form of a numerical results section, histograms
 
 ## [Built With]()
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [![OpenCV][OpenCV.org]][OpenCV-url]
 * [![Matplotlib][Matplotlib.org]][Matplotlib-url]
 * [![NumPy][NumPy.org]][NumPy-url]
@@ -94,7 +92,7 @@ The dashboard is divided into two sections. The section to the left is the navig
 The scale calculator within the control panel allows users to quickly calculate and input the pixel/mm ratio needed to produce accurate size values for the segments. Users are required to have a scale bar or an object of known size in the image as a point of reference. Users are required to count the number of pixels corresponding to that known length and input the values in the input boxes. Pressing calculate will send the calculated ratio to the 'Control Center' menu as a parameter used in the running of the segmentation script. Later down the line, I would like to provide users with the ability to quickly count the distance in pixels by drawing a line on the image, but at the moment they may have to use a program like ImageJ or something similar.
 
 #### [Results]()
-Once an image has been processed and segmented, the results section shows the 'number of segments', the average surface area of the segments in mm<sup>2<sup/> and the average diameter of the segments in mm. The diameter values are approximations taking the assumption that the segments are circular. If the segments are not circular, this value will be inaccurate.
+Once an image has been processed and segmented, the results section shows the 'number of segments', the average surface area of the segments in mm<sup>2</sup> and the average diameter of the segments in mm. The diameter values are approximations taking the assumption that the segments are circular. If the segments are not circular, this value will be inaccurate.
 
 #### [Account]()
 In the account section of the control panel, users can only currently log out. Logging out will take the user back to the login screen. In the future, this section will allow users to access their profile where they can access all their previous saved results.
