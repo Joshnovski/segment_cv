@@ -56,7 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Dashboard][product-screenshot]](https://example.com)
+[![Dashboard][product-screenshot]](https://segmentcv-deploy-e9a646f7dbd1.herokuapp.com/dashboard)
 
 SEGMENT is a computer vision web tool which utilises the OpenCV library to perform watershed segmentation of images. Contoured segments post watershed are characterised by number and size, (where the size is calculated based on a pixel/mm scale). SEGMENT provides users with a control panel containing a number of image processing parameters which must be adjusted to improve segmentation accuracy. 
 
