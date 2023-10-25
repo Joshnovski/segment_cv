@@ -26,24 +26,9 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <li><a href="#about-the-project">About The Project</a></li>
-      <li><a href="#built-with">Built With</a></li>
-      <li><a href="#usage">Usage</a></li>
-<!--       <ul>
-        <li><a href="#authentication">Authentication</a></li>
-        <li><a href="#control-panel">Control Panel</a></li>
-        <li><a href="#scale-calculator">Scale Calculator</a></li>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#account">Account</a></li>
-        <li><a href="#surface-area-hist">Segment Surface Area Histogram</a></li>
-        <li><a href="#diameter-approx-hist">Segment Diameter Approximation Histogram</a></li>
-        <li><a href="#original-image">Original Image</a></li>
-        <li><a href="#distance-transform">Distance Transform Image</a></li>
-        <li><a href="#watershed">Watershed Segmentation Image</a></li>
-        <li><a href="#contoured">Contoured Segments Image</a></li>
-      </ul> -->
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#usage">Usage</a></li>
   </ol>
 </details>
 
