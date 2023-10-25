@@ -93,10 +93,10 @@ The dashboard is divided into two sections. The section to the left is the navig
 
 This is the main operations center for running and controlling the segmentation program. 
 
-* [Icons:]() The First row of icons show an image icon, a reset icon and a play icon. The image icon allows users to select an image from their files, then a flash notification will tell the user when the upload process is complete. The reset icon, resets all variables to their default values. Lastly, the play icon runs the segmentation program, providing a flash notification once it is complete.
-* **Scale:** This value shows the result from the 'scale calculator' calculation as a ratio of pixels/mm.
-* **Histogram Bins:** The number of unit spacing groups along the x-axis. A higher bin number can highlight fine details in the distribution of groups but may sacrifice readability of the plot.
-* **Contour Thickness:** A scale value for the thickness of drawn contours seen in the 'contoured segments' image.
+* [**Icons:**]() The First row of icons show an image icon, a reset icon and a play icon. The image icon allows users to select an image from their files, then a flash notification will tell the user when the upload process is complete. The reset icon, resets all variables to their default values. Lastly, the play icon runs the segmentation program, providing a flash notification once it is complete.
+* [**Scale:**]() This value shows the result from the 'scale calculator' calculation as a ratio of pixels/mm.
+* [**Histogram Bins:**]() The number of unit spacing groups along the x-axis. A higher bin number can highlight fine details in the distribution of groups but may sacrifice readability of the plot.
+* [**Contour Thickness:**]() A scale value for the thickness of drawn contours seen in the 'contoured segments' image.
 
 #### [Scale Calculator]()
 
