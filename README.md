@@ -82,44 +82,56 @@ The watershed algorithm used in SEGMENT is a powerful image segmentation techniq
 ## [Usage]()
 
 #### [Authentication]()
+
 Users will first be greeted with a login page consisting of login and sign-up options. Guest login details have been written in the placeholder location for the username and password. To get to the sign-up page, you must click the 'Sign up' link at the bottom of the login card. The Sign-up page allows users to craft an appropriate username and password to identify and secure their account. Users must confirm their password to ensure that no typos are introduced. Once registered, users are taken back to the login page where, once they sign in, they will be directed to the segmentation dashboard.
 
 #### [Dashboard]()
+
 The dashboard is divided into two sections. The section to the left is the navigation bar, or 'control panel', and the section to the right is the image output grid where size histograms and image processing steps are illustrated. Users will mostly interact with the control panel in order to upload images, adjust processing parameters, run the segmentation program and record sizing results. The images showing the segmentation steps are there so users can make appropriate parameter adjustments to improve segmentation quality.
 
 #### [Control Panel]()
+
 This is the main operations center for running and controlling the segmentation program. 
 
-* Icons: The First row of icons show an image icon, a reset icon and a play icon. THe image icon allows users to select an image from their files, then a flash notification will tell the user when the upload process is complete. The reset icon, resets all variables to their default values. Lastly, the play icon runs the segmentation program, providing a flash notification once it is complete.
-* Scale: This value shows the result from the 'scale calculator' calculation as a ratio of pixels/mm.
-* Histogram Bins: The number of unit spacing groups along the x-axis. A higher bin number can highlight fine details in the distribution of groups but may sacrifice readability of the plot.
-* Contour Thickness: A scale value for the thickness of drawn contours seen in the 'contoured segments' image.
+* **Icons:** The First row of icons show an image icon, a reset icon and a play icon. The image icon allows users to select an image from their files, then a flash notification will tell the user when the upload process is complete. The reset icon, resets all variables to their default values. Lastly, the play icon runs the segmentation program, providing a flash notification once it is complete.
+* **Scale:** This value shows the result from the 'scale calculator' calculation as a ratio of pixels/mm.
+* **Histogram Bins:** The number of unit spacing groups along the x-axis. A higher bin number can highlight fine details in the distribution of groups but may sacrifice readability of the plot.
+* **Contour Thickness:** A scale value for the thickness of drawn contours seen in the 'contoured segments' image.
 
 #### [Scale Calculator]()
+
 The scale calculator within the control panel allows users to quickly calculate and input the pixel/mm ratio needed to produce accurate size values for the segments. Users are required to have a scale bar or an object of known size in the image as a point of reference. Users are required to count the number of pixels corresponding to that known length and input the values in the input boxes. Pressing calculate will send the calculated ratio to the 'Control Center' menu as a parameter used in the running of the segmentation script. Later down the line, I would like to provide users with the ability to quickly count the distance in pixels by drawing a line on the image, but at the moment they may have to use a program like ImageJ or something similar.
 
 #### [Results]()
+
 Once an image has been processed and segmented, the results section shows the 'number of segments', the average surface area of the segments in mm<sup>2</sup> and the average diameter of the segments in mm. The diameter values are approximations taking the assumption that the segments are circular. If the segments are not circular, this value will be inaccurate.
 
 #### [Account]()
+
 In the account section of the control panel, users can only currently log out. Logging out will take the user back to the login screen. In the future, this section will allow users to access their profile where they can access all their previous saved results.
 
 #### [Segment Surface Area Histogram]()
+
 The surface area histogram allows users to see a distribution of the segmented areas. This plot relies on the user having input an accurate pixel/mm scale ratio.
 
 #### [Segment Diameter Approximation Histogram]()
+
 This histogram illustrates a distribution of segment diameters. These diameter values were calculated by assuming the segment is circular and then using the surface area to calculate its diameter. The surface area of a circle equation was sufficient for this, 'area = π(radius)<sup>2</sup>'. The assumption of a circular segment was made to make it easier to interpret the size of a segment. It is often easier to think about and understand a length than an area. Eventually when users are choosing the min and max size range to contour segments, they can better guage what kind of size they are expecting to observe if the boundary conditions are diameters in mm units rather than areas in mm<sup>2</sup> units. 
 
 #### [Original Image]()
+
 As expected from the name, this is the original image input by the user, unprocessed and in its original state.
 
 #### [Distance Transform Image]()
+
 The distance tranform of an image is calculated by counting the distance between a given pixel and its nearest black pixel, (a value of (0, 0, 0) on an RGB scale). This distance value is then assigned as the pixels brightness, so if a given pixel is far from a black pixel, the pixel will be more white. If the pixel is close to a black pixel, it will appear more gray. Effectivly this processing technique will turn a binary black and white image (0, 0, 0) and (255, 255, 255) respectivly, into 256 value range, grayscale image again.  Before this distance transform is peformed, the image is first grayscaled, then made binary with a threshold set by the user in the 'Control Center' tab. A distance transformed image acts as a height map where, given another threshold, users can 'raise the water level' so to speak. By changing the distance transform threshold, users exlude darker pixels from the height map with color values outside the threshold boundary. This is a technique used to divide connected regions of pixels in an image based on brightness, an important step in watershed segmentation.
 
 #### [Watershed Segmentation Image]()
+
 Watersheding is a image processing algorithm following from distance transforming. Any grayscale image can be viewed as a topographic map, where bright pixels are peaks and hills and darker pixels signify valleys. If you start filling every isolated valley (local minima) with different coloured water (labels), water from different valleys will start to merge. Where these different water pools merge, barriers (lines) are drawn. THis is repeated until all the peaks are under the water. These barriers give the segmentation results. However, this alone gives an oversegmented results, so OpenCV implemented a marker-based watershed algorithm. This allows you tp specify which valley points are to be merged and which are not. We give different lavels for objects we know, labeling regions we are sure of being the foreground with a colour, labeling the region which we are sure of being the background with another colour, and labelling the region we are not sure of anything with 0. This is our marker. The marker is then updated with the labels with gave and the boundaires of objects are given a value of -1. As with all image processing, it is never a sure science with how it will behave. For regions where separate objects in the image touch, they may be segmented properly and soe may not. Adjustments to the image processing parameters can be made to improve the results.
 
 #### [Contoured Segments Image]()
+
 This is the final image processing step where we draw contour lines along the boundaires of each segmented object. The user has access to change the thickness of these lines to make them more or less visible in the image.
 
 
