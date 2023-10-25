@@ -54,7 +54,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## [About The Project]()
 
 [![Dashboard][product-screenshot]]()
 
@@ -67,7 +67,7 @@ Segmentation results come in the form of a numerical results section, histograms
 
 
 
-### Built With
+## [Built With]()
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
