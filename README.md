@@ -32,6 +32,7 @@
       <a href="#usage">Usage</a>
       <ul>
         <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
         <li><a href="#control-panel">Control Panel</a></li>
         <li><a href="#scale-calculator">Scale Calculator</a></li>
         <li><a href="#results">Results</a></li>
@@ -81,37 +82,40 @@ This section should list any major frameworks/libraries used to bootstrap your p
 ## [Usage]()
 
 #### [Authentication]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+Users will first be greeted with a login page consisting of login and sign-up options. Guest login details have been written in the placeholder location for the username and password. To get to the sign-up page, you must click the 'Sign up' link at the bottom of the login card. The Sign-up page allows users to craft an appropriate username and password to identify and secure their account. Users must confirm their password to ensure that no typos are introduced. Once registered, users are taken back to the login page where, once they sign in, they will be directed to the segmentation dashboard.
+
+#### [Dashboard]()
+The dashboard is divided into two sections. The section to the left is the navigation bar, or 'control panel', and the section to the right is the image output grid where size histograms and image processing steps are illustrated. Users will mostly interact with the control panel in order to upload images, adjust processing parameters, run the segmentation program and record sizing results. The images showing the segmentation steps are there so users can make appropriate parameter adjustments to improve segmentation quality.
 
 #### [Control Panel]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+...............It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to ult model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy............... 
 
 #### [Scale Calculator]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy.
+The scale calculator within the control panel allows users to quickly calculate and input the pixel/mm ratio needed to produce accurate size values for the segments. Users are required to have a scale bar or an object of known size in the image as a point of reference. Users are required to count the number of pixels corresponding to that known length and input the values in the input boxes. Pressing calculate will send the calculated ratio to the 'Control Center' menu as a parameter used in the running of the segmentation script. Later down the line, I would like to provide users with the ability to quickly count the distance in pixels by drawing a line on the image, but at the moment they may have to use a program like ImageJ or something similar.
 
 #### [Results]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+Once an image has been processed and segmented, the results section shows the 'number of segments', the average surface area of the segments in mm<sup>2<sup/> and the average diameter of the segments in mm. The diameter values are approximations taking the assumption that the segments are circular. If the segments are not circular, this value will be inaccurate.
 
 #### [Account]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+In the account section of the control panel, users can only currently log out. Logging out will take the user back to the login screen. In the future, this section will allow users to access their profile where they can access all their previous saved results.
 
 #### [Segment Surface Area Histogram]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+The surface area histogram allows users to see a distribution of the segmented areas. This plot relies on the user having input an accurate pixel/mm scale ratio.
 
 #### [Segment Diameter Approximation Histogram]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+...It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. ....
 
 #### [Original Image]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+...It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. ....
 
 #### [Distance Transform Image]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+....It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. ....
 
 #### [Watershed Segmentation Image]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+....It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. .......
 
 #### [Contoured Segments Image]()
-It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. 
+....It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy. ......
 
 
 
