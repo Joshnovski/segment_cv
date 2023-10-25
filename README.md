@@ -27,9 +27,9 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <a href="#built-with">Built With</a>
-      <a href="#usage">Usage</a>
+      <li><a href="#about-the-project">About The Project</a></li>
+      <li><a href="#built-with">Built With</a></li>
+      <li><a href="#usage">Usage</a></li>
 <!--       <ul>
         <li><a href="#authentication">Authentication</a></li>
         <li><a href="#control-panel">Control Panel</a></li>
