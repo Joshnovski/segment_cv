@@ -35,6 +35,7 @@
     <li>
       <a href="#usage">Usage</a>
       <ul>
+        <li><a href="#authentication">Authentication</a></li>
         <li><a href="#control-panel">Control Panel</a></li>
         <li><a href="#scale-calculator">Scale Calculator</a></li>
         <li><a href="#results">Results</a></li>
@@ -43,8 +44,8 @@
         <li><a href="#diameter-approx-hist">Segment Diameter Approximation Histogram</a></li>
         <li><a href="#original-image">Original Image</a></li>
         <li><a href="#distance-transform">Distance Transform Image</a></li>
-        <li><a href="#watershed">Watershed Segmentation image</a></li>
-        <li><a href="#contoured">Contoured Segments image</a></li>
+        <li><a href="#watershed">Watershed Segmentation Image</a></li>
+        <li><a href="#contoured">Contoured Segments Image</a></li>
       </ul>
     </li>
   </ol>
