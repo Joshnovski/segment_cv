@@ -1,20 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {                                                                                                                                                        
-    window.addEventListener('resize', function() {                                                                                                                                                                
-        var parent = document.querySelector('.enlarged-card');                                                                                                                                                    
+// Wait until the document's content has fully loaded before executing the function.
+document.addEventListener('DOMContentLoaded', function() { 
+    // Attach an event listener to the window object that listens for the 'resize' event.
+    window.addEventListener('resize', function() { 
+        // Get the enlarged card element (the parent) and its histogram-container child.
+        var parent = document.querySelector('.enlarged-card'); 
         var child = document.querySelector('.enlarged-card .histogram-container');
-        console.log(parent, child);                                                                                                                                
-        if (parent && child) {                                                                                                                                                                                    
-            var parentWidth = parent.offsetWidth;                                                                                                                                                                 
-            var originalWidth = 700; // replace this with the original width of the histogram                                                                                                                     
+        console.log(parent, child); // Log both elements to the console for debugging.
+        // Ensure both the parent and child elements exist before proceeding.
+        if (parent && child) { 
+            // Get the current width of the parent element.
+            var parentWidth = parent.offsetWidth;
+            // This is the original width of the histogram for scaling calculations.
+            var originalWidth = 700; // Replace this value with the actual original width if different.
+            // Calculate the scale value based on the parent's current width relative to the histogram's original width.
+            // The division by 1.5 is an arbitrary scaling factor to control the resulting size.
             var scaleValue = (parentWidth/originalWidth)/1.5;
-            
-            // // Check if media query is active
             // var mediaQuery = window.matchMedia("(max-width: 880px)");
             // if (mediaQuery.matches) {
-            //     scaleValue = (parentWidth/originalWidth)/2.5;
+            //     scaleValue = (parentWidth/originalWidth)/2.5; // Adjust the scaling factor for smaller screens.
             // }
-            
-            child.style.transform = 'scale(' + scaleValue + ')';                                                                                                                                                  
-        }                                                                                                                                                                                                         
-    });                                                                                                                                                                                                           
-});                                                                                                                                                                                                          
+            // Apply the scaling transformation to the child (histogram-container).
+            child.style.transform = 'scale(' + scaleValue + ')';
+        }
+    });
+});
+                                                                                                                                                                                                      
