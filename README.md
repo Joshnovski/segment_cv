@@ -15,6 +15,8 @@
     <br />
     <br />
     <a href="https://segmentcv-deploy-e9a646f7dbd1.herokuapp.com/dashboard" target="_blank" rel="noopener noreferrer">View Demo</a>
+    .
+    <a href="https://youtu.be/bJDfH49PRbo" target="_blank" rel="noopener noreferrer">View Quick Video Presentation</a>
   </p>
 </div>
 
