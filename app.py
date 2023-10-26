@@ -153,19 +153,19 @@ def register():
 
         # Ensure password is sufficiently secure
         if len(password) < 8:
-            flash("Password must be at least 8 characters", 'error')
+            flash("Password must be at least 8 characters, and contain at least one number, uppercase letter, lowercase letter and symbol", 'error')
             return render_template("register.html")
         elif not any(char.isdigit() for char in password):
-            flash("Password must contain at least one number", 'error')
+            flash("Password must be at least 8 characters, and contain at least one number, uppercase letter, lowercase letter and symbol", 'error')
             return render_template("register.html")
         elif not any(char.isupper() for char in password):
-            flash("Password must contain at least one uppercase letter", 'error')
+            flash("Password must be at least 8 characters, and contain at least one number, uppercase letter, lowercase letter and symbol", 'error')
             return render_template("register.html")
         elif not any(char.islower() for char in password):
-            flash("Password must contain at least one lowercase letter", 'error')
+            flash("Password must be at least 8 characters, and contain at least one number, uppercase letter, lowercase letter and symbol", 'error')
             return render_template("register.html")
         elif not any(not char.isalnum() for char in password):
-            flash("Password must contain at least one symbol", 'error')
+            flash("Password must be at least 8 characters, and contain at least one number, uppercase letter, lowercase letter and symbol", 'error')
             return render_template("register.html")
         
 
