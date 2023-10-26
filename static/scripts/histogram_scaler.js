@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get the current width of the parent element.
             var parentWidth = parent.offsetWidth;
             // This is the original width of the histogram for scaling calculations.
-            var originalWidth = 700; // Replace this value with the actual original width if different.
+            var originalWidth = 700;
             // Calculate the scale value based on the parent's current width relative to the histogram's original width.
-            // The division by 1.5 is an arbitrary scaling factor to control the resulting size.
             var scaleValue = (parentWidth/originalWidth)/1.5;
             // var mediaQuery = window.matchMedia("(max-width: 880px)");
             // if (mediaQuery.matches) {
