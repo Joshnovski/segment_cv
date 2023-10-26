@@ -16,7 +16,7 @@
     <br />
     <a href="https://segmentcv-deploy-e9a646f7dbd1.herokuapp.com/dashboard" target="_blank" rel="noopener noreferrer">View Demo</a>
     ·
-    <a href="https://joshnovski.github.io/personal-website/" target="_blank" rel="noopener noreferrer">View Portfolio</a>
+    <a href="" target="_blank" rel="noopener noreferrer">View Portfolio</a>
   </p>
 </div>
 
