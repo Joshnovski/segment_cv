@@ -94,9 +94,16 @@ The dashboard is divided into two sections. The section to the left is the navig
 This is the main operations center for running and controlling the segmentation program. 
 
 * [**Icons:**]() The First row of icons show an image icon, a reset icon and a play icon. The image icon allows users to select an image from their files, then a flash notification will tell the user when the upload process is complete. The reset icon, resets all variables to their default values. Lastly, the play icon runs the segmentation program, providing a flash notification once it is complete.
-* [**Scale:**]() This value shows the result from the 'scale calculator' calculation as a ratio of pixels/mm.
+* [**Scale:**]() This value shows the result from the 'Scale Calculator' calculation as a ratio of pixels/mm.
 * [**Histogram Bins:**]() The number of unit spacing groups along the x-axis. A higher bin number can highlight fine details in the distribution of groups but may sacrifice readability of the plot.
-* [**Contour Thickness:**]() A scale value for the thickness of drawn contours seen in the 'contoured segments' image.
+* [**Contour Thickness:**]() A scale value for the thickness of drawn contours seen in the 'Contoured Segments' image.
+* [**Invert Grayscale:**]() Flips the values of each grayscaled pixel to the opposite end of the 256 value range. So if a pixel is black (0) it will become white (255). If the objects you want to segment are darker than the background, use this to ensure the objects are white and background is black.
+* [**Histogram Equalisatio:**]() In the case where you need to improve the contrast of your grayscaled image, you can turn on histogram equalisation. This is an intensity transformation technique where you uniformly distribute the image histogram over the entire intensity axis. Details previously obscured may now be more readable for further image processing. A common practice in the medical industry to enhance contrast in X-ray, MRI and CT scan images.
+* [**Contrast Threshold:**] Is a set of lower and upper boundary condition for a binary image transform. Pixels with brightness values within this are set to white (255), otherwise they are set to black (0). This is a way to only select the brightness range of objects you are interested in segmenting.
+* [**Blue Kernel:**] Blur effects in image processing use a matrix where each pixel is a function of surrounding pixels in the matrix. The kernel defines the size of the matrix for which the a gaussian function is applied. The kernel must be odd, as the matrix must have a single center pixel. A 4x4 matrix for instance, has 4 pixels which make up the center, but a 3x3 matrix has only one pixel.
+* [**Distance Transform:**] This value is an exclusion threshold for the distance transformed image. This is a used to divide connected regions of object in an image based on a pixels distance from black pixels. Higher values here will effectivly raise the water level (black background) in a pixel height map (distance transform). This process is visualised in the 'Distance Transform' Image. You want to set this value so that none of the objects you wish to count and characterise are touching.
+* [**Morphology Simplicity:**] For higher resolution images, you can sometimes observe fine detailing and noise about your objects. To simplify and clean up the edges of your objects, you can raise this value. This may help reduce bridges between objects preventing them from being properly segmented.
+* [**Segment Size:**] This is a size range selection where, if the scale is set corretly, users can specify which size range of segments they would like to have contoured and characterised in the results section.
 
 #### [Scale Calculator]()
 
