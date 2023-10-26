@@ -1,36 +1,40 @@
+// Wait until the document's content has fully loaded before executing the function
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Get overlay and various child elements for later use
     const overlay = document.getElementById("overlay");
     let enlargedCardHeader = overlay.querySelector('.card-header');
     const enlargedCardContainer = overlay.querySelector('.card-container');
-    const enlargedCard = overlay.querySelector('.enlarged-card'); // Fetch the enlarged card
+    const enlargedCard = overlay.querySelector('.enlarged-card');
 
-    // Show the enlarged card when the expand-icon is clicked
+    // Attach event listeners to all expand-icons to enable card enlargement
     document.querySelectorAll('.expand-icon').forEach(icon => {
         icon.addEventListener('click', function() {
+            // Find the closest ancestor card of the clicked expand-icon
             const originalCard = icon.closest('.card');
-
-            // Get header text
+            
+            // Extract header text from the original card
             const headerText = originalCard.querySelector('.card-header').firstChild.textContent.trim();
-
-            // Copying header inner content
+            
+            // Clone the icon-container from the original card
             const originalHeaderContent = originalCard.querySelector('.icon-container').cloneNode(true);
-
-            // Clearing and appending text and icons to the enlarged card's header
+            
+            // Clear existing content and set header text and icons to the enlarged card's header
             enlargedCardHeader.innerHTML = headerText;
             enlargedCardHeader.appendChild(originalHeaderContent);
 
+            // Update the cloned expand-icon to a close icon in the enlarged card's header
             const newExpandIcon = enlargedCardHeader.querySelector('.expand-icon');
             newExpandIcon.classList.remove('expand-icon');
             newExpandIcon.classList.add('fa-times', 'close-icon');
-
-            // Need to bind the close event to the new close icon
+            
+            // Attach an event listener to the close icon to hide the overlay and reset the enlarged card width
             newExpandIcon.addEventListener('click', function() {
                 overlay.style.display = 'none';
                 enlargedCard.style.width = "";
             });
-
-            // Copying main content
+            
+            // Clone main content from the original card for display in the enlarged card
             let originalMainContent;
             if (originalCard.querySelector('.card-container')) {
                 originalMainContent = originalCard.querySelector('.card-container').cloneNode(true);
@@ -38,24 +42,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if (originalCard.querySelector('.histogram-container')) {
                 originalMainContent = originalCard.querySelector('.histogram-container').cloneNode(true);
             }
-            enlargedCardContainer.innerHTML = "";  // clear any previous content
+            // Clear existing content and set main content in the enlarged card
+            enlargedCardContainer.innerHTML = "";
             enlargedCardContainer.appendChild(originalMainContent);
 
+            // Adjust the styling for any images in the enlarged card
             const enlargedImage = enlargedCardContainer.querySelector('.grid-img');
             if (enlargedImage) {
                 enlargedImage.classList.add('enlarged-image');
 
-                // Get the width of the enlarged image
+                // Compute and set the width of the enlarged card based on the enlarged image width
                 const computedWidth = getComputedStyle(enlargedImage).width;
-                
-                // Set the width of the enlarged card to match the image's width
                 enlargedCard.style.width = computedWidth;
             }
 
-            // Displaying the overlay
+            // Make the overlay (containing the enlarged card) visible
             overlay.style.display = 'flex';
         });
     });
 });
+
+
 
 
